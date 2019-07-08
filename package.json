@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-client": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/app.js",
-    "postinstall": "npm run build-client"
+    "start": "webpack --mode development -w & nodemon server/app.js --ignore /client --ignore /public"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +22,20 @@
     "node": "10.15.3"
   },
   "dependencies": {
-    "webpack": "^4.35.3"
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5"
   }
 }
