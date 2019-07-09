@@ -10,4 +10,6 @@ router.get('/:sport', (req, res, next) => {
   .catch(console.error)
 })
 
+
+
 module.exports = router
