@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 8332
 const https = require('https')
 const fs = require('fs')
 const dir = require('os').homedir()
+const dotenv = require('dotenv').config()
 
 const opions = {}
 
