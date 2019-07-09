@@ -1,1 +1,4 @@
 node_modules
+server/routes/jsonOdds.js
+public/bundle.js
+public/bundle.js.map

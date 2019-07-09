@@ -7,7 +7,8 @@
     "build-client": "webpack --mode production",
     "build-clent-watch": "webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --mode development -w & nodemon server/app.js --ignore /client --ignore /public",
+    "start": "node server/app.js",
+    "start-dev": "webpack --mode development -w & nodemon server/app.js --ignore /client --ignore /public",
     "postinstall": "npm run build-client"
   },
   "keywords": [],
