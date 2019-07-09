@@ -27,4 +27,8 @@ app.use('/api', require('./routes'))
 
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use('*', (req, res, next) => res.sendFile(path.join(__dirname, '..', 'public', 'index.html')))
-server.listen(PORT, () => console.log(chalk.blue.bgWhite.bold(`We are live on port ${server.address().port}`)))
+if(PORT === 8332) {
+  server.listen(PORT, () => console.log(chalk.blue.bgWhite.bold(`We are live on port ${server.address().port}`)))
+} else {
+  app.listen(PORT, () => console.log(chalk.blue.bgWhite.bold(`We are live on port ${PORT}`)))
+}
