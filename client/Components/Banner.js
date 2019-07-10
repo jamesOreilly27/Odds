@@ -2,6 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchOddsBySport } from '../store'
 import { Match } from '../Components'
+import styled from 'styled-components'
+import { FlexRowContainer } from './baseComponents'
+
+const Wrapper = styled(FlexRowContainer)`
+  background-color: #42ecf5;
+  width: 500%;
+`
 
 class Banner extends Component {
   constructor(props) {
@@ -14,13 +21,13 @@ class Banner extends Component {
 
   render() {
     return (
-      <div>
+      <Wrapper>
         { this.props.odds[0] &&
             this.props.odds[0].Odds.map(match => {
               return <Match key={match.id} details={match} />
             })
         }
-      </div>
+      </Wrapper>
     )
   }
 }
