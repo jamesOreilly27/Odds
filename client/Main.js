@@ -6,7 +6,7 @@ const Main = () => {
   return (
     <Router>
       <Switch>
-        <Banner />
+        <Banner sport="golf"/>
       </Switch>
     </Router>
     )
