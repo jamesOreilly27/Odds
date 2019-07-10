@@ -1,11 +1,12 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Banner } from './Components'
 
 const Main = () => {
   return (
     <Router>
       <Switch>
-        <h1>Hello World</h1>
+        <Banner />
       </Switch>
     </Router>
     )
