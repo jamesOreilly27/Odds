@@ -41,9 +41,6 @@ router.get('/finish_auth', (req, res) => {
   // console.log(chalk.white.bgGreen(Shopify.is_valid_signature(queryParams)))
 
   Shopify.exchange_temporary_token(queryParams, function(error, data) { 
-    // console.log(chalk.white.bgMagenta('HELLOOOOOOOO', Shopify.exchange_temporary_token))
-    // console.log(chalk.white.bgGreen('HELOOOOOOOOO', error))
-    console.log(chalk.white.bgMagenta('woooooooooorld', data['access_token']))
     shopify_hidden_at=data['access_token']
   })
 })
