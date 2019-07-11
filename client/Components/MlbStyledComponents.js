@@ -12,3 +12,11 @@ export const MLBGameHeader = styled(FlexRowContainer)`
 export const MLBGameDetails = styled(FlexRowContainer)`
   
 `
+
+export const MLBTeamsContainer = styled(FlexColumnContainer)`
+
+`
+
+export const MLBOddsContainer = styled(FlexColumnContainer)`
+
+`
