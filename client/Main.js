@@ -14,7 +14,7 @@ const Main = () => {
     <Router>
       <Switch>
         <BannerWrapper>
-          <Banner sport="golf" id="banner" />
+          <Banner />
         </BannerWrapper>
       </Switch>
     </Router>

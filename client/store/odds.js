@@ -7,11 +7,10 @@ const gotOdds = odds => ({
   payload: odds
 })
 
-export const fetchOddsBySport = sport => dispatch => {
+export const fetchOddsBySport = sport => dispatch =>
   axios.get(`/api/${sport}`)
   .then(res => dispatch(gotOdds(res.data)))
   .catch(err => dispatch(gotOdds(err.message)))
-}
 
 const reducer = (odds = [], action) => {
   switch(action.type) {

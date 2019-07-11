@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
 
@@ -18,27 +19,49 @@ const GolfLineContainer = styled.div`
 
 `
 
-const splitName = string => string.split(' ')
+class Match extends Component {
+  constructor(props) {
+    super(props)
+  }
 
-const chooseSport = props => {
-  if(props.sport === 'golf') {
-    return (
-      <Wrapper>
+  chooseSport() {
+    const match = this.props.odds[0]
+    if(this.props.activeSport === 'golf') {
+      return (
+        <div>
+          {this.props.gameOdds.Participant &&
+            <Wrapper>
+              <GolfNameContainer>
+                <div>{this.splitName(this.props.gameOdds.Participant.Name)[0]}</div>
+                <div>{this.splitName(this.props.gameOdds.Participant.Name)[1]}</div>
+              </GolfNameContainer>
+      
+              <GolfLineContainer>
+                {`+${this.props.gameOdds.MoneyLineHome}`}
+              </GolfLineContainer>
+            </Wrapper>
+          }
+        </div>
+      )
+    }
+    else if(this.props.activeSport === 'mlb') {
+      return (
+        <div>HELLO WORLD</div>
+      )
+    }
+    else if(this.props.activeSport === 'nfl') {
+      return ( <div> Hello NFL </div> )
+    }
+  }
+  splitName(string) {
+    return string.split(' ')
+  }
 
-        <GolfNameContainer>
-          <div>{splitName(props.details.Participant.Name)[0]}</div>
-          <div>{splitName(props.details.Participant.Name)[1]}</div>
-        </GolfNameContainer>
-
-        <GolfLineContainer>
-          {`+${props.details.MoneyLineHome}`}
-        </GolfLineContainer>
-        
-      </Wrapper>
-    )
+  render() {
+    return this.chooseSport()
   }
 }
 
-const Match = props => chooseSport(props)
+const mapState = state => state
 
-export default Match
+export default connect(mapState)(Match)

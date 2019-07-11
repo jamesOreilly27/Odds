@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchOddsBySport } from '../store'
+import { fetchOddsBySport, updateActiveSport } from '../store'
 import { Match } from '../Components'
 import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
@@ -23,17 +23,35 @@ const MatchContainer = styled(FlexRowContainer)`
 class Banner extends Component {
   constructor(props) {
     super(props)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(event) {
+    // event.persist()
+    // this.props.getOdds(event.target.value)
+    // .then(() => {
+    //   this.props.updateSport(event.target.value)
+    // })
+    // .catch(error => console.log(error))
+    this.props.updateSport(event.target.value)
   }
 
   componentDidMount() {
-    this.props.getOdds(this.props.sport)
+    this.props.getOdds(this.props.activeSport)
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.activeSport !== prevProps.activeSport) {
+      console.log('HOLLLLOOO NURSE')
+      this.props.getOdds(this.props.activeSport)
+    }
   }
 
   render() {
     return (
       <Wrapper>
         <SelectWrapper>
-        <select>
+        <select onChange={this.handleChange}>
           <option value="mlb"> MLB </option>
           <option value="nfl"> NFL </option>
           <option value="nba"> NBA </option>
@@ -44,8 +62,8 @@ class Banner extends Component {
 
         <MatchContainer>
           {this.props.odds[0] &&
-            this.props.odds[0].Odds.map(match => {
-              return <Match class="match" key={match.id} details={match} sport={'golf'}/>
+            this.props.odds[0].Odds.map(gameOdds => {
+              return <Match key={gameOdds.id} gameOdds={gameOdds} />
             })
           }
         </MatchContainer>
@@ -58,7 +76,10 @@ const mapState = state => state
 
 const mapDispatch = dispatch => ({
   getOdds(sport) {
-    dispatch(fetchOddsBySport(sport))
+    return dispatch(fetchOddsBySport(sport))
+  },
+  updateSport(sportString) {
+    return dispatch(updateActiveSport(sportString))
   }
 })
 
