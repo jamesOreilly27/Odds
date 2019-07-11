@@ -18,8 +18,10 @@ export const processTime = dateString => {
   return minutes < 10 ? `${hours}:0${minutes}` : `${hours}:${minutes}`
 }
 
-/***** Team Abbreviations ******/
-export const truncateTeamName = string => {
+/********** Team Abbreviations ***********/
+
+/***** MLB Teams******/
+export const truncateMLBTeamName = string => {
   if(string === 'Miami Marlins') return 'MIA'
   else if(string === 'Chicago Cubs') return 'CHC'
   else if(string === 'St. Louis Cardinals') return 'STL'
@@ -50,4 +52,79 @@ export const truncateTeamName = string => {
   else if(string === 'Arizona Diamondbacks') return 'ARI'
   else if(string === 'Cleveland Indians') return 'CLE'
   else if(string === 'Seattle Mariners') return 'SEA'
+}
+
+/***** NFL Teams******/
+export const truncateNFLTeamName = string => {
+  switch(string) {
+    case 'Arizona Cardinals':
+      return 'ARI'
+    case "Atlanta Falcons":
+      return 'ATL'
+    case 'Baltimore Ravens':
+      return 'BAL'
+    case 'Buffalo Bills':
+      return 'BUF'
+    case 'Carolina Panthers':
+      return 'CAR'
+    case 'Chicago Bears':
+      return 'CHI'
+    case 'Cincinnati Bengals':
+      return 'CIN'
+    case 'Cleveland Browns':
+      return 'CLE'
+    case 'Dallas Cowboys':
+      return 'DAL'
+    case 'Denver Broncos':
+      return 'DEN'
+    case 'Detroit Lions':
+      return 'DET'
+    case 'Green Bay Packers':
+      return 'GB'
+    case 'Houston Texans':
+      return 'HOU'
+    case 'Indianapolis Colts':
+      return 'IND'
+    case 'Jacksonville Jaguars':
+      return 'JAX'
+    case 'Kansas City Chiefs':
+      return 'KC'
+    case 'Los Angeles Chargers':
+      return 'LAC'
+    case 'Los Angeles Rams':
+      return 'LAR'
+    case 'Miami Dolphins':
+      return 'MIA'
+    case 'Minnesota Vikings':
+      return 'MIN'
+    case 'New England Patriots':
+      return 'NE'
+    case 'New Orleans Saints':
+      return 'NO'
+    case 'New York Giants':
+      return 'NYG'
+    case 'New York Jets':
+      return 'NYJ'
+    case 'Oakland Raiders':
+      return 'OAK'
+    case 'Philadelphia Eagles':
+      return 'PHI'
+    case 'Pittsburgh Steelers':
+      return 'PIT'
+    case 'San Fransisco 49ers':
+      return 'SF'
+    case 'Seattle Seahawks':
+      return 'SEA'
+    case 'Tampa Bay Buccaneers':
+      return 'TB'
+    case 'Tennessee Titans':
+      return 'TEN'
+    case 'Washington Redskins':
+      return 'WAS'
+  }
+}
+
+export const truncateTeamName = (sportString, team) => {
+  if(sportString === 'mlb') return truncateMLBTeamName(team)
+  else if(sportString === 'nfl') return truncateNFLTeamName(team)
 }

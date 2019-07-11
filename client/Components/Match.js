@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
-import { MLBGameWrapper, MLBGameHeader, MLBGameDetails, MLBTeamsContainer, MLBOddsContainer } from './MlbStyledComponents'
+import { TeamGameWrapper, TeamGameHeader, TeamGameDetails, TeamsContainer, TeamOddsContainer } from './TeamSportsStyledComponents'
 import { processTime, truncateTeamName } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
@@ -46,29 +46,26 @@ class Match extends Component {
         </div>
       )
     }
-    else if(this.props.activeSport === 'mlb') {
+    else {
       return (
-        <MLBGameWrapper>
-          <MLBGameHeader>
+        <TeamGameWrapper>
+          <TeamGameHeader>
             {processTime(match.MatchTime)}
-          </MLBGameHeader>
+          </TeamGameHeader>
 
-          <MLBGameDetails>
+          <TeamGameDetails>
             {console.log(match)}
-            <MLBTeamsContainer>
-              <div>{truncateTeamName(match.HomeTeam)}</div>
-              <div>{truncateTeamName(match.AwayTeam)}</div>
-            </MLBTeamsContainer>
-            <MLBOddsContainer>
+            <TeamsContainer>
+              <div>{truncateTeamName(this.props.activeSport, match.HomeTeam)}</div>
+              <div>{truncateTeamName(this.props.activeSport, match.AwayTeam)}</div>
+            </TeamsContainer>
+            <TeamOddsContainer>
               <div>{this.props.gameOdds.MoneyLineHome}</div>
               <div>{this.props.gameOdds.MoneyLineAway}</div>
-            </MLBOddsContainer>
-          </MLBGameDetails>
-        </MLBGameWrapper>
+            </TeamOddsContainer>
+          </TeamGameDetails>
+        </TeamGameWrapper>
       )
-    }
-    else if(this.props.activeSport === 'nfl') {
-      return ( <div> Hello NFL </div> )
     }
   }
   splitName(string) {
