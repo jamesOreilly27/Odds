@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
-import { TeamGameWrapper, TeamGameHeader, TeamGameDetails, TeamsContainer, TeamOddsContainer } from './TeamSportsStyledComponents'
+import { TeamGameWrapper, TeamGameHeader, TeamGameDetails, DetailContainer } from './TeamSportsStyledComponents'
 import { processTime, truncateTeamName } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
   font-size: 11px;
-  width: 120px;
   margin-left: 20px;
   height: 100%;
   padding-bottom: 10px;
@@ -55,14 +54,14 @@ class Match extends Component {
 
           <TeamGameDetails>
             {console.log(match)}
-            <TeamsContainer>
+            <DetailContainer>
               <div>{truncateTeamName(this.props.activeSport, match.HomeTeam)}</div>
               <div>{truncateTeamName(this.props.activeSport, match.AwayTeam)}</div>
-            </TeamsContainer>
-            <TeamOddsContainer>
+            </DetailContainer>
+            <DetailContainer>
               <div>{this.props.gameOdds.MoneyLineHome}</div>
               <div>{this.props.gameOdds.MoneyLineAway}</div>
-            </TeamOddsContainer>
+            </DetailContainer>
           </TeamGameDetails>
         </TeamGameWrapper>
       )

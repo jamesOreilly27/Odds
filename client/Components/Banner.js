@@ -18,6 +18,7 @@ const MatchContainer = styled(FlexRowContainer)`
   background-color: #42ecf5;
   justify-content: flex-start;
   height: 65px;
+  width: 2500px;
 `
 
 class Banner extends Component {
