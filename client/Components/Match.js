@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
-import { TeamGameWrapper, TeamGameHeader, TeamGameDetails, DetailContainer } from './TeamSportsStyledComponents'
-import { processTime, truncateTeamName } from './helpers'
+import { TeamGameWrapper, TeamGameHeader, TeamGameDetails, DetailContainer, NameLogoContainer, TeamOddsContainer } from './TeamSportsStyledComponents'
+import { processTime, truncateTeamName, addPlus } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
   font-size: 11px;
@@ -26,19 +26,18 @@ class Match extends Component {
   }
 
   chooseSport() {
-    const match = this.props.odds[0]
     if(this.props.activeSport === 'golf') {
       return (
         <div>
-          {this.props.gameOdds.Participant &&
+          {this.props.match.Participant &&
             <Wrapper>
               <GolfNameContainer>
-                <div>{this.splitName(this.props.gameOdds.Participant.Name)[0]}</div>
-                <div>{this.splitName(this.props.gameOdds.Participant.Name)[1]}</div>
+                <div>{this.splitName(this.props.match.Participant.Name)[0]}</div>
+                <div>{this.splitName(this.props.match.Participant.Name)[1]}</div>
               </GolfNameContainer>
       
               <GolfLineContainer>
-                {`+${this.props.gameOdds.MoneyLineHome}`}
+                {`+${this.props.match.MoneyLineHome}`}
               </GolfLineContainer>
             </Wrapper>
           }
@@ -49,19 +48,24 @@ class Match extends Component {
       return (
         <TeamGameWrapper>
           <TeamGameHeader>
-            {processTime(match.MatchTime)}
+            {processTime(this.props.match.MatchTime)}
           </TeamGameHeader>
 
           <TeamGameDetails>
-            {console.log(match)}
             <DetailContainer>
-              <div>{truncateTeamName(this.props.activeSport, match.HomeTeam)}</div>
-              <div>{truncateTeamName(this.props.activeSport, match.AwayTeam)}</div>
+              <NameLogoContainer>
+                <img src={require(`../../public/assets/mlb-logos/${truncateTeamName(this.props.activeSport, this.props.match.HomeTeam)}.png`)} />
+                <div>{truncateTeamName(this.props.activeSport, this.props.match.HomeTeam)}</div>
+              </NameLogoContainer>
+              <NameLogoContainer>
+                <img src={require(`../../public/assets/mlb-logos/${truncateTeamName(this.props.activeSport, this.props.match.AwayTeam)}.png`)} />
+                <div>{truncateTeamName(this.props.activeSport, this.props.match.AwayTeam)}</div>
+              </NameLogoContainer>
             </DetailContainer>
-            <DetailContainer>
-              <div>{this.props.gameOdds.MoneyLineHome}</div>
-              <div>{this.props.gameOdds.MoneyLineAway}</div>
-            </DetailContainer>
+            <TeamOddsContainer>
+              <div>{addPlus(this.props.match.Odds[0].MoneyLineHome)}</div>
+              <div>{addPlus(this.props.match.Odds[0].MoneyLineAway)}</div>
+            </TeamOddsContainer>
           </TeamGameDetails>
         </TeamGameWrapper>
       )
@@ -73,6 +77,8 @@ class Match extends Component {
 
   render() {
     return this.chooseSport()
+    // console.log(this.props.match)
+    // return <div>hello</div>
   }
 }
 

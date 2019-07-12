@@ -1,24 +1,59 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchOddsBySport, updateActiveSport } from '../store'
-import { Match } from '../Components'
-import styled from 'styled-components'
+import { Match, BannerSelect } from '../Components'
+import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
 
 const Wrapper = styled(FlexRowContainer)`
   width: 500%;
-  justify-content: flex-start
+  justify-content: flex-start;
+  background-color: #666;
+  border-radius: 8px;
 `
 
 const SelectWrapper = styled.div`
-  width: 100px
+  width: 61px;
+  height: 25px;
+  position: relative;
+  margin-right: 8px;
+  select {
+    appearance: none;
+    width:100%;
+    height: 100%;
+    border: none;
+    padding-left: 17px;
+    font-size: 15px;
+    background-color: #666;
+    color: #F5F5F5;
+  }
+`
+
+const easeInBanner = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
 `
 
 const MatchContainer = styled(FlexRowContainer)`
-  background-color: #42ecf5;
   justify-content: flex-start;
   height: 65px;
   width: 2500px;
+  animation: ${easeInBanner} 4s ease;
+  margin-left: 5px;
+  align-items: CENTER;
+`
+
+const ClickScrollContainer = styled(FlexRowContainer)`
+  width: 15px;
+  position: absolute;
+  right: 30px;
+  top: 0;
+  background-color: #8C8C8C;
+  height: 50px;
+  position: absolute;
+  left: 60px;
+  top: 16px;
+  color: #F5F5F5; 
 `
 
 class Banner extends Component {
@@ -28,12 +63,6 @@ class Banner extends Component {
   }
 
   handleChange(event) {
-    // event.persist()
-    // this.props.getOdds(event.target.value)
-    // .then(() => {
-    //   this.props.updateSport(event.target.value)
-    // })
-    // .catch(error => console.log(error))
     this.props.updateSport(event.target.value)
   }
 
@@ -43,7 +72,6 @@ class Banner extends Component {
 
   componentDidUpdate(prevProps) {
     if(this.props.activeSport !== prevProps.activeSport) {
-      console.log('HOLLLLOOO NURSE')
       this.props.getOdds(this.props.activeSport)
     }
   }
@@ -62,9 +90,12 @@ class Banner extends Component {
         </SelectWrapper>
 
         <MatchContainer>
-          {this.props.odds[0] &&
-            this.props.odds[0].Odds.map(gameOdds => {
-              return <Match key={gameOdds.id} gameOdds={gameOdds} />
+          <ClickScrollContainer>
+            {'<'}
+          </ClickScrollContainer>
+          {this.props.odds &&
+            this.props.odds.map(match => {
+              return <Match key={match.id} match={match} />
             })
           }
         </MatchContainer>

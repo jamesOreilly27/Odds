@@ -128,3 +128,11 @@ export const truncateTeamName = (sportString, team) => {
   if(sportString === 'mlb') return truncateMLBTeamName(team)
   else if(sportString === 'nfl') return truncateNFLTeamName(team)
 }
+
+/***** Odds Processors *****/
+
+export const addPlus = string => {
+  let processedString = ''
+  string[0] === '-' ? processedString = string : processedString = `+${string}`
+  return processedString
+}
