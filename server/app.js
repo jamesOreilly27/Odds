@@ -12,19 +12,19 @@ const dotenv = require('dotenv').config()
 
 const opions = {}
 
-!process.env.PORT ?
-  options = {
-    key: fs.readFileSync( `${dir}/ssl/localhost/localhost.key` ),
-    cert: fs.readFileSync( `${dir}/ssl/localhost/localhost.crt` ),
-    requestCert: false,
-    rejectUnauthorized: false
-  }
-:
-  options = {}
+// !process.env.PORT ?
+//   options = {
+//     key: fs.readFileSync( `${dir}/ssl/localhost/localhost.key` ),
+//     cert: fs.readFileSync( `${dir}/ssl/localhost/localhost.crt` ),
+//     requestCert: false,
+//     rejectUnauthorized: false
+//   }
+// :
+//   options = {}
 
 const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY } = process.env
 
-const server = https.createServer(options, app)
+// const server = https.createServer(options, app)
 
 app.use(volleyball)
 app.use(bodyParser.json())

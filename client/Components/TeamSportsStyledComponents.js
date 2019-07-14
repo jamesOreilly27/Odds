@@ -25,6 +25,7 @@ export const TeamGameDetails = styled(FlexRowContainer)`
   justify-content: space-between;
   background-color: #8C8C8C;
   color: #F5F5F5;
+  padding-left: 3px;
 `
 
 export const DetailContainer = styled(FlexColumnContainer)`
