@@ -112,7 +112,6 @@ class Banner extends Component {
 
   componentDidMount() {
     this.props.getOdds(this.props.activeSport)
-    this.updateScrollPosition(this.state.scrollLeft, this.state.scrollRight)
   }
 
   componentDidUpdate(prevProps) {
