@@ -11,7 +11,7 @@ export const FlexColumnContainer = styled(FlexRowContainer)`
   flex-direction: column;
 `
 
-export const FlexButton = styled.div`
+export const FlexButton = styled(FlexColumnContainer)`
   display: flex;
   align-items: center;
   justify-content: center;

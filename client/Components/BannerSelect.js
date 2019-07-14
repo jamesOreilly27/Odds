@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { FlexRowContainer, FlexButton } from './baseComponents'
+import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
 import styled from 'styled-components'
 
 const Wrapper = styled(FlexButton)`
@@ -26,27 +26,14 @@ const Select = styled(FlexRowContainer)`
 class BannerSelect extends Component {
   constructor(props) {
     super(props)
-
-    this.state = { dropDown: false }
-    this.handleClick = this.handleClick.bind(this)
-  }
-
-  renderTriangle() {
-    let unicode = ''
-    this.state.dropDown ? unicode = '\u25B2' : unicode = '\u25BC'
-    return unicode
-  }
-
-  handleClick() {
-    this.setState({ dropDown: !this.state.dropDown })
   }
 
   render() {
     return (
-      <Wrapper onClick={this.handleClick}>
+      <Wrapper onClick={this.props.handleClick}>
         <Select>
           <div>{this.props.activeSport.toUpperCase()}</div>
-          <div class="small-font">{this.renderTriangle()}</div>
+          <div className="small-font">{this.props.triangle}</div>
         </Select>
       </Wrapper>
     )
