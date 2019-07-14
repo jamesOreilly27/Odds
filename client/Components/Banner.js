@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchOddsBySport, updateActiveSport } from '../store'
 import { Match, BannerSelect } from '../Components'
 import styled, { keyframes } from 'styled-components'
-import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
+import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
 
 const Wrapper = styled(FlexRowContainer)`
   justify-content: flex-start;
@@ -53,14 +53,6 @@ const MatchContainer = styled(FlexRowContainer)`
   align-items: center;
 `
 
-const FlexButton = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  cursor: default;
-`
-
 const ClickScrollContainer = styled(FlexButton)`
   width: 15px;
   position: absolute;
@@ -76,7 +68,7 @@ const ClickScrollContainer = styled(FlexButton)`
 `
 
 const LeftClickScrollContainer = styled(ClickScrollContainer)`
-  left: 61px;
+  left: 69px;
   top: 15px;
 `
 
@@ -127,7 +119,7 @@ class Banner extends Component {
         scrollRight={this.state.scrollRight}
         scrollTo={this.state.scrollTo}
       >
-        <SelectWrapper>
+        {/* <SelectWrapper>
         <select onChange={this.handleChange}>
           <option value="mlb"> MLB </option>
           <option value="nfl"> NFL </option>
@@ -135,7 +127,8 @@ class Banner extends Component {
           <option value="nhl"> NHL </option>
           <option value="golf"> GOLF </option>
         </select>
-        </SelectWrapper>
+        </SelectWrapper> */}
+        <BannerSelect />
         <LeftClickScrollContainer onMouseDown={this.mouseDownLeft} onMouseUp={this.mouseUpLeft}>
           {'<'}
         </LeftClickScrollContainer>

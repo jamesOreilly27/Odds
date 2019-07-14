@@ -10,3 +10,10 @@ export const FlexRowContainer = styled.div`
 export const FlexColumnContainer = styled(FlexRowContainer)`
   flex-direction: column;
 `
+
+export const FlexButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+`
