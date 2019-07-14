@@ -61,7 +61,7 @@ const ClickScrollContainer = styled(FlexButton)`
 `
 
 const LeftClickScrollContainer = styled(ClickScrollContainer)`
-  left: 69px;
+  left: 62px;
   top: 15px;
 `
 
@@ -150,7 +150,7 @@ class Banner extends Component {
         <OptionsContainer>
           {this.state.dropDown &&
             this.state.options.map(option => {
-              return <SelectOption content='Hello World' />
+              return <SelectOption content={option} updateSport={this.props.updateSport} />
             })
           }
         </OptionsContainer>
