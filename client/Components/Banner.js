@@ -1,16 +1,21 @@
-import React, { Component, WheelEvent } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchOddsBySport, updateActiveSport } from '../store'
-import { Match, BannerSelect } from '../Components'
+import { Match, BannerSelect, SelectOption } from '../Components'
 import styled, { keyframes } from 'styled-components'
-import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
+import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
 
-const Wrapper = styled(FlexRowContainer)`
+const Wrapper = styled(FlexColumnContainer)`
+  align-items: flex-start;
+`
+
+const BannerContainer = styled(FlexRowContainer)`
   justify-content: flex-start;
   background-color: #666;
   border-radius: 8px;
   overflow-x: hidden;
-  
+  max-height: 65px;
+
   #match-container {
     transform: ${({ scrollLeft, scrollRight, scrollTo }) => {
       // if(scrollLeft) return `translateX(${scrollTo}px);`
@@ -21,20 +26,8 @@ const Wrapper = styled(FlexRowContainer)`
   }
 `
 
-const SelectWrapper = styled.div`
-  width: 61px;
-  height: 25px;
-  position: relative;
-  margin-right: 12px;
-  select {
-    appearance: none;
-    height: 100%;
-    border: none;
-    padding-left: 17px;
-    font-size: 15px;
-    background-color: #666;
-    color: #F5F5F5;
-  }
+const OptionsContainer = styled(FlexColumnContainer)`
+
 `
 
 const easeInBanner = keyframes`
@@ -53,14 +46,6 @@ const MatchContainer = styled(FlexRowContainer)`
   align-items: center;
 `
 
-const FlexButton = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  cursor: default;
-`
-
 const ClickScrollContainer = styled(FlexButton)`
   width: 15px;
   position: absolute;
@@ -76,7 +61,7 @@ const ClickScrollContainer = styled(FlexButton)`
 `
 
 const LeftClickScrollContainer = styled(ClickScrollContainer)`
-  left: 61px;
+  left: 62px;
   top: 15px;
 `
 
@@ -89,16 +74,33 @@ class Banner extends Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
+    this.handleDropDownClick = this.handleDropDownClick.bind(this)
     this.mouseDownLeft= this.mouseDownLeft.bind(this)
     this.mouseUpLeft = this.mouseUpLeft.bind(this)
     this.mouseDownRight= this.mouseDownLeft.bind(this)
     this.mouseUpRight = this.mouseUpLeft.bind(this)
     
-    this.state = { scrollLeft: false, scrollRight: false, scrollTo: 0 }
+    this.state = {
+      scrollLeft: false,
+      scrollRight: false,
+      scrollTo: 0,
+      dropDown: false,
+      options: [ 'mlb', 'nfl', 'nba', 'nhl', 'golf' ]
+    }
+  }
+
+  renderTriangle() {
+    let unicode = ''
+    this.state.dropDown ? unicode = '\u25B2' : unicode = '\u25BC'
+    return unicode
   }
 
   handleChange(event) {
     this.props.updateSport(event.target.value)
+  }
+
+  handleDropDownClick(event) {
+    this.setState({ dropDown: !this.state.dropDown })
   }
 
 
@@ -122,35 +124,36 @@ class Banner extends Component {
 
   render() {
     return (
-      <Wrapper
-        scrollLeft={this.state.scrollLeft}
-        scrollRight={this.state.scrollRight}
-        scrollTo={this.state.scrollTo}
-      >
-        <SelectWrapper>
-        <select onChange={this.handleChange}>
-          <option value="mlb"> MLB </option>
-          <option value="nfl"> NFL </option>
-          <option value="nba"> NBA </option>
-          <option value="nhl"> NHL </option>
-          <option value="golf"> GOLF </option>
-        </select>
-        </SelectWrapper>
-        <LeftClickScrollContainer onMouseDown={this.mouseDownLeft} onMouseUp={this.mouseUpLeft}>
-          {'<'}
-        </LeftClickScrollContainer>
+      <Wrapper>
+        <BannerContainer
+          scrollLeft={this.state.scrollLeft}
+          scrollRight={this.state.scrollRight}
+          scrollTo={this.state.scrollTo}
+        >
+          <BannerSelect handleClick={this.handleDropDownClick} triangle={this.renderTriangle()}/>
+          <LeftClickScrollContainer onMouseDown={this.mouseDownLeft} onMouseUp={this.mouseUpLeft}>
+            {'<'}
+          </LeftClickScrollContainer>
 
-        <RightClickScrollContainer onMouseDown={this.mouseDownRight} onMouseUp={this.mouseUpRight}>
-          {'>'}
-        </RightClickScrollContainer>
+          <RightClickScrollContainer onMouseDown={this.mouseDownRight} onMouseUp={this.mouseUpRight}>
+            {'>'}
+          </RightClickScrollContainer>
 
-        <MatchContainer id="match-container">
-          {this.props.odds &&
-            this.props.odds.map(match => {
-              return <Match key={match.id} match={match} />
+          <MatchContainer id="match-container">
+            {this.props.odds &&
+              this.props.odds.map(match => {
+                return <Match key={match.id} match={match} />
+              })
+            }
+          </MatchContainer>
+        </BannerContainer>
+        <OptionsContainer>
+          {this.state.dropDown &&
+            this.state.options.map(option => {
+              return <SelectOption content={option} updateSport={this.props.updateSport} />
             })
           }
-        </MatchContainer>
+        </OptionsContainer>
       </Wrapper>
     )
   }
