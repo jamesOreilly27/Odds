@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchOddsBySport, updateActiveSport } from '../store'
-import { Match, BannerSelect } from '../Components'
+import { Match, BannerSelect, SelectOption } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
 
@@ -150,7 +150,7 @@ class Banner extends Component {
         <OptionsContainer>
           {this.state.dropDown &&
             this.state.options.map(option => {
-              return <div>HELLO WORLD</div>
+              return <SelectOption content='Hello World' />
             })
           }
         </OptionsContainer>
