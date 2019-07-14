@@ -1,4 +1,4 @@
-import React, { Component, WheelEvent } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchOddsBySport, updateActiveSport } from '../store'
 import { Match, BannerSelect } from '../Components'
