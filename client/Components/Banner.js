@@ -7,6 +7,7 @@ import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseCompone
 
 const Wrapper = styled(FlexColumnContainer)`
   align-items: flex-start;
+  margin-top: -8px;
 `
 
 const BannerContainer = styled(FlexRowContainer)`
@@ -62,12 +63,12 @@ const ClickScrollContainer = styled(FlexButton)`
 
 const LeftClickScrollContainer = styled(ClickScrollContainer)`
   left: 62px;
-  top: 15px;
+  top: 8px;
 `
 
 const RightClickScrollContainer = styled(ClickScrollContainer)`
   right: 15px;
-  top: 15px;
+  top: 8px;
 `
 
 class Banner extends Component {
