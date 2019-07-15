@@ -13,6 +13,7 @@ const Wrapper = styled(FlexColumnContainer)`
 
 const BannerContainer = styled(FlexRowContainer)`
   justify-content: flex-start;
+  margin-top: -7px;
   background-color: #666;
   border-radius: 8px;
   overflow-x: hidden;
@@ -77,7 +78,7 @@ const ClickScrollContainer = styled(FlexButton)`
 
 const LeftClickScrollContainer = styled(ClickScrollContainer)`
   left: 83px;
-  top: 15px;
+  top: 8px;
 `
 
 const RightClickScrollContainer = styled(ClickScrollContainer)`
