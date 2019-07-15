@@ -174,9 +174,6 @@ class Banner extends Component {
           {this.props.odds &&
             getDatesArray(this.props.odds).map(date => {
               return <DateSection key={date} date={date} odds={filterOddsByDay(this.props.odds, date)} />
-              // this.props.odds.map(match => {
-              //   return <Match key={match.id} match={match} />
-              // })   
             })
           }
         </MatchContainer>
