@@ -9,6 +9,7 @@ import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseCompone
 const Wrapper = styled(FlexColumnContainer)`
   align-items: flex-start;
   margin-top: -8px;
+`
 
 const BannerContainer = styled(FlexRowContainer)`
   justify-content: flex-start;
