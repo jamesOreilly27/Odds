@@ -4,7 +4,7 @@ import { fetchOddsBySport, updateActiveSport } from '../store'
 import { Match, BannerSelect, SelectOption } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
-
+import { getDatesArray, filterOddsByDay } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
   align-items: flex-start;
@@ -118,6 +118,10 @@ class Banner extends Component {
     this.props.updateSport(sportString)
   }
 
+  setNumOfDateSections(odds) {
+    getDatesArray(odds)
+  }
+
 
   mouseDownLeft(event) { this.setState({ scrollLeft: true }) }
 
@@ -138,6 +142,7 @@ class Banner extends Component {
   }
 
   render() {
+    if(this.props.odds) filterOddsByDay(this.props.odds, new Date().getDate() + 1)
     return (
       <BannerContainer
         scrollLeft={this.state.scrollLeft}
@@ -156,6 +161,7 @@ class Banner extends Component {
               </OptionsContainer>
             }
         </Menu>
+
         <LeftClickScrollContainer onMouseDown={this.mouseDownLeft} onMouseUp={this.mouseUpLeft}>
           {'<'}
         </LeftClickScrollContainer>

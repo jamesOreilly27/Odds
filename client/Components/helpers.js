@@ -18,6 +18,30 @@ export const processTime = dateString => {
   return minutes < 10 ? `${hours}:0${minutes} PM EST` : `${hours}:${minutes} PM EST`
 }
 
+/********** Filtering Odds By Date ************/
+export const getMatchDate = match => {
+  return new Date(match.MatchTime).getDate()
+}
+
+export const getDatesArray = (odds) => {
+  const checked = []
+
+  odds.forEach( match => {
+    const date = getMatchDate(match)
+    if(checked.indexOf(date) < 0) {
+      checked.push(date)
+    }
+  })
+  return checked
+}
+
+export const filterOddsByDay = (odds, date) => {
+  console.log(odds.filter(match => {
+    const matchDate = getMatchDate(match)
+    return matchDate === date
+  }))
+}
+
 /********** Team Abbreviations ***********/
 
 /***** MLB Teams******/
