@@ -36,10 +36,10 @@ export const getDatesArray = (odds) => {
 }
 
 export const filterOddsByDay = (odds, date) => {
-  console.log(odds.filter(match => {
+  return odds.filter(match => {
     const matchDate = getMatchDate(match)
     return matchDate === date
-  }))
+  })
 }
 
 /********** Team Abbreviations ***********/

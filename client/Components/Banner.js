@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchOddsBySport, updateActiveSport } from '../store'
-import { Match, BannerSelect, SelectOption } from '../Components'
+import { Match, BannerSelect, SelectOption, DateSection } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
 import { getDatesArray, filterOddsByDay } from './helpers'
@@ -170,10 +170,13 @@ class Banner extends Component {
           {'>'}
         </RightClickScrollContainer>
 
-        <MatchContainer id="match-container" dropDown={this.state.dropD}>
+        <MatchContainer id="match-container" dropDown={this.state.dropDown}>
           {this.props.odds &&
-            this.props.odds.map(match => {
-              return <Match key={match.id} match={match} />
+            getDatesArray(this.props.odds).map(date => {
+              return <DateSection key={date} date={date} odds={filterOddsByDay(this.props.odds, date)} />
+              // this.props.odds.map(match => {
+              //   return <Match key={match.id} match={match} />
+              // })   
             })
           }
         </MatchContainer>
