@@ -5,6 +5,11 @@ import { Match, BannerSelect, SelectOption } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
 
+
+const Wrapper = styled(FlexColumnContainer)`
+  align-items: flex-start;
+  margin-top: -8px;
+
 const BannerContainer = styled(FlexRowContainer)`
   justify-content: flex-start;
   background-color: #666;
@@ -76,7 +81,7 @@ const LeftClickScrollContainer = styled(ClickScrollContainer)`
 
 const RightClickScrollContainer = styled(ClickScrollContainer)`
   right: 15px;
-  top: 15px;
+  top: 8px;
 `
 
 class Banner extends Component {
