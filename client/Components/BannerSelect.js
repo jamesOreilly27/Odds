@@ -4,23 +4,26 @@ import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseCompone
 import styled from 'styled-components'
 
 const Wrapper = styled(FlexButton)`
-  min-width: 60px;
-  height: 25px;
+  min-width: 80px;
   padding-left: 6px;
-  margin-right: 8px;
+  margin-right: -4px;
+  height: 100%
 `
 
 const Select = styled(FlexRowContainer)`
-  width: 80%;
+  width: 60%;
   font-size: 15px;
   background-color: #666;
   color: #F5F5F5;
-  justify-content: space-around;
+  justify-content: flex-start;
+`
 
-  .small-font {
-    font-size: 7px;
-    padding-right: 6px;
-  }
+const ActiveSport = styled.div`
+  padding-right: 3px;
+`
+
+const Arrow = styled.div`
+  font-size: 10px;
 `
 
 class BannerSelect extends Component {
@@ -32,8 +35,8 @@ class BannerSelect extends Component {
     return (
       <Wrapper onClick={this.props.handleClick}>
         <Select>
-          <div>{this.props.activeSport.toUpperCase()}</div>
-          <div className="small-font">{this.props.triangle}</div>
+          <ActiveSport>{this.props.activeSport.toUpperCase()}</ActiveSport>
+          <Arrow>{this.props.triangle}</Arrow>
         </Select>
       </Wrapper>
     )

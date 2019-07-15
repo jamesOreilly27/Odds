@@ -5,10 +5,10 @@ import { Match, BannerSelect, SelectOption } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
 
+
 const Wrapper = styled(FlexColumnContainer)`
   align-items: flex-start;
   margin-top: -8px;
-`
 
 const BannerContainer = styled(FlexRowContainer)`
   justify-content: flex-start;
@@ -16,6 +16,7 @@ const BannerContainer = styled(FlexRowContainer)`
   border-radius: 8px;
   overflow-x: hidden;
   max-height: 65px;
+  height: 65px;
 
   #match-container {
     transform: ${({ scrollLeft, scrollRight, scrollTo }) => {
@@ -27,13 +28,25 @@ const BannerContainer = styled(FlexRowContainer)`
   }
 `
 
-const OptionsContainer = styled(FlexColumnContainer)`
-
-`
-
 const easeInBanner = keyframes`
   from { opacity: 0; }
   to { opacity: 1; }
+`
+
+const Menu = styled(FlexRowContainer)`
+  height: 100%
+  background-color: ${({ dropDown }) => {
+    let color = ''
+    !dropDown ? color = 'none' : color = 'black'
+    return color
+  }}
+  z-index: 5;
+  `
+  
+const OptionsContainer = styled(FlexRowContainer)`
+  justify-content: space-around;
+  height: 100%;
+  width: 260px;
 `
 
 const MatchContainer = styled(FlexRowContainer)`
@@ -43,7 +56,7 @@ const MatchContainer = styled(FlexRowContainer)`
   height: 65px;
   width: 2500px;
   animation: ${easeInBanner} 5s ease;
-  margin-left: 5px;
+  margin-left: 20px;
   align-items: center;
 `
 
@@ -62,8 +75,8 @@ const ClickScrollContainer = styled(FlexButton)`
 `
 
 const LeftClickScrollContainer = styled(ClickScrollContainer)`
-  left: 62px;
-  top: 8px;
+  left: 83px;
+  top: 15px;
 `
 
 const RightClickScrollContainer = styled(ClickScrollContainer)`
@@ -74,8 +87,8 @@ const RightClickScrollContainer = styled(ClickScrollContainer)`
 class Banner extends Component {
   constructor(props) {
     super(props)
-    this.handleChange = this.handleChange.bind(this)
     this.handleDropDownClick = this.handleDropDownClick.bind(this)
+    this.handleSelectClick = this.handleSelectClick.bind(this)
     this.mouseDownLeft= this.mouseDownLeft.bind(this)
     this.mouseUpLeft = this.mouseUpLeft.bind(this)
     this.mouseDownRight= this.mouseDownLeft.bind(this)
@@ -92,16 +105,16 @@ class Banner extends Component {
 
   renderTriangle() {
     let unicode = ''
-    this.state.dropDown ? unicode = '\u25B2' : unicode = '\u25BC'
+    this.state.dropDown ? unicode = '<' : unicode = '>'
     return unicode
-  }
-
-  handleChange(event) {
-    this.props.updateSport(event.target.value)
   }
 
   handleDropDownClick(event) {
     this.setState({ dropDown: !this.state.dropDown })
+  }
+
+  handleSelectClick(sportString) {
+    this.props.updateSport(sportString)
   }
 
 
@@ -125,37 +138,39 @@ class Banner extends Component {
 
   render() {
     return (
-      <Wrapper>
-        <BannerContainer
-          scrollLeft={this.state.scrollLeft}
-          scrollRight={this.state.scrollRight}
-          scrollTo={this.state.scrollTo}
-        >
+      <BannerContainer
+        scrollLeft={this.state.scrollLeft}
+        scrollRight={this.state.scrollRight}
+        scrollTo={this.state.scrollTo}
+      >
+        <Menu dropDown={this.state.dropDown}>
           <BannerSelect handleClick={this.handleDropDownClick} triangle={this.renderTriangle()}/>
-          <LeftClickScrollContainer onMouseDown={this.mouseDownLeft} onMouseUp={this.mouseUpLeft}>
-            {'<'}
-          </LeftClickScrollContainer>
-
-          <RightClickScrollContainer onMouseDown={this.mouseDownRight} onMouseUp={this.mouseUpRight}>
-            {'>'}
-          </RightClickScrollContainer>
-
-          <MatchContainer id="match-container">
-            {this.props.odds &&
-              this.props.odds.map(match => {
-                return <Match key={match.id} match={match} />
-              })
+            {this.state.dropDown &&
+              <OptionsContainer>
+                {this.state.options.map(option => {
+                  if(option !== this.props.activeSport) {
+                    return <SelectOption value={option} handleClick={this.handleSelectClick} />
+                  }
+                })}
+              </OptionsContainer>
             }
-          </MatchContainer>
-        </BannerContainer>
-        <OptionsContainer>
-          {this.state.dropDown &&
-            this.state.options.map(option => {
-              return <SelectOption content={option} updateSport={this.props.updateSport} />
+        </Menu>
+        <LeftClickScrollContainer onMouseDown={this.mouseDownLeft} onMouseUp={this.mouseUpLeft}>
+          {'<'}
+        </LeftClickScrollContainer>
+
+        <RightClickScrollContainer onMouseDown={this.mouseDownRight} onMouseUp={this.mouseUpRight}>
+          {'>'}
+        </RightClickScrollContainer>
+
+        <MatchContainer id="match-container" dropDown={this.state.dropD}>
+          {this.props.odds &&
+            this.props.odds.map(match => {
+              return <Match key={match.id} match={match} />
             })
           }
-        </OptionsContainer>
-      </Wrapper>
+        </MatchContainer>
+      </BannerContainer>
     )
   }
 }
