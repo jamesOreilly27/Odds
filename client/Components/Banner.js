@@ -15,7 +15,6 @@ const BannerContainer = styled(FlexRowContainer)`
   justify-content: flex-start;
   margin-top: -7px;
   background-color: #666;
-  border-radius: 8px;
   overflow-x: hidden;
   max-height: 65px;
   height: 65px;
