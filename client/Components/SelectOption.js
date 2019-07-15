@@ -5,11 +5,12 @@ import { FlexButton } from './baseComponents'
 const Wrapper = styled(FlexButton)`
   height: 100%;
   color: #F5F5F5;
+  width: 50%;
 `
 
 const SelectOption = (props) => (
-  <Wrapper>
-    {props.content.toUpperCase()}
+  <Wrapper onClick={() => { return props.handleClick(props.value)} }>
+    {props.value.toUpperCase()}
   </Wrapper>
 )
 

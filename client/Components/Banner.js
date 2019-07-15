@@ -23,6 +23,11 @@ const BannerContainer = styled(FlexRowContainer)`
   }
 `
 
+const easeInBanner = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`
+
 const Menu = styled(FlexRowContainer)`
   height: 100%
   background-color: ${({ dropDown }) => {
@@ -31,17 +36,12 @@ const Menu = styled(FlexRowContainer)`
     return color
   }}
   z-index: 5;
-`
-
+  `
+  
 const OptionsContainer = styled(FlexRowContainer)`
   justify-content: space-around;
   height: 100%;
   width: 260px;
-`
-
-const easeInBanner = keyframes`
-  from { opacity: 0; }
-  to { opacity: 1; }
 `
 
 const MatchContainer = styled(FlexRowContainer)`
@@ -82,8 +82,8 @@ const RightClickScrollContainer = styled(ClickScrollContainer)`
 class Banner extends Component {
   constructor(props) {
     super(props)
-    this.handleChange = this.handleChange.bind(this)
     this.handleDropDownClick = this.handleDropDownClick.bind(this)
+    this.handleSelectClick = this.handleSelectClick.bind(this)
     this.mouseDownLeft= this.mouseDownLeft.bind(this)
     this.mouseUpLeft = this.mouseUpLeft.bind(this)
     this.mouseDownRight= this.mouseDownLeft.bind(this)
@@ -104,12 +104,12 @@ class Banner extends Component {
     return unicode
   }
 
-  handleChange(event) {
-    this.props.updateSport(event.target.value)
-  }
-
   handleDropDownClick(event) {
     this.setState({ dropDown: !this.state.dropDown })
+  }
+
+  handleSelectClick(sportString) {
+    this.props.updateSport(sportString)
   }
 
 
@@ -144,7 +144,7 @@ class Banner extends Component {
               <OptionsContainer>
                 {this.state.options.map(option => {
                   if(option !== this.props.activeSport) {
-                    return <SelectOption content={option} updateSport={this.props.updateSport} />
+                    return <SelectOption value={option} handleClick={this.handleSelectClick} />
                   }
                 })}
               </OptionsContainer>
@@ -158,7 +158,7 @@ class Banner extends Component {
           {'>'}
         </RightClickScrollContainer>
 
-        <MatchContainer id="match-container">
+        <MatchContainer id="match-container" dropDown={this.state.dropD}>
           {this.props.odds &&
             this.props.odds.map(match => {
               return <Match key={match.id} match={match} />
