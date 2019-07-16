@@ -2,13 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 import { Match } from '../Components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
+import { convertMonthNumToWord } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
-
+  height: 100%;
 `
 
 const DateContainer = styled(FlexColumnContainer)`
-  min-width: 100px;
+  min-width: 65px;
+  height: 81%;
+  border-right: 1px solid #374044
+  background-color: #FAF7F5;
 `
 
 const GamesContainer = styled(FlexRowContainer)`
@@ -18,7 +22,8 @@ const GamesContainer = styled(FlexRowContainer)`
 const DateSection = props => (
   <Wrapper>
     <DateContainer>
-      {props.date}
+      <div>{convertMonthNumToWord(new Date().getMonth())}</div>
+      <div>{props.date}</div>
     </DateContainer>
 
     <GamesContainer>

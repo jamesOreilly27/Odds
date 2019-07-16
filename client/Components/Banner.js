@@ -14,7 +14,7 @@ const Wrapper = styled(FlexColumnContainer)`
 const BannerContainer = styled(FlexRowContainer)`
   justify-content: flex-start;
   margin-top: -7px;
-  background-color: #666;
+  background-color: #374044;
   overflow-x: hidden;
   max-height: 65px;
   height: 65px;
