@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchOddsBySport, updateActiveSport } from '../store'
-import { Match, BannerSelect, SelectOption } from '../Components'
+import { Match, BannerSelect, SelectOption, DateSection } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
-
+import { getDatesArray, filterOddsByDay } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
   align-items: flex-start;
@@ -14,10 +14,10 @@ const Wrapper = styled(FlexColumnContainer)`
 const BannerContainer = styled(FlexRowContainer)`
   justify-content: flex-start;
   margin-top: -7px;
-  background-color: #666;
+  background-color: #374044;
   overflow-x: hidden;
-  max-height: 65px;
-  height: 65px;
+  max-height: 80px;
+  height: 80px;
 
   #match-container {
     transform: ${({ scrollLeft, scrollRight, scrollTo }) => {
@@ -38,9 +38,10 @@ const Menu = styled(FlexRowContainer)`
   height: 100%
   background-color: ${({ dropDown }) => {
     let color = ''
-    !dropDown ? color = 'none' : color = 'black'
+    !dropDown ? color = '#FAF7F5' : color = '#FAF7F5'
     return color
   }}
+  border: 1px solid #374044;
   z-index: 5;
   `
   
@@ -54,10 +55,9 @@ const MatchContainer = styled(FlexRowContainer)`
   justify-content: flex-start;
   flex-wrap: no-wrap;
   overflow-x: visible;
-  height: 65px;
+  height: 80px;
   width: 2500px;
   animation: ${easeInBanner} 5s ease;
-  margin-left: 20px;
   align-items: center;
 `
 
@@ -65,7 +65,7 @@ const ClickScrollContainer = styled(FlexButton)`
   width: 15px;
   position: absolute;
   background-color: #2E2D2D;
-  height: 50px;
+  height: 60px;
   color: #F5F5F5;
   z-index: 3;
 
@@ -76,8 +76,8 @@ const ClickScrollContainer = styled(FlexButton)`
 `
 
 const LeftClickScrollContainer = styled(ClickScrollContainer)`
-  left: 83px;
-  top: 8px;
+  left: 90px;
+  top: 11px;
 `
 
 const RightClickScrollContainer = styled(ClickScrollContainer)`
@@ -118,6 +118,10 @@ class Banner extends Component {
     this.props.updateSport(sportString)
   }
 
+  setNumOfDateSections(odds) {
+    getDatesArray(odds)
+  }
+
 
   mouseDownLeft(event) { this.setState({ scrollLeft: true }) }
 
@@ -138,6 +142,7 @@ class Banner extends Component {
   }
 
   render() {
+    if(this.props.odds) filterOddsByDay(this.props.odds, new Date().getDate() + 1)
     return (
       <BannerContainer
         scrollLeft={this.state.scrollLeft}
@@ -156,6 +161,7 @@ class Banner extends Component {
               </OptionsContainer>
             }
         </Menu>
+
         <LeftClickScrollContainer onMouseDown={this.mouseDownLeft} onMouseUp={this.mouseUpLeft}>
           {'<'}
         </LeftClickScrollContainer>
@@ -164,10 +170,10 @@ class Banner extends Component {
           {'>'}
         </RightClickScrollContainer>
 
-        <MatchContainer id="match-container" dropDown={this.state.dropD}>
+        <MatchContainer id="match-container" dropDown={this.state.dropDown}>
           {this.props.odds &&
-            this.props.odds.map(match => {
-              return <Match key={match.id} match={match} />
+            getDatesArray(this.props.odds).map(date => {
+              return <DateSection key={date} date={date} odds={filterOddsByDay(this.props.odds, date)} />
             })
           }
         </MatchContainer>

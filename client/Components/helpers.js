@@ -18,6 +18,59 @@ export const processTime = dateString => {
   return minutes < 10 ? `${hours}:0${minutes} PM EST` : `${hours}:${minutes} PM EST`
 }
 
+/********** Filtering Odds By Date ************/
+export const getMatchDate = match => {
+  return new Date(match.MatchTime).getDate()
+}
+
+export const convertMonthNumToWord = monthNum => {
+  switch(monthNum) {
+    case 0:
+      return 'Jan'
+    case 1:
+      return 'Feb'
+    case 2:
+      return 'Mar'
+    case 3:
+      return 'Apr'
+    case 4:
+      return 'May'
+    case 5:
+      return 'June'
+    case 6:
+      return 'July'
+    case 7:
+      return 'Aug'
+    case 8:
+      return 'Sep'
+    case 9:
+      return 'Oct'
+    case 10:
+      return 'Nov'
+    case 11:
+      return 'Dec'
+  }
+}
+
+export const getDatesArray = (odds) => {
+  const checked = []
+
+  odds.forEach( match => {
+    const date = getMatchDate(match)
+    if(checked.indexOf(date) < 0) {
+      checked.push(date)
+    }
+  })
+  return checked
+}
+
+export const filterOddsByDay = (odds, date) => {
+  return odds.filter(match => {
+    const matchDate = getMatchDate(match)
+    return matchDate === date
+  })
+}
+
 /********** Team Abbreviations ***********/
 
 /***** MLB Teams******/
