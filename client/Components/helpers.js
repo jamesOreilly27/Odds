@@ -124,6 +124,73 @@ export const truncateNFLTeamName = string => {
   }
 }
 
+const truncateNHLTeamName = string => {
+  switch(string) {
+    case 'Anaheim Ducks':
+      return 'ANA'
+    case 'Boston Bruins':
+      return 'BOS'
+    case 'Buffalo Sabres':
+      return 'BUF'
+    case 'Carolina Hurricanes':
+      return 'CAR'
+    case 'Columbus Blue Jackets':
+      return 'CBJ'
+    case 'Calgary Flames':
+      return 'CGY'
+    case 'Chicago Blackhawks':
+      return 'CHI'
+    case 'Colorado Avalanche':
+      return 'COL'
+    case 'Dallas Stars':
+      return 'DAL'
+    case 'Detroit Redwings':
+      return 'DET'
+    case 'Edmenton Oilers':
+      return 'EDM'
+    case 'Florida Panthers':
+      return 'FLA'
+    case 'Los Angeles Kings':
+      return 'LA'
+    case 'Minnesota Wild':
+      return 'MIN'
+    case 'Montreal Canadiens':
+      return 'MTL'
+    case 'Nashville Predators':
+      return 'NSH'
+    case 'New Jersey Devils':
+      return 'NJD'
+    case 'New York Islanders':
+      return 'NYI'
+    case 'New York Rangers':
+      return 'NYR'
+    case 'Ottawa Senators':
+      return 'OTT'
+    case 'Philadelphia Flyers':
+      return 'PHI'
+    case 'Phoenix Coyotes':
+      return 'PHX'
+    case 'Pittsburgh Penguins':
+      return 'PIT'
+    case 'San Jose Sharks':
+      return 'SJ'
+    case 'St. Louis Blues':
+      return 'STL'
+    case 'Tampa Bay Lightening':
+      return 'TB'
+    case 'Toronto Maple Leafs':
+      return 'TOR'
+    case 'Vancouver Canucks':
+      return 'VAN'
+    case 'Vegas Golden Knights':
+      return 'VGK'
+    case 'Washington Capitals':
+      return 'WAS'
+    case 'Winnepeg Jets':
+      return 'WPG'
+  }
+}
+
 export const truncateTeamName = (sportString, team) => {
   if(sportString === 'mlb') return truncateMLBTeamName(team)
   else if(sportString === 'nfl') return truncateNFLTeamName(team)
