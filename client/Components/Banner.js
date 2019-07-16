@@ -81,8 +81,8 @@ const LeftClickScrollContainer = styled(ClickScrollContainer)`
 `
 
 const RightClickScrollContainer = styled(ClickScrollContainer)`
-  right: 15px;
-  top: 8px;
+  right: 110px;
+  top: 11px;
 `
 
 class Banner extends Component {
