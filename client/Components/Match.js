@@ -54,7 +54,7 @@ class Match extends Component {
           <TeamGameDetails>
             <DetailContainer>
               <NameLogoContainer>
-                <img src={require(`../../public/assets/mlb-logos/${truncateTeamName(this.props.activeSport, this.props.match.HomeTeam)}.png`)} />
+                <img src={require(`../../public/assets/${this.props.activeSport}-logos/${truncateTeamName(this.props.activeSport, this.props.match.HomeTeam)}.png`)} />
                 <div>{truncateTeamName(this.props.activeSport, this.props.match.HomeTeam)}</div>
               </NameLogoContainer>
               <NameLogoContainer>
