@@ -16,8 +16,8 @@ const BannerContainer = styled(FlexRowContainer)`
   margin-top: -7px;
   background-color: #374044;
   overflow-x: hidden;
-  max-height: 65px;
-  height: 65px;
+  max-height: 80px;
+  height: 80px;
 
   #match-container {
     transform: ${({ scrollLeft, scrollRight, scrollTo }) => {
@@ -38,9 +38,10 @@ const Menu = styled(FlexRowContainer)`
   height: 100%
   background-color: ${({ dropDown }) => {
     let color = ''
-    !dropDown ? color = 'none' : color = 'black'
+    !dropDown ? color = '#FAF7F5' : color = '#FAF7F5'
     return color
   }}
+  border: 1px solid #374044;
   z-index: 5;
   `
   
@@ -54,10 +55,9 @@ const MatchContainer = styled(FlexRowContainer)`
   justify-content: flex-start;
   flex-wrap: no-wrap;
   overflow-x: visible;
-  height: 65px;
+  height: 80px;
   width: 2500px;
   animation: ${easeInBanner} 5s ease;
-  margin-left: 20px;
   align-items: center;
 `
 
@@ -65,7 +65,7 @@ const ClickScrollContainer = styled(FlexButton)`
   width: 15px;
   position: absolute;
   background-color: #2E2D2D;
-  height: 50px;
+  height: 60px;
   color: #F5F5F5;
   z-index: 3;
 
@@ -76,8 +76,8 @@ const ClickScrollContainer = styled(FlexButton)`
 `
 
 const LeftClickScrollContainer = styled(ClickScrollContainer)`
-  left: 83px;
-  top: 8px;
+  left: 90px;
+  top: 11px;
 `
 
 const RightClickScrollContainer = styled(ClickScrollContainer)`

@@ -6,7 +6,6 @@ import { TeamGameWrapper, TeamGameHeader, TeamGameDetails, DetailContainer, Name
 import { processTime, truncateTeamName, addPlus } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
-  font-size: 11px;
   margin-left: 20px;
   height: 100%;
   padding-bottom: 10px;

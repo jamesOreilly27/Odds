@@ -2,11 +2,12 @@ import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
 
 export const TeamGameWrapper = styled(FlexColumnContainer)`
-  font-size: 11px;
-  height: 87%;
-  min-width: 100px;
-  justify-content: space-between;
+  font-size: 13px;
+  height: 97%;
+  min-width: 120px;
+  justify-content: flex-start;
   align-items: flex-start;
+  margin-right: -5px
 `
 
 export const TeamGameHeader = styled(FlexRowContainer)`
@@ -15,16 +16,16 @@ export const TeamGameHeader = styled(FlexRowContainer)`
   justify-content: space-between;
   padding-top: 3px;
   padding-left: 7px;
-  color: #F5F5F5;
-  background-color: #0A0A0A;
+  color: #0A0A0A;
+  background-color: #FAF7F5;
 `
 
 export const TeamGameDetails = styled(FlexRowContainer)`
   width: 95%;
-  height: 50px;
+  height: 100%;
   justify-content: space-between;
-  background-color: #8C8C8C;
-  color: #F5F5F5;
+  background-color: #FAF7F5;
+  color: #0A0A0A;
   padding-left: 3px;
 `
 

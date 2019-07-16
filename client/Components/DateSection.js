@@ -9,14 +9,14 @@ const Wrapper = styled(FlexRowContainer)`
 `
 
 const DateContainer = styled(FlexColumnContainer)`
-  min-width: 65px;
-  height: 81%;
+  min-width: 80px;
+  height: 97%;
   border-right: 1px solid #374044
   background-color: #FAF7F5;
 `
 
 const GamesContainer = styled(FlexRowContainer)`
-
+  height: 100%;
 `
 
 const DateSection = props => (
