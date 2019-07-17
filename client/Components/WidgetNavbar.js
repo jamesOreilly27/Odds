@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { SelectOption } from '../Components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton, FlexRowButton } from './baseComponents'

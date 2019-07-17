@@ -9,3 +9,4 @@ export { default as DateSection } from './DateSection'
 //ThreeTeamWidget
 export { default as ThreeTeamWidget } from './ThreeTeamWidget'
 export { default as WidgetNavbar } from './WidgetNavbar'
+export { default as ThreeTeamOddsTable } from './ThreeTeamOddsTable'
