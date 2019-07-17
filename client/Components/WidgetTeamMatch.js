@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
+import { WidgetMatchOdds } from '../Components'
 import { WidgetTeamsWrapper, WidgetTeamDetails, WidgetGameDate, ROT } from './WidgetTeamComponents'
 import { processTime, truncateTeamName, addPlus, processDayMonthTime } from './helpers'
 
@@ -27,6 +28,9 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
         <div>{truncateTeamName(activeSport, match.AwayTeam)}</div>
       </WidgetTeamDetails>
     </WidgetTeamsWrapper>
+
+    <WidgetMatchOdds />
+
   </Wrapper>
 )
 
