@@ -247,6 +247,7 @@ const truncateNHLTeamName = string => {
 export const truncateTeamName = (sportString, team) => {
   if(sportString === 'mlb') return truncateMLBTeamName(team)
   else if(sportString === 'nfl') return truncateNFLTeamName(team)
+  else if(sportString === 'nhl') return truncateNHLTeamName(team)
 }
 
 /***** Odds Processors *****/
