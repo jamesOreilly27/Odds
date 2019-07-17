@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
 import { WidgetTeamsWrapper, WidgetTeamDetails, WidgetGameDate, ROT } from './WidgetTeamComponents'
-import { processTime, truncateTeamName, addPlus } from './helpers'
+import { processTime, truncateTeamName, addPlus, processDayMonthTime } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
   justify-content: flex-start;
@@ -13,6 +13,9 @@ const Wrapper = styled(FlexRowContainer)`
 const WidgetTeamMatch = ({ activeSport, match }) => (
   <Wrapper>
     <WidgetTeamsWrapper>
+      <WidgetGameDate>
+        {processDayMonthTime(match)}
+      </WidgetGameDate>
       <WidgetTeamDetails>
         <ROT>{match.HomeROT}</ROT>
         <img src={require(`../../public/assets/${activeSport}-logos/${truncateTeamName(activeSport, match.HomeTeam)}.png`)} />
@@ -23,8 +26,6 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
         <img src={require(`../../public/assets/${activeSport}-logos/${truncateTeamName(activeSport, match.AwayTeam)}.png`)} />
         <div>{truncateTeamName(activeSport, match.AwayTeam)}</div>
       </WidgetTeamDetails>
-      <WidgetGameDate>
-      </WidgetGameDate>
     </WidgetTeamsWrapper>
   </Wrapper>
 )

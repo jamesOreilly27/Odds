@@ -23,6 +23,10 @@ export const getMatchDate = match => {
   return new Date(match.MatchTime).getDate()
 }
 
+export const getMatchMonth = match => {
+  return new Date(match.MatchTime).getMonth()
+}
+
 export const convertMonthNumToWord = monthNum => {
   switch(monthNum) {
     case 0:
@@ -50,6 +54,10 @@ export const convertMonthNumToWord = monthNum => {
     case 11:
       return 'Dec'
   }
+}
+
+export const processDayMonthTime = match => {
+  return `${getMatchDate(match)} ${convertMonthNumToWord(getMatchMonth(match))} ${processTime(match.MatchTime)}`
 }
 
 export const getDatesArray = (odds) => {
