@@ -6,7 +6,9 @@ import { fetchOddsBySport, updateActiveSport } from '../store'
 import { WidgetNavbar, ThreeTeamOddsTable } from '../Components'
 
 const Wrapper = styled(FlexColumnContainer)`
-  align-items: flex-start;r
+  width: 90%;
+  height: 50vh;
+  justify-content: flex-start;
 `
 
 const Headline = styled(FlexRowContainer)`
@@ -37,7 +39,9 @@ class ThreeTeamWidget extends Component {
           Betting Odds
         </Headline>
         <WidgetNavbar options={this.state.options} handleClick={this.props.updateSport} />
-        <ThreeTeamOddsTable /> 
+        {this.props.odds &&
+          <ThreeTeamOddsTable odds={this.props.odds} activeSport={this.props.activeSport} />
+        }
       </Wrapper>
     )
   }
