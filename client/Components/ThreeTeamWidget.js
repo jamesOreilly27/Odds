@@ -3,9 +3,10 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
 import { fetchOddsBySport, updateActiveSport } from '../store'
+import { WidgetNavbar } from '../Components'
 
 const Wrapper = styled(FlexColumnContainer)`
-
+  align-items: flex-start;r
 `
 
 const Headline = styled(FlexRowContainer)`
@@ -16,6 +17,7 @@ const Headline = styled(FlexRowContainer)`
 class ThreeTeamWidget extends Component {
   constructor(props) {
     super(props)
+    this.state = { options: [ 'mlb', 'nfl', 'nba', 'nhl', 'golf' ] }
   }
 
   // componentDidMount() {
@@ -32,8 +34,9 @@ class ThreeTeamWidget extends Component {
     return (
       <Wrapper>
         <Headline>
-          Hello World
+          Betting Odds
         </Headline>
+        <WidgetNavbar options={this.state.options} />
       </Wrapper>
     )
   }
