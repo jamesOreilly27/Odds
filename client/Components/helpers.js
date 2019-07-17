@@ -71,6 +71,16 @@ export const filterOddsByDay = (odds, date) => {
   })
 }
 
+export const firstNumItems = (array, num) => {
+  if(array.length) {
+    const newArray = []
+    for(let i = 0; i < num; i++) {
+      newArray.push(array[i])
+    }
+    return newArray
+  }
+}
+
 /********** Team Abbreviations ***********/
 
 /***** MLB Teams******/

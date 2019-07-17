@@ -3,20 +3,26 @@ import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
 
 export const WidgetTeamsWrapper = styled(FlexColumnContainer)`
   font-size: 13px;
-  height: 97%;
+  height: 80%;
   min-width: 100px;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-start;
+  padding: 5px;
 `
 
 export const WidgetTeamDetails = styled(FlexRowContainer)`
-  justify-content: space-around;
-
+  justify-content: flex-start;
+  width: 100%;
   img {
-    width: 25px;
+    width: 29px;
     height: 25px;
+    padding-right: 5px;
   }
+`
 
+export const ROT = styled.div`
+  padding-right: 5px;
+  font-size: 11px;
 `
 
 export const WidgetGameDate = styled(FlexColumnContainer)`
