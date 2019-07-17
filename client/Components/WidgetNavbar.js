@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
+import { SelectOption } from '../Components'
+import { FlexRowContainer, FlexColumnContainer, FlexButton, FlexRowButton } from './baseComponents'
 
-const Wrapper = styled(FlexRowContainer)`
+const Wrapper = styled(FlexRowButton)`
   width: 80%;
   justify-content: space-around;
   padding-top: 15px;
@@ -11,7 +12,7 @@ const Wrapper = styled(FlexRowContainer)`
 
 const WidgetNavbar = props => (
   <Wrapper>
-    {props.options.map(option => <div>{option.toUpperCase()}</div>)}
+    {props.options.map(option => <SelectOption handleClick={props.handleClick} key={option} value={option} />)}
   </Wrapper>
 )
 

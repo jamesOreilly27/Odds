@@ -20,15 +20,15 @@ class ThreeTeamWidget extends Component {
     this.state = { options: [ 'mlb', 'nfl', 'nba', 'nhl', 'golf' ] }
   }
 
-  // componentDidMount() {
-  //   this.props.getOdds(this.props.activeSport)
-  // }
+  componentDidMount() {
+    this.props.getOdds(this.props.activeSport)
+  }
 
-  // componentDidUpdate(prevProps) {
-  //   if(this.props.activeSport !== prevProps.activeSport) {
-  //     this.props.getOdds(this.props.activeSport)
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if(this.props.activeSport !== prevProps.activeSport) {
+      this.props.getOdds(this.props.activeSport)
+    }
+  }
 
   render() {
     return (
@@ -36,7 +36,7 @@ class ThreeTeamWidget extends Component {
         <Headline>
           Betting Odds
         </Headline>
-        <WidgetNavbar options={this.state.options} />
+        <WidgetNavbar options={this.state.options} handleClick={this.props.updateSport} />
       </Wrapper>
     )
   }
