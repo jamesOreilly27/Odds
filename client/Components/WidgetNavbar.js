@@ -7,6 +7,8 @@ const Wrapper = styled(FlexRowButton)`
   width: 80%;
   justify-content: space-around;
   padding-top: 15px;
+  margin-left: 60px;
+  width: 113%;
 `
 
 const WidgetNavbar = props => (
