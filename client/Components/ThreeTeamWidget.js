@@ -9,7 +9,6 @@ const Wrapper = styled(FlexColumnContainer)`
   width: 90%;
   height: 50vh;
   justify-content: flex-start;
-  margin-top: -20px;
 `
 
 const Headline = styled(FlexRowContainer)`

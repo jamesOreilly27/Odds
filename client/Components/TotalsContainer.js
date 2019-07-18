@@ -9,10 +9,14 @@ const Wrapper = styled(FlexColumnContainer)`
   width: 50px;
 `
 
-const TotalsContainer = ({ lines }) => (
-  <Wrapper>
-    <TotalsNum>{lines.TotalNumber}</TotalsNum>
-  </Wrapper>
-)
+const TotalsContainer = ({ lines }) => {
+  const theLines = lines[0]
+  return (
+    <Wrapper>
+      <TotalsNum>{theLines.TotalNumber}</TotalsNum>
+    </Wrapper>
+  )
+}
+
 
 export default TotalsContainer
