@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { Banner } from './Components'
+import { Banner, ThreeTeamWidget } from './Components'
 import styled from 'styled-components'
 
 const BannerWrapper = styled.div`
@@ -13,9 +13,12 @@ const Main = () => {
   return (
     <Router>
       <Switch>
-        <BannerWrapper>
+        <Route exact path='/widget/banner' component={Banner} />
+        <Route exact path='/widget/threeteam' component={ThreeTeamWidget} />
+        {/* <BannerWrapper>
           <Banner />
-        </BannerWrapper>
+        </BannerWrapper> */}
+        {/* <ThreeTeamWidget /> */}
       </Switch>
     </Router>
     )

@@ -23,6 +23,10 @@ export const getMatchDate = match => {
   return new Date(match.MatchTime).getDate()
 }
 
+export const getMatchMonth = match => {
+  return new Date(match.MatchTime).getMonth()
+}
+
 export const convertMonthNumToWord = monthNum => {
   switch(monthNum) {
     case 0:
@@ -52,6 +56,10 @@ export const convertMonthNumToWord = monthNum => {
   }
 }
 
+export const processDayMonthTime = match => {
+  return `${getMatchDate(match)} ${convertMonthNumToWord(getMatchMonth(match))} ${processTime(match.MatchTime)}`
+}
+
 export const getDatesArray = (odds) => {
   const checked = []
 
@@ -69,6 +77,16 @@ export const filterOddsByDay = (odds, date) => {
     const matchDate = getMatchDate(match)
     return matchDate === date
   })
+}
+
+export const firstNumItems = (array, num) => {
+  if(array.length) {
+    const newArray = []
+    for(let i = 0; i < num; i++) {
+      newArray.push(array[i])
+    }
+    return newArray
+  }
 }
 
 /********** Team Abbreviations ***********/
@@ -247,6 +265,7 @@ const truncateNHLTeamName = string => {
 export const truncateTeamName = (sportString, team) => {
   if(sportString === 'mlb') return truncateMLBTeamName(team)
   else if(sportString === 'nfl') return truncateNFLTeamName(team)
+  else if(sportString === 'nhl') return truncateNHLTeamName(team)
 }
 
 /***** Odds Processors *****/
