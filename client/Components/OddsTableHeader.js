@@ -5,11 +5,10 @@ import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
 const Wrapper = styled(FlexRowContainer)`
   padding-top: 30px;
   width: 100%;
-  height: 10px;
+  height: 64px;
   font-size: 15px;
   justify-content: space-around;
   div {
-    background-color: red;
     height: 100%;
     text-align: center;
   }
@@ -25,8 +24,8 @@ const OddContainer = styled.div`
 
 const OddsTableHeader = props => (
   <Wrapper>
-    <ScheduleContainer>schedule</ScheduleContainer>
-    <OddContainer>Money Line</OddContainer>
+    <ScheduleContainer>Schedule</ScheduleContainer>
+    <OddContainer>Line</OddContainer>
     <OddContainer>Spread</OddContainer>
     <OddContainer>Total</OddContainer>
   </Wrapper>

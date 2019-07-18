@@ -4,7 +4,7 @@ import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
 export const WidgetTeamsWrapper = styled(FlexColumnContainer)`
   font-size: 13px;
   height: 80%;
-  min-width: 100px;
+  min-width: 110.86px;
   justify-content: space-between;
   align-items: flex-start;
   padding: 5px;

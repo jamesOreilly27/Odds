@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
-import { WidgetMatchOdds } from '../Components'
+import { WidgetMatchOdds, TotalsContainer } from '../Components'
 import { WidgetTeamsWrapper, WidgetTeamDetails, WidgetGameDate, ROT } from './WidgetTeamComponents'
 import { processTime, truncateTeamName, addPlus, processDayMonthTime } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
   justify-content: flex-start;
   height: 50%;
+  border-top: 1px solid #C0C0C0;
+  width: 120%;
 `
 
 const WidgetTeamMatch = ({ activeSport, match }) => (
@@ -28,8 +30,9 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
         <div>{truncateTeamName(activeSport, match.AwayTeam)}</div>
       </WidgetTeamDetails>
     </WidgetTeamsWrapper>
-
-    <WidgetMatchOdds />
+    
+    <WidgetMatchOdds lines={match.Odds[0]} />
+    <TotalsContainer lines={match.Odds[0]}/>
 
   </Wrapper>
 )

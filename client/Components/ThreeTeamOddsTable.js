@@ -4,12 +4,10 @@ import { WidgetTeamMatch } from '../Components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton, FlexRowButton } from './baseComponents'
 import { firstNumItems } from './helpers'
 
-const test = [1, 2, 3]
-
 const Wrapper = styled(FlexColumnContainer)`
   width: 100%;
   height: 250px;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-around;
 `
 
