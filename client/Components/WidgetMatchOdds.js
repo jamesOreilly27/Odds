@@ -5,7 +5,7 @@ import { TeamOdds, TeamOddsItem } from './WidgetOddsComponents'
 import { addPlus } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
-  height: 80%;
+  height: 67px;
   justify-content: space-around;
   align-items: flex-start;
   padding-top: 17px;
@@ -13,15 +13,16 @@ const Wrapper = styled(FlexColumnContainer)`
 `
 
 const WidgetMatchOdds = ({ lines }) => {
+  const theLines = lines[0]
   return (
     <Wrapper>
       <TeamOdds>
-        <TeamOddsItem>{addPlus(lines.MoneyLineHome)}</TeamOddsItem>
-        <TeamOddsItem>{addPlus(lines.PointSpreadHome)}</TeamOddsItem>
+        <TeamOddsItem>{addPlus(theLines.MoneyLineHome)}</TeamOddsItem>
+        <TeamOddsItem>{addPlus(theLines.PointSpreadHome)}</TeamOddsItem>
       </TeamOdds>
       <TeamOdds>
-        <TeamOddsItem>{addPlus(lines.MoneyLineAway)}</TeamOddsItem>
-        <TeamOddsItem>{addPlus(lines.PointSpreadAway)}</TeamOddsItem>
+        <TeamOddsItem>{addPlus(theLines.MoneyLineAway)}</TeamOddsItem>
+        <TeamOddsItem>{addPlus(theLines.PointSpreadAway)}</TeamOddsItem>
       </TeamOdds>
     </Wrapper>
   )
