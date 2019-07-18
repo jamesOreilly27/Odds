@@ -9,6 +9,7 @@ const Wrapper = styled(FlexColumnContainer)`
   width: 90%;
   height: 50vh;
   justify-content: flex-start;
+  margin-top: -20px;
 `
 
 const Headline = styled(FlexRowContainer)`
@@ -35,9 +36,6 @@ class ThreeTeamWidget extends Component {
   render() {
     return (
       <Wrapper>
-        <Headline>
-          Betting Odds
-        </Headline>
         <WidgetNavbar options={this.state.options} handleClick={this.props.updateSport} />
         <OddsTableHeader />
         {this.props.odds &&

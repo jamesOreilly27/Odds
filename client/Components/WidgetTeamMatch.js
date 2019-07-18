@@ -8,6 +8,7 @@ import { processTime, truncateTeamName, addPlus, processDayMonthTime } from './h
 
 const Wrapper = styled(FlexRowContainer)`
   justify-content: flex-start;
+  margin: 10px 0 20px 0;
   height: 50%;
   border-top: 1px solid #C0C0C0;
   width: 120%;

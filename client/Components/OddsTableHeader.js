@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
 
 const Wrapper = styled(FlexRowContainer)`
-  padding-top: 30px;
+  padding-top: 20px;
   width: 100%;
   height: 64px;
   font-size: 15px;
