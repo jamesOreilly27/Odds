@@ -46,26 +46,34 @@ class Match extends Component {
     else {
       return (
         <TeamGameWrapper>
-          <TeamGameHeader>
-            {processTime(this.props.match.MatchTime)}
-          </TeamGameHeader>
+              <TeamGameHeader>
+                {processTime(this.props.match.MatchTime)}
+              </TeamGameHeader>
 
-          <TeamGameDetails>
-            <DetailContainer>
-              <NameLogoContainer>
-                <img src={require(`../../public/assets/${this.props.activeSport}-logos/${truncateTeamName(this.props.activeSport, this.props.match.HomeTeam)}.png`)} />
-                <div>{truncateTeamName(this.props.activeSport, this.props.match.HomeTeam)}</div>
-              </NameLogoContainer>
-              <NameLogoContainer>
-                <img src={require(`../../public/assets/mlb-logos/${truncateTeamName(this.props.activeSport, this.props.match.AwayTeam)}.png`)} />
-                <div>{truncateTeamName(this.props.activeSport, this.props.match.AwayTeam)}</div>
-              </NameLogoContainer>
-            </DetailContainer>
-            <TeamOddsContainer>
-              <div>{addPlus(this.props.match.Odds[0].MoneyLineHome)}</div>
-              <div>{addPlus(this.props.match.Odds[0].MoneyLineAway)}</div>
-            </TeamOddsContainer>
-          </TeamGameDetails>
+              <TeamGameDetails>
+                <DetailContainer>
+                {truncateTeamName(this.props.activeSport, this.props.match.HomeTeam) &&
+                <div>
+                  <NameLogoContainer>
+                    <img src={require(`../../public/assets/${this.props.activeSport}-logos/${truncateTeamName(this.props.activeSport, this.props.match.HomeTeam)}.png`)} />
+                    <div>{truncateTeamName(this.props.activeSport, this.props.match.HomeTeam)}</div>
+                  </NameLogoContainer>
+                </div>
+                }
+                {truncateTeamName(this.props.activeSport, this.props.match.AwayTeam) &&
+                <div>
+                  <NameLogoContainer>
+                    <img src={require(`../../public/assets/${this.props.activeSport}-logos/${truncateTeamName(this.props.activeSport, this.props.match.AwayTeam)}.png`)} />
+                    <div>{truncateTeamName(this.props.activeSport, this.props.match.AwayTeam)}</div>
+                  </NameLogoContainer>
+                </div>
+                }
+                </DetailContainer>
+                <TeamOddsContainer>
+                  <div>{addPlus(this.props.match.Odds[0].MoneyLineHome)}</div>
+                  <div>{addPlus(this.props.match.Odds[0].MoneyLineAway)}</div>
+                </TeamOddsContainer>
+              </TeamGameDetails>
         </TeamGameWrapper>
       )
     }

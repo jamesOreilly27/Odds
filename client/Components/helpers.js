@@ -182,7 +182,7 @@ export const truncateNFLTeamName = string => {
       return 'PHI'
     case 'Pittsburgh Steelers':
       return 'PIT'
-    case 'San Fransisco 49ers':
+    case 'San Francisco 49ers':
       return 'SF'
     case 'Seattle Seahawks':
       return 'SEA'

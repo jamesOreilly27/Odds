@@ -20,7 +20,10 @@ const Headline = styled(FlexRowContainer)`
 class ThreeTeamWidget extends Component {
   constructor(props) {
     super(props)
-    this.state = { options: [ 'mlb', 'nfl', 'nba', 'nhl', 'golf' ] }
+    this.state = {
+      options: [ 'mlb', 'nfl', 'nba', 'nhl', 'golf' ],
+      logos: 'mlb-logos'
+    }
   }
 
   componentDidMount() {

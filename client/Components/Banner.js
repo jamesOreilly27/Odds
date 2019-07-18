@@ -116,6 +116,7 @@ class Banner extends Component {
 
   handleSelectClick(sportString) {
     this.props.updateSport(sportString)
+    this.setState({ dropDown: false })
   }
 
   setNumOfDateSections(odds) {
