@@ -68,13 +68,13 @@ const ClickScrollContainer = styled(FlexButton)`
 `
 
 const LeftClickScrollContainer = styled(ClickScrollContainer)`
-  left: 90px;
-  top: 11px;
+  left: 75px;
+  top: 7px;
 `
 
 const RightClickScrollContainer = styled(ClickScrollContainer)`
-  right: 110px;
-  top: 11px;
+  right: 20px;
+  top: 7px;
 `
 
 class Banner extends Component {
