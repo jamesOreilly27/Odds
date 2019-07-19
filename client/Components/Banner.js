@@ -33,12 +33,7 @@ const easeInBanner = keyframes`
 
 const Menu = styled(FlexRowContainer)`
   height: 100%
-  background-color: ${({ dropDown }) => {
-    let color = ''
-    !dropDown ? color = '#FAF7F5' : color = '#FAF7F5'
-    return color
-  }}
-  border: 1px solid #374044;
+  background-color: #374044;
   z-index: 5;
   `
   
