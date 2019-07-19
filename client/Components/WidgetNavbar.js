@@ -13,7 +13,7 @@ const Wrapper = styled(FlexRowButton)`
 
 const WidgetNavbar = props => (
   <Wrapper>
-    {props.options.map(option => <SelectOption handleClick={props.handleClick} key={option} value={option} />)}
+    {props.options.map(option => <SelectOption handleClick={props.handleClick} key={option} value={option} location={'three-team'} />)}
   </Wrapper>
 )
 
