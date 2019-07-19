@@ -20,12 +20,9 @@ const BannerContainer = styled(FlexRowContainer)`
   height: 80px;
 
   #match-container {
-    transform: ${({ scrollLeft, scrollRight, scrollTo }) => {
-      // if(scrollLeft) return `translateX(${scrollTo}px);`
-      // if(scrollRight) return `translateX(${scrollTo}px);`
+    transform: ${({ scrollTo }) => {
       return `translateX(${scrollTo}px);`
     }}
-    transition: transform .5s;
   }
 `
 
@@ -92,12 +89,11 @@ class Banner extends Component {
     this.handleSelectClick = this.handleSelectClick.bind(this)
     this.mouseDownLeft= this.mouseDownLeft.bind(this)
     this.mouseUpLeft = this.mouseUpLeft.bind(this)
-    this.mouseDownRight= this.mouseDownLeft.bind(this)
-    this.mouseUpRight = this.mouseUpLeft.bind(this)
+    this.mouseDownRight= this.mouseDownRight.bind(this)
+    this.mouseUpRight = this.mouseUpRight.bind(this)
     
     this.state = {
-      scrollLeft: false,
-      scrollRight: false,
+      intervalCount: 0,
       scrollTo: 0,
       dropDown: false,
       options: [ 'mlb', 'nfl', 'nba', 'nhl', 'golf' ]
@@ -124,13 +120,29 @@ class Banner extends Component {
   }
 
 
-  mouseDownLeft(event) { this.setState({ scrollLeft: true }) }
+  mouseDownLeft() {
+      const left = setInterval(() => {
+        if(this.state.scrollTo > -1215) {
+          this.setState({ scrollTo: this.state.scrollTo - 10 })
+        }
+      }, 20)
+    this.setState({ intervalCount: this.state.intervalCount + 1})
+  }
 
-  mouseUpLeft(event) { this.setState({ scrollLeft: false }) }
+  mouseUpLeft() { 
+    clearInterval(this.state.intervalCount)
+  }
 
-  mouseDownRight(event) { this.setState({ scrollRight: true }) }
+  mouseDownRight() {
+      const right = setInterval(() => {
+        if(this.state.scrollTo < 0) {
+          this.setState({ scrollTo: this.state.scrollTo + 10 })
+        }
+      }, 20)
+    this.setState({ intervalCount: this.state.intervalCount + 1})
+  }
 
-  mouseUpRight(event) { this.setState({ scrollRight: false }) }
+  mouseUpRight(event) { clearInterval(this.state.intervalCount) }
 
   componentDidMount() {
     this.props.getOdds(this.props.activeSport)
@@ -143,6 +155,7 @@ class Banner extends Component {
   }
 
   render() {
+    let left;
     if(this.props.odds) filterOddsByDay(this.props.odds, new Date().getDate() + 1)
     return (
       <BannerContainer
@@ -163,7 +176,10 @@ class Banner extends Component {
             }
         </Menu>
 
-        <LeftClickScrollContainer onMouseDown={this.mouseDownLeft} onMouseUp={this.mouseUpLeft}>
+        <LeftClickScrollContainer
+          onMouseDown={this.mouseDownLeft}
+          onMouseUp={this.mouseUpLeft}
+        >
           {'<'}
         </LeftClickScrollContainer>
 
