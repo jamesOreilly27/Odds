@@ -11,8 +11,8 @@ const Wrapper = styled(FlexRowContainer)`
 const DateContainer = styled(FlexColumnContainer)`
   min-width: 80px;
   height: 97%;
-  border-right: 1px solid #374044
-  background-color: #FAF7F5;
+  background-color: ##374044;
+  color: #F8F8FF;
 `
 
 const GamesContainer = styled(FlexRowContainer)`

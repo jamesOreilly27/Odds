@@ -33,12 +33,7 @@ const easeInBanner = keyframes`
 
 const Menu = styled(FlexRowContainer)`
   height: 100%
-  background-color: ${({ dropDown }) => {
-    let color = ''
-    !dropDown ? color = '#FAF7F5' : color = '#FAF7F5'
-    return color
-  }}
-  border: 1px solid #374044;
+  background-color: #374044;
   z-index: 5;
   `
   
@@ -61,13 +56,13 @@ const MatchContainer = styled(FlexRowContainer)`
 const ClickScrollContainer = styled(FlexButton)`
   width: 15px;
   position: absolute;
-  background-color: #2E2D2D;
+  background-color: #15181A;
   height: 60px;
   color: #F5F5F5;
   z-index: 3;
 
   &:hover {
-    background-color: #424141;
+    background-color: #202528;
     transition: all .4s;
   }
 `

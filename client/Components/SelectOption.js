@@ -4,7 +4,7 @@ import { FlexButton } from './baseComponents'
 
 const Wrapper = styled(FlexButton)`
   height: 100%;
-  color: #0A0A0A;
+  color: #F8F8FF;
   width: 50%;
 `
 
