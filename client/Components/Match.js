@@ -84,8 +84,6 @@ class Match extends Component {
 
   render() {
     return this.chooseSport()
-    // console.log(this.props.match)
-    // return <div>hello</div>
   }
 }
 
