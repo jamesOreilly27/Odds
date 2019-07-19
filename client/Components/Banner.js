@@ -125,6 +125,7 @@ class Banner extends Component {
   }
 
   mouseUpLeft() { 
+    console.log('FIRING', 'COUNT', this.state.intervalCount)
     clearInterval(this.state.intervalCount)
   }
 
