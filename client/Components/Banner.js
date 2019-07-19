@@ -56,13 +56,13 @@ const MatchContainer = styled(FlexRowContainer)`
 const ClickScrollContainer = styled(FlexButton)`
   width: 15px;
   position: absolute;
-  background-color: #2E2D2D;
+  background-color: #15181A;
   height: 60px;
   color: #F5F5F5;
   z-index: 3;
 
   &:hover {
-    background-color: #424141;
+    background-color: #202528;
     transition: all .4s;
   }
 `
