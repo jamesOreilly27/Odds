@@ -70,12 +70,31 @@ class Match extends Component {
                 }
                 </DetailContainer>
                 <TeamOddsContainer>
-                  <div>{addPlus(this.props.match.Odds[0].MoneyLineHome)}</div>
-                  <div>{addPlus(this.props.match.Odds[0].MoneyLineAway)}</div>
+                  <div>{this.chooseLine(true)}</div>
+                  <div>{this.chooseLine(false)}</div>
                 </TeamOddsContainer>
               </TeamGameDetails>
         </TeamGameWrapper>
       )
+    }
+  }
+
+  chooseLine(home) {
+    if(home) {
+      if(this.props.activeSport === 'mlb' || this.props.activeSport === 'nhl') {
+        return addPlus(this.props.match.Odds[0].MoneyLineHome)
+      }
+      else if(this.props.activeSport === 'nfl' || this.props.activeSport === 'nba') {
+        return addPlus(this.props.match.Odds[0].PointSpreadHome)
+      }
+    }
+    else {
+      if(this.props.activeSport === 'mlb' || this.props.activeSport === 'nhl') {
+        return addPlus(this.props.match.Odds[0].MoneyLineAway)
+      }
+      else if(this.props.activeSport === 'nfl' || this.props.activeSport === 'nba') {
+        return addPlus(this.props.match.Odds[0].PointSpreadAway)
+      }
     }
   }
   splitName(string) {
