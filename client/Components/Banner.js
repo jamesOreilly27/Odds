@@ -121,6 +121,7 @@ class Banner extends Component {
           this.setState({ scrollTo: this.state.scrollTo - 10 })
         }
       }, 20)
+      console.log('TEST LEFT', left)
     this.setState({ intervalCount: this.state.intervalCount + 1})
   }
 
