@@ -24,7 +24,7 @@ export const TeamGameDetails = styled(FlexRowContainer)`
   width: 95%;
   height: 100%;
   justify-content: space-between;
-  background-color: #59686E;
+  background-color: #5A696F;
   color: #F8F8FF;
   padding-left: 3px;
 `
