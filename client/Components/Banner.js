@@ -88,7 +88,7 @@ class Banner extends Component {
     this.mouseUpRight = this.mouseUpRight.bind(this)
     
     this.state = {
-      intervalCount: 0,
+      intervalCount: 1,
       scrollTo: 0,
       dropDown: false,
       options: [ 'mlb', 'nfl', 'nba', 'nhl', 'golf' ]
