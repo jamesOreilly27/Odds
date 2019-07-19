@@ -4,7 +4,7 @@ import { fetchOddsBySport, updateActiveSport } from '../store'
 import { Match, BannerSelect, SelectOption, DateSection } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
-import { getDatesArray, filterOddsByDay } from './helpers'
+import { getDatesArray, filterOddsByDay, truncateTeamName } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
   align-items: flex-start;
@@ -174,7 +174,9 @@ class Banner extends Component {
         <MatchContainer id="match-container" dropDown={this.state.dropDown}>
           {this.props.odds &&
             getDatesArray(this.props.odds).map(date => {
-              return <DateSection key={date} date={date} odds={filterOddsByDay(this.props.odds, date)} />
+              if(truncateTeamName(this.props.activeSport, this.props.odds[0]['HomeTeam'])) {
+                return <DateSection key={date} date={date} odds={filterOddsByDay(this.props.odds, date)} />
+              }
             })
           }
         </MatchContainer>
