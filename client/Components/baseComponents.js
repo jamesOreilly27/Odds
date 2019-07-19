@@ -4,7 +4,8 @@ export const FlexRowContainer = styled.div`
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
+  font-family: 'Source Sans Pro', sans-serif;
 `
 
 export const FlexColumnContainer = styled(FlexRowContainer)`

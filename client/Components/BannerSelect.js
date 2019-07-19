@@ -13,8 +13,8 @@ const Wrapper = styled(FlexButton)`
 const Select = styled(FlexRowContainer)`
   width: 60%;
   font-size: 15px;
-  background-color: #FAF7F5;
-  color: #0A0A0A;
+  background-color: #374044;
+  color: #F8F8FF;
   justify-content: flex-start;
 `
 

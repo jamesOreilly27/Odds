@@ -7,7 +7,7 @@ export const TeamGameWrapper = styled(FlexColumnContainer)`
   min-width: 120px;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-right: -5px
+  margin-right: -3px
 `
 
 export const TeamGameHeader = styled(FlexRowContainer)`
@@ -16,16 +16,16 @@ export const TeamGameHeader = styled(FlexRowContainer)`
   justify-content: space-between;
   padding-top: 3px;
   padding-left: 7px;
-  color: #0A0A0A;
-  background-color: #FAF7F5;
+  color: #F8F8FF;
+  background-color: #15181A;
 `
 
 export const TeamGameDetails = styled(FlexRowContainer)`
   width: 95%;
   height: 100%;
   justify-content: space-between;
-  background-color: #FAF7F5;
-  color: #0A0A0A;
+  background-color: #59686E;
+  color: #F8F8FF;
   padding-left: 3px;
 `
 
