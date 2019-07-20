@@ -9,6 +9,7 @@ const Wrapper = styled(FlexColumnContainer)`
   width: 100vw;
   height: 700px;
   justify-content: flex-start;
+  background-color: #EDEDF2;
 `
 
 class ThreeTeamWidget extends Component {

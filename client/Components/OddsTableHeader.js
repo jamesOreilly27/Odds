@@ -3,16 +3,12 @@ import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
 
 const Wrapper = styled(FlexRowContainer)`
-  padding-top: 40px;
-  margin-bottom: 30px;
-  width: 100vw;
-  height: 64px;
+  margin: 5px 0 30px 0;
+  width: 98vw;
+  height: 5.5vh;
   font-size: 15px;
   justify-content: space-between;
-  div {
-    height: 100%;
-    text-align: center;
-  }
+  background-color: #FFF;
 `
 
 const ScheduleContainer = styled(FlexRowContainer)`
@@ -25,15 +21,19 @@ const LinesContainer = styled(FlexRowContainer)`
   justify-content: space-evenly;
 `
 
-const OddContainer = styled.div`
+const OddContainer = styled(FlexColumnContainer)`
   
+`
+
+const Schedule = styled(OddContainer)`
+  padding-left: 4vw;
 `
 
 const OddsTableHeader = props => (
   <Wrapper>
     <ScheduleContainer>
-      <div>Schedule</div>
-      <div>Score</div>
+      <Schedule style={{ 'padding-left': '4vw' }}>Schedule</Schedule>
+      <OddContainer>Score</OddContainer>
     </ScheduleContainer>
     <LinesContainer>
       <OddContainer>Line</OddContainer>

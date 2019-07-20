@@ -4,9 +4,12 @@ import { SelectOption } from '../Components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton, FlexRowButton } from './baseComponents'
 
 const Wrapper = styled(FlexRowButton)`
-  width: 100%;
-  justify-content: space-around;
-  padding-top: 15px;
+  width: 98vw;
+  height: 10vh;
+  border-top: 3px solid #EDEDF2;
+  justify-content: flex-start;
+  background-color: #FFF;
+  
 `
 
 const WidgetNavbar = props => (
