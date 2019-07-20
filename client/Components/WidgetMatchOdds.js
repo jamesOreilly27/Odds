@@ -8,7 +8,7 @@ const Wrapper = styled(FlexColumnContainer)`
   height: 100%;
   justify-content: flex-end;
   align-items: flex-start;
-  padding-top: 17px;
+  padding-top: 13px;
   width: 35vw;
 `
 

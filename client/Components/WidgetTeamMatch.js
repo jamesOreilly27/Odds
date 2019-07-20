@@ -8,10 +8,10 @@ import { processTime, truncateTeamName, addPlus, processDayMonthTime } from './h
 
 const Wrapper = styled(FlexRowContainer)`
   justify-content: space-between;
-  margin: 10px 0 20px 0;
-  height: 100px;
-  border-top: 1px solid #C0C0C0;
+  height: 95px;
+  border: 3px solid #EDEDF2;
   width: 100vw;
+  background-color: #FFF;
 `
 const LogoSwitchWrapper = styled(FlexRowContainer)`
 
