@@ -32,7 +32,7 @@ const Schedule = styled(OddContainer)`
 const OddsTableHeader = props => (
   <Wrapper>
     <ScheduleContainer>
-      <Schedule style={{ 'padding-left': '4vw' }}>Schedule</Schedule>
+      <Schedule>Schedule</Schedule>
       <OddContainer>Score</OddContainer>
     </ScheduleContainer>
     <LinesContainer>

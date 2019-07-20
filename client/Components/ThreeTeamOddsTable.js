@@ -13,9 +13,9 @@ const Wrapper = styled(FlexColumnContainer)`
 
 const ThreeTeamOddsTable = ({ odds, activeSport }) => (
   <Wrapper>
-    {firstNumItems(odds, 4) && 
+    {firstNumItems(odds, 5) && 
       <div>
-        {firstNumItems(odds, 4).map(match => <WidgetTeamMatch key={match.Id} match={match} activeSport={activeSport} />)}
+        {firstNumItems(odds, 5).map(match => <WidgetTeamMatch key={match.Id} match={match} activeSport={activeSport} />)}
       </div>
     }
   </Wrapper>
