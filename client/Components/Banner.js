@@ -18,6 +18,7 @@ const BannerContainer = styled(FlexRowContainer)`
   overflow-x: hidden;
   max-height: 80px;
   height: 80px;
+  border-bottom: 1px solid ##15181A;
 
   #match-container {
     transform: ${({ scrollTo }) => {
@@ -116,17 +117,16 @@ class Banner extends Component {
 
 
   mouseDownLeft() {
+    console.log(this.props.odds.length)
       const left = setInterval(() => {
-        if(this.state.scrollTo > -1215) {
+        if(this.state.scrollTo > -this.props.odds.length*73.8888888888) {
           this.setState({ scrollTo: this.state.scrollTo - 10 })
         }
       }, 20)
-      console.log('TEST LEFT', left)
     this.setState({ intervalCount: this.state.intervalCount + 1})
   }
 
   mouseUpLeft() { 
-    console.log('FIRING', 'COUNT', this.state.intervalCount)
     clearInterval(this.state.intervalCount)
   }
 
@@ -172,17 +172,20 @@ class Banner extends Component {
               </OptionsContainer>
             }
         </Menu>
+        {this.props.odds && 
+          <div>
+          <LeftClickScrollContainer
+            onMouseDown={this.mouseDownLeft}
+            onMouseUp={this.mouseUpLeft}
+          >
+            {'<'}
+          </LeftClickScrollContainer>
 
-        <LeftClickScrollContainer
-          onMouseDown={this.mouseDownLeft}
-          onMouseUp={this.mouseUpLeft}
-        >
-          {'<'}
-        </LeftClickScrollContainer>
-
-        <RightClickScrollContainer onMouseDown={this.mouseDownRight} onMouseUp={this.mouseUpRight}>
-          {'>'}
-        </RightClickScrollContainer>
+          <RightClickScrollContainer onMouseDown={this.mouseDownRight} onMouseUp={this.mouseUpRight}>
+            {'>'}
+          </RightClickScrollContainer>
+          </div>
+        }
 
         <MatchContainer id="match-container" dropDown={this.state.dropDown}>
           {this.props.odds &&
