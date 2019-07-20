@@ -9,6 +9,7 @@ const Wrapper = styled(FlexColumnContainer)`
   justify-content: flex-end;
   align-items: flex-start;
   padding-top: 17px;
+  width: 35vw;
 `
 
 const WidgetMatchOdds = ({ lines }) => {

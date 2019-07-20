@@ -4,9 +4,8 @@ import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
 
 const Wrapper = styled(FlexRowContainer)`
   padding-top: 40px;
-  margin-left: 60px;
   margin-bottom: 30px;
-  width: 100%;
+  width: 100vw;
   height: 64px;
   font-size: 15px;
   justify-content: space-between;
@@ -17,14 +16,13 @@ const Wrapper = styled(FlexRowContainer)`
 `
 
 const ScheduleContainer = styled(FlexRowContainer)`
-  min-width: 156px;
+  min-width: 40vw;
   justify-content: space-between;
 `
 
 const LinesContainer = styled(FlexRowContainer)`
-  min-width: 163px;
-  margin-left: 93px;
-  justify-content: space-between;
+  min-width: 56vw;
+  justify-content: space-evenly;
 `
 
 const OddContainer = styled.div`

@@ -9,15 +9,15 @@ export const TeamOdds = styled(FlexRowContainer)`
 
 export const TeamOddsItem = styled(FlexColumnContainer)`
   width: 70px;
-  font-size: 17px;
+  font-size: 14px;
 `
 
 export const TotalsNum = styled(FlexColumnContainer)`
-  font-size: 17px;
+  font-size: 14px;
   width: 100%;
   padding-top: 16px;
   align-items: flex-end;
-  margin-left: 9px;
+  margin-right: 2vw;
 `
 
 export const TotalsLines = styled(FlexRowContainer)`

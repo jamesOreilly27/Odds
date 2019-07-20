@@ -6,7 +6,7 @@ import { addPlus } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
   height: 43%;
-  width: 33px;
+  width: 8vw;
 `
 
 const TotalsContainer = ({ lines }) => {

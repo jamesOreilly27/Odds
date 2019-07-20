@@ -5,9 +5,9 @@ import { FlexRowContainer, FlexColumnContainer, FlexButton, FlexRowButton } from
 import { firstNumItems } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
-  width: 100%;
+  width: 100vw;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
   margin-top: -30px;
 `
 

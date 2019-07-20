@@ -11,7 +11,7 @@ const Wrapper = styled(FlexRowContainer)`
   margin: 10px 0 20px 0;
   height: 100px;
   border-top: 1px solid #C0C0C0;
-  width: 120%;
+  width: 100vw;
 `
 const LogoSwitchWrapper = styled(FlexRowContainer)`
 
@@ -23,7 +23,7 @@ const Score = styled(FlexRowContainer)`
 
 const OddsContainer = styled(FlexRowContainer)`
   justify-content: space-evenly;
-  min-width: 200px;
+  min-width: 60vw;
   height: 100%;
 `
 

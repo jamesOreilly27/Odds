@@ -6,7 +6,7 @@ import { fetchOddsBySport, updateActiveSport } from '../store'
 import { WidgetNavbar, ThreeTeamOddsTable, OddsTableHeader } from '../Components'
 
 const Wrapper = styled(FlexColumnContainer)`
-  width: 90%;
+  width: 100vw;
   height: 700px;
   justify-content: flex-start;
 `
