@@ -5,11 +5,10 @@ import { TeamOdds, TeamOddsItem } from './WidgetOddsComponents'
 import { addPlus } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
-  height: 67px;
-  justify-content: space-around;
+  height: 100%;
+  justify-content: flex-end;
   align-items: flex-start;
   padding-top: 17px;
-  min-width: 155px;
 `
 
 const WidgetMatchOdds = ({ lines }) => {

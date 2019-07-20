@@ -5,8 +5,8 @@ import { TotalsNum, TotalsLines } from './WidgetOddsComponents'
 import { addPlus } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
-  height: 80%;
-  width: 50px;
+  height: 43%;
+  width: 33px;
 `
 
 const TotalsContainer = ({ lines }) => {

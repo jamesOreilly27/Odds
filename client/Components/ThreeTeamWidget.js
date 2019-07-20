@@ -7,13 +7,8 @@ import { WidgetNavbar, ThreeTeamOddsTable, OddsTableHeader } from '../Components
 
 const Wrapper = styled(FlexColumnContainer)`
   width: 90%;
-  height: 50vh;
+  height: 700px;
   justify-content: flex-start;
-`
-
-const Headline = styled(FlexRowContainer)`
-  font-size: 24px;
-  font-weight: bold;
 `
 
 class ThreeTeamWidget extends Component {

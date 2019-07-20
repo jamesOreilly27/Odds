@@ -2,16 +2,16 @@ import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
 
 export const WidgetTeamsWrapper = styled(FlexColumnContainer)`
-  font-size: 13px;
-  height: 80%;
-  min-width: 110.86px;
+  font-size: 17px;
+  height: 100%;
+  min-width: 150px;
   justify-content: space-between;
   align-items: flex-start;
   padding: 5px;
 `
 
 export const WidgetTeamDetails = styled(FlexRowContainer)`
-  justify-content: flex-start;
+  justify-content: space-between;
   width: 100%;
   img {
     width: 29px;
