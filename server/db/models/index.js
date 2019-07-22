@@ -1,4 +1,4 @@
 const Game = require('./game')
-// const Result = require('result')
+const Result = require('./result')
 
-module.exports  = { Game }
+module.exports  = { Game, Result }
