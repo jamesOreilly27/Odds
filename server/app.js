@@ -34,7 +34,7 @@ const createApp = () => {
   app.use(bodyParser.urlencoded())
   app.use(express.static(path.join(__dirname, '..', 'public'))); 
 
-  app.use('/api', require('./routes'))
+  app.use(`${process.env.API_URL}`, require('./routes'))
   app.use('/shopify', require('./shopify'))
 
   app.use('/static', express.static(path.join(__dirname, 'public')))
