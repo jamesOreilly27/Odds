@@ -25,7 +25,7 @@ router.get('/:sport', (req, res, next) => {
 
 router.get('/:sport/games', (req, res, next) => {
   Game.findAll({
-    where: { Final: false }
+    where: { Final: false, Sport: req.params.sport }
   })
   .then(games => res.json(games))
   .catch(next)
