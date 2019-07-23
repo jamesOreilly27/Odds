@@ -1,5 +1,4 @@
 import axios from "axios";
-import { updateActiveSport } from "./activeSport";
 
 const STORE_GAMES = 'STORE_GAMES'
 const GOT_GAMES = 'GOT_GAMES'
@@ -30,10 +29,12 @@ export const gotGamesThunk = sport => dispatch =>
   .then(res => dispatch(gotGames(res.data)))
   .catch(err => dispatch(gotGames(err)))
 
-export const createGameThunk = (sport, game) => dispatch =>
-  axios.post(`/api/margretthatcher/tastytendies/odds/${sport}/games`, game)
+export const createGameThunk = (sport, game, result) => dispatch => {
+  const req = Object.assign({}, game, result)
+  axios.post(`/api/margretthatcher/tastytendies/odds/${sport}/games`, req)
   .then(res => dispatch(createGame(res.data)))
   .catch(err => dispatch(createGame(err)))
+}
 
 const reducer = (games = [], action) => {
   switch(action.type) {

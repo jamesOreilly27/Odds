@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchOddsBySport, updateActiveSport, createGameThunk, gotGameThunk } from '../store'
+import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk } from '../store'
 import { Match, BannerSelect, SelectOption, DateSection } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
-import { getDatesArray, filterOddsByDay, truncateTeamName } from './helpers'
+import { getDatesArray, filterOddsByDay, truncateTeamName, findResult } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
   align-items: flex-start;
@@ -117,7 +117,6 @@ class Banner extends Component {
 
 
   mouseDownLeft() {
-    console.log(this.props.odds.length)
       const left = setInterval(() => {
         if(this.state.scrollTo > -this.props.odds.length*73.8888888888) {
           this.setState({ scrollTo: this.state.scrollTo - 10 })
@@ -144,8 +143,12 @@ class Banner extends Component {
   componentDidMount() {
     this.props.getOdds(this.props.activeSport)
     .then(() => {
+      return this.props.getResults(this.props.activeSport)
+    })
+    .then(res => res.payload)
+    .then(results => {
       this.props.odds.forEach(game => {
-        this.props.createGame(this.props.activeSport, game)
+        this.props.createGame(this.props.activeSport, game, findResult(game.ID, results))
       })
     })
     .catch(err => console.log(err))
@@ -154,6 +157,9 @@ class Banner extends Component {
   componentDidUpdate(prevProps) {
     if(this.props.activeSport !== prevProps.activeSport) {
       this.props.getOdds(this.props.activeSport)
+      .then(() => {
+        this.props.getResults(this.props.activeSport)
+      })
     }
   }
 
@@ -216,8 +222,11 @@ const mapDispatch = dispatch => ({
   updateSport(sportString) {
     return dispatch(updateActiveSport(sportString))
   },
-  createGame(sport, game) {
-    return dispatch(createGameThunk(sport, game))
+  createGame(sport, game, result) {
+    return dispatch(createGameThunk(sport, game, result))
+  },
+  getResults(sport) {
+    return dispatch(gotResultsThunk(sport))
   }
 })
 
