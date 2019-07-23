@@ -5,9 +5,10 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import odds from './odds'
 import activeSport from './activeSport'
 import games from './games'
+import singleGame from './singleGame'
 import results from './results'
 
-const reducer = combineReducers({ odds, activeSport, games, results })
+const reducer = combineReducers({ odds, activeSport, games, results, singleGame })
 
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
@@ -19,6 +20,7 @@ const store = createStore(reducer, middleware)
 export * from './odds'
 export * from './activeSport'
 export * from './games'
+export * from './singleGame'
 export * from './results'
 
 export default store
