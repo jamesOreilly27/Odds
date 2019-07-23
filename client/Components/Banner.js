@@ -152,6 +152,15 @@ class Banner extends Component {
       })
     })
     .then(() => {
+      return this.props.getGames(this.props.activeSport)
+    })
+    .then(action => action.payload)
+    .then(games => {
+      this.props.games.forEach(game => {
+        this.props.createGame(this.props.activeSport, game, findResult(game.atchId, this.props.results))
+      })
+    })
+    .then(() => {
       this.props.getGames(this.props.activeSport)
     })
     .catch(err => console.log(err))

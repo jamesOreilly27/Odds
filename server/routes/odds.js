@@ -15,6 +15,24 @@ const upsert = (values, condition) => {
   .catch(err => console.log(err))
 }
 
+const chooseOdds = (obj, string) => {
+  if(obj.Odds) {
+    return obj.Odds[0][string]
+  }
+  else {
+    return obj[string]
+  }
+}
+
+const chooseId = obj => {
+  if(obj.ID) {
+    return obj.ID
+  }
+  else {
+    return obj.MatchId
+  }
+}
+
 router.get('/:sport', (req, res, next) => {
   const sportString = req.params.sport
   jsonOdds.get(`https://jsonodds.com/api/odds/${sportString}?oddType=Game`)
@@ -32,17 +50,24 @@ router.get('/:sport/games', (req, res, next) => {
 })
 
 router.post('/:sport/games', (req, res, next) => {
-  console.log(req.params.sport)
   const game = {
     Sport: req.params.sport,
-    MatchId: req.body.ID,
+    MatchId: chooseId(req.body),
     MatchTime: req.body.MatchTime,
+    MoneyLineHome: chooseOdds(req.body, 'MoneyLineHome'),
+    PointSpreadHome: chooseOdds(req.body, 'PointSpreadHome'),
+    MoneyLineAway: chooseOdds(req.body, 'MoneyLineAway'),
+    PointSpreadAway: chooseOdds(req.body, 'PointSpreadAway'),
+    TotalNumber: chooseOdds(req.body, 'TotalNumber'),
     HomeTeam: req.body.HomeTeam,
     AwayTeam: req.body.AwayTeam,
     HomeScore: req.body.HomeScore,
     AwayScore: req.body.AwayScore,
     Final: req.body.Final
   }
+
+  console.log(chalk.red.bgWhite.bold(game.HomeScore))
+  console.log(chalk.blue.bgWhite.bold(game.AwayScore))
 
   upsert(game, { MatchId: game.MatchId })
   .then(game => res.json(game))
