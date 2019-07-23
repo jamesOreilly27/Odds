@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk } from '../store'
+import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk, getGamesThunk } from '../store'
 import { Match, BannerSelect, SelectOption, DateSection } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
@@ -227,6 +227,9 @@ const mapDispatch = dispatch => ({
   },
   getResults(sport) {
     return dispatch(gotResultsThunk(sport))
+  },
+  getGames(sport) {
+    return dispatch(getGamesThunk(sport))
   }
 })
 
