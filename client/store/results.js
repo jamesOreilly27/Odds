@@ -7,7 +7,7 @@ const gotResults = results => ({
   payload: results
 })
 
-const gotResultsThunk = sport => dispatch =>
+export const gotResultsThunk = sport => dispatch =>
   axios.get(`/api/margretthatcher/tastytendies/results/${sport}`)
   .then(res => dispatch(gotResults(res.data)))
   .catch(err => dispatch(gotResults(err)))
