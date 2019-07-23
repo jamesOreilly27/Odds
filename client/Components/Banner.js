@@ -161,7 +161,13 @@ class Banner extends Component {
     if(this.props.activeSport !== prevProps.activeSport) {
       this.props.getOdds(this.props.activeSport)
       .then(() => {
-        this.props.getResults(this.props.activeSport)
+        return this.props.getResults(this.props.activeSport)
+      })
+      .then(res => res.payload)
+      .then(results => {
+        this.props.odds.forEach(game => {
+          this.props.createGame(this.props.activeSport, game, findResult(game.ID, results))
+        })
       })
       .then(() => {
         this.props.getGames(this.props.activeSport)

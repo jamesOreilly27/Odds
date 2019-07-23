@@ -11,23 +11,25 @@ const fs = require('fs')
 const dir = require('os').homedir()
 const dotenv = require('dotenv').config()
 
+let server; 
+
 const createApp = () => {
   console.log(chalk.red.bgWhite.bold('Building App'))
   const opions = {}
 
-  // !process.env.PORT ?
-  //   options = {
-  //     key: fs.readFileSync( `${dir}/ssl/localhost/localhost.key` ),
-  //     cert: fs.readFileSync( `${dir}/ssl/localhost/localhost.crt` ),
-  //     requestCert: false,
-  //     rejectUnauthorized: false
-  //   }
-  // :
-  //   options = {}
+  !process.env.PORT ?
+    options = {
+      key: fs.readFileSync( `${dir}/ssl/localhost/localhost.key` ),
+      cert: fs.readFileSync( `${dir}/ssl/localhost/localhost.crt` ),
+      requestCert: false,
+      rejectUnauthorized: false
+    }
+  :
+    options = {}
 
   const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY } = process.env
 
-  // const server = https.createServer(options, app)
+  server = https.createServer(options, app)
 
   app.use(volleyball)
   app.use(bodyParser.json())
@@ -42,7 +44,12 @@ const createApp = () => {
 }
 
 const startListening = () => {
-  const run = app.listen(PORT, () => console.log(chalk.blue.bgWhite.bold(`We are live on port ${PORT}`)))
+  // const run = app.listen(PORT, () => console.log(chalk.blue.bgWhite.bold(`We are live on port ${PORT}`)))
+  if(process.env.PORT) {
+    app.listen(PORT, () => console.log(chalk.red.bgWhite.bold(`We are live on port ${PORT}`)))
+  } else {
+    server.listen(PORT, () => console.log(chalk.blue.bgWhite.bold(`We are live on port ${server.address().port}`)))
+  }
 }
 
 // app.listen(PORT, () => console.log(chalk.red.bgWhite.bold(`We are live on port ${PORT}`)))
