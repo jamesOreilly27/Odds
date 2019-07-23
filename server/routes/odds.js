@@ -32,8 +32,9 @@ router.get('/:sport/games', (req, res, next) => {
 })
 
 router.post('/:sport/games', (req, res, next) => {
-  console.log(req.body)
+  console.log(req.params.sport)
   const game = {
+    Sport: req.params.sport,
     MatchId: req.body.ID,
     MatchTime: req.body.MatchTime,
     HomeTeam: req.body.HomeTeam,
