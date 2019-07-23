@@ -151,6 +151,9 @@ class Banner extends Component {
         this.props.createGame(this.props.activeSport, game, findResult(game.ID, results))
       })
     })
+    .then(() => {
+      this.props.getGames(this.props.activeSport)
+    })
     .catch(err => console.log(err))
   }
 
@@ -160,6 +163,10 @@ class Banner extends Component {
       .then(() => {
         this.props.getResults(this.props.activeSport)
       })
+      .then(() => {
+        this.props.getGames(this.props.activeSport)
+      })
+      .catch(err => console.log(err))
     }
   }
 
