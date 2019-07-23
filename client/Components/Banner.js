@@ -145,7 +145,7 @@ class Banner extends Component {
     this.props.getOdds(this.props.activeSport)
     .then(() => {
       this.props.odds.forEach(game => {
-        this.props.createGame(this.props.activeSport, game)
+        this.props.createGame(this.props.activeSport, game, { HomeScore: '2', AwayScore: '5', Final: false })
       })
     })
     .catch(err => console.log(err))
@@ -216,8 +216,8 @@ const mapDispatch = dispatch => ({
   updateSport(sportString) {
     return dispatch(updateActiveSport(sportString))
   },
-  createGame(sport, game) {
-    return dispatch(createGameThunk(sport, game))
+  createGame(sport, game, result) {
+    return dispatch(createGameThunk(sport, game, result))
   }
 })
 

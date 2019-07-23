@@ -33,6 +33,7 @@ router.get('/:sport/games', (req, res, next) => {
 })
 
 router.post('/:sport/games', (req, res, next) => {
+  console.log(req.body)
   const game = {
     MatchId: req.body.ID,
     MatchTime: req.body.MatchTime,
@@ -40,7 +41,7 @@ router.post('/:sport/games', (req, res, next) => {
     AwayTeam: req.body.AwayTeam,
     Final: false
   }
-  
+
   upsert(game, { MatchId: game.MatchId })
   .then(game => res.json(game))
   .catch(next)
