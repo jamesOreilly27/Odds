@@ -40,10 +40,7 @@ router.post('/:sport/games', (req, res, next) => {
     AwayTeam: req.body.AwayTeam,
     Final: false
   }
-  // Game.create(game)
-  // .then(newGame => res.json(newGame))
-  // .catch(next)
-
+  
   upsert(game, { MatchId: game.MatchId })
   .then(game => res.json(game))
   .catch(next)
