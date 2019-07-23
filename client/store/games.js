@@ -24,7 +24,7 @@ export const createGamesThunk = (sport, games) => dispatch =>
   .then(res => dispatch(storeGames(res.data)))
   .catch(err => dispatch(storeGames(err)))
 
-export const gotGamesThunk = sport => dispatch =>
+export const getGamesThunk = sport => dispatch =>
   axios.get(`/api/margretthatcher/tastytendies/odds/${sport}/games`)
   .then(res => dispatch(gotGames(res.data)))
   .catch(err => dispatch(gotGames(err)))
