@@ -39,7 +39,9 @@ router.post('/:sport/games', (req, res, next) => {
     MatchTime: req.body.MatchTime,
     HomeTeam: req.body.HomeTeam,
     AwayTeam: req.body.AwayTeam,
-    Final: false
+    HomeScore: req.body.HomeScore,
+    AwayScore: req.body.AwayScore,
+    Final: req.body.Final
   }
 
   upsert(game, { MatchId: game.MatchId })
