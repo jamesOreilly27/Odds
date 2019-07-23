@@ -30,7 +30,9 @@ export const gotGamesThunk = sport => dispatch =>
   .catch(err => dispatch(gotGames(err)))
 
 export const createGameThunk = (sport, game, result) => dispatch => {
+  // console.log('RESULT TEST', result)
   const req = Object.assign({}, game, result)
+  // console.log('TESTING', req)
   axios.post(`/api/margretthatcher/tastytendies/odds/${sport}/games`, req)
   .then(res => dispatch(createGame(res.data)))
   .catch(err => dispatch(createGame(err)))

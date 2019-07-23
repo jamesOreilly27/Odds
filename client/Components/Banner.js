@@ -4,7 +4,7 @@ import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk }
 import { Match, BannerSelect, SelectOption, DateSection } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
-import { getDatesArray, filterOddsByDay, truncateTeamName } from './helpers'
+import { getDatesArray, filterOddsByDay, truncateTeamName, findResult } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
   align-items: flex-start;
@@ -146,17 +146,22 @@ class Banner extends Component {
     .then(() => {
       return this.props.getResults(this.props.activeSport)
     })
-    // .then(() => {
-    //   this.props.odds.forEach(game => {
-    //     this.props.createGame(this.props.activeSport, game, { HomeScore: '2', AwayScore: '5', Final: false })
-    //   })
-    // })
+    .then(res => res.payload)
+    .then(results => {
+      this.props.odds.forEach(game => {
+        console.log('TESTING', findResult(game.ID, results))
+        this.props.createGame(this.props.activeSport, game, findResult(game.ID, results))
+      })
+    })
     .catch(err => console.log(err))
   }
 
   componentDidUpdate(prevProps) {
     if(this.props.activeSport !== prevProps.activeSport) {
       this.props.getOdds(this.props.activeSport)
+      .then(() => {
+        this.props.getResults(this.props.activeSport)
+      })
     }
   }
 

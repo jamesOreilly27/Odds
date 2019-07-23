@@ -275,3 +275,8 @@ export const addPlus = string => {
   string[0] === '-' ? processedString = string : processedString = `+${string}`
   return processedString
 }
+
+/********** Live Scoring ***********/
+export const findResult = (id, results) => {
+  return results.filter(result => result.ID === id)[0]
+}
