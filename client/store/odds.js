@@ -7,8 +7,8 @@ const gotOdds = odds => ({
   payload: odds
 })
 
-export const fetchOddsBySport = sport => dispatch =>
-  axios.get(`/api/${sport}`)
+export const fetchOddsBySport = sport => dispatch => 
+  axios.get(`/api/margretthatcher/tastytendies/odds/${sport}`)
   .then(res => dispatch(gotOdds(res.data)))
   .catch(err => dispatch(gotOdds(err.message)))
 

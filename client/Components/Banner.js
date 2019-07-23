@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchOddsBySport, updateActiveSport } from '../store'
+import { fetchOddsBySport, updateActiveSport, createGameThunk, gotGameThunk } from '../store'
 import { Match, BannerSelect, SelectOption, DateSection } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
@@ -37,7 +37,7 @@ const Menu = styled(FlexRowContainer)`
   background-color: #374044;
   z-index: 5;
   `
-  
+
 const OptionsContainer = styled(FlexRowContainer)`
   justify-content: space-around;
   height: 100%;
@@ -143,6 +143,12 @@ class Banner extends Component {
 
   componentDidMount() {
     this.props.getOdds(this.props.activeSport)
+    .then(() => {
+      this.props.odds.forEach(game => {
+        this.props.createGame(this.props.activeSport, game)
+      })
+    })
+    .catch(err => console.log(err))
   }
 
   componentDidUpdate(prevProps) {
@@ -209,6 +215,9 @@ const mapDispatch = dispatch => ({
   },
   updateSport(sportString) {
     return dispatch(updateActiveSport(sportString))
+  },
+  createGame(sport, game) {
+    return dispatch(createGameThunk(sport, game))
   }
 })
 

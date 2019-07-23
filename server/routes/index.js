@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const jsonOdds = require('./jsonOdds')
+const odds = require('./odds')
+const results = require('./results')
 
 router.get('/sports', (req, res, next) => {
   jsonOdds.get('https://jsonodds.com/api/sports')
@@ -9,21 +11,8 @@ router.get('/sports', (req, res, next) => {
   .catch(console.error)
 })
 
-router.get('/:sport', (req, res, next) => {
-  const sportString = req.params.sport
-  jsonOdds.get(`https://jsonodds.com/api/odds/${sportString}?oddType=Game`)
-  .then(res => res.data)
-  .then(details => res.json(details))
-  .catch(console.error)
-})
-
-router.get('/:sport/results', (req, res, next) => {
-  const sportString = req.params.sport
-  jsonOdds.get(`https://jsonodds.com/api/results/${req.params.sport}?oddType=game`)
-  .then(res => res.data)
-  .then(details => res.json(details))
-  .catch(console.error)
-})
+router.use('/odds', odds)
+router.use('/results', results)
 
 
 
