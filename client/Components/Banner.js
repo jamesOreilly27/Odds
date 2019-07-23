@@ -117,7 +117,6 @@ class Banner extends Component {
 
 
   mouseDownLeft() {
-    console.log(this.props.odds.length)
       const left = setInterval(() => {
         if(this.state.scrollTo > -this.props.odds.length*73.8888888888) {
           this.setState({ scrollTo: this.state.scrollTo - 10 })
@@ -149,7 +148,6 @@ class Banner extends Component {
     .then(res => res.payload)
     .then(results => {
       this.props.odds.forEach(game => {
-        console.log('TESTING', findResult(game.ID, results))
         this.props.createGame(this.props.activeSport, game, findResult(game.ID, results))
       })
     })

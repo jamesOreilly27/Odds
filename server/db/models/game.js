@@ -6,8 +6,8 @@ const Game = db.define('game', {
   MatchTime: { type: Sequelize.STRING, allowNull: false },
   HomeTeam: { type: Sequelize.STRING, allowNull: false },
   AwayTeam: { type: Sequelize.STRING, allowNull: false },
-  HomeScore: { type: Sequelize.STRING, allowNull: false },
-  AwayScore: { type: Sequelize.STRING, allowNull: false },
+  HomeScore: { type: Sequelize.STRING, allowNull: true },
+  AwayScore: { type: Sequelize.STRING, allowNull: true },
   Final: { type: Sequelize.BOOLEAN, allowNull: false }
 })
 

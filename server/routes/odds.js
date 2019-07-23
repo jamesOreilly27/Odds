@@ -24,7 +24,6 @@ router.get('/:sport', (req, res, next) => {
 })
 
 router.get('/:sport/games', (req, res, next) => {
-  console.log(chalk.blue.bgWhite.bold('hello world'))
   Game.findAll({
     where: { Final: false }
   })
