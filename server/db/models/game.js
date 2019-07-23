@@ -2,6 +2,7 @@ const db = require('../db')
 const Sequelize = require('sequelize')
 
 const Game = db.define('game', {
+  Sport: { type: Sequelize.STRING, allowNull: false },
   MatchId: { type: Sequelize.STRING, allowNull: false },
   MatchTime: { type: Sequelize.STRING, allowNull: false },
   HomeTeam: { type: Sequelize.STRING, allowNull: false },
