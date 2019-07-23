@@ -22,7 +22,8 @@ router.get('/:sport/games', (req, res, next) => {
 })
 
 router.post('/:sport/games', (req, res, next) => {
-  console.log(req.body)
+  const game = {}
+  res.json({ taste: 'tendy', margret: 'thatcher' })
 })
 
 module.exports = router
