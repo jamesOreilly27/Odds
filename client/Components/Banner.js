@@ -4,7 +4,7 @@ import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk, 
 import { Match, BannerSelect, SelectOption, DateSection } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
-import { getDatesArray, filterOddsByDay, truncateTeamName, findResult } from './helpers'
+import { getDatesArray, filterOddsByDay, truncateTeamName, findResult, sortGamesByTime } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
   align-items: flex-start;
@@ -225,7 +225,7 @@ class Banner extends Component {
           {this.props.games &&
             getDatesArray(this.props.games).map(date => {
               if(truncateTeamName(this.props.activeSport, this.props.games[0]['HomeTeam'])) {
-                return <DateSection key={date} date={date} games={filterOddsByDay(this.props.games, date)} />
+                return <DateSection key={date} date={date} games={sortGamesByTime(filterOddsByDay(this.props.games, date))} />
               }
             })
           }

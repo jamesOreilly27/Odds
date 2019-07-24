@@ -79,6 +79,13 @@ export const filterOddsByDay = (odds, date) => {
   })
 }
 
+export const sortGamesByTime = games => {
+  return games.sort((a, b) => {
+    if(a.MatchTime < b.MatchTime) return -1
+    if(a.MatchTime > b.MatchTime) return 1
+  })
+}
+
 export const firstNumItems = (array, num) => {
   if(array.length) {
     const newArray = []
