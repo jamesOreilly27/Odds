@@ -186,8 +186,6 @@ class Banner extends Component {
   }
 
   render() {
-    let left;
-    if(this.props.odds) filterOddsByDay(this.props.odds, new Date().getDate() + 1)
     return (
       <BannerContainer
         scrollLeft={this.state.scrollLeft}
@@ -206,7 +204,7 @@ class Banner extends Component {
               </OptionsContainer>
             }
         </Menu>
-        {this.props.odds && 
+        {this.props.games && 
           <div>
           <LeftClickScrollContainer
             onMouseDown={this.mouseDownLeft}
