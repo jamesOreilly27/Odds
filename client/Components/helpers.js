@@ -20,7 +20,12 @@ export const processTime = dateString => {
 
 /********** Filtering Odds By Date ************/
 export const getMatchDate = match => {
-  return new Date(match.MatchTime).getDate()
+  const dateObj = new Date(match.MatchTime)
+  let date = dateObj.getDate()
+
+  if(dateObj.getHours() <= 3) date = date - 1
+
+  return date
 }
 
 export const getMatchMonth = match => {

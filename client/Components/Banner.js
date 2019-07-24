@@ -118,7 +118,7 @@ class Banner extends Component {
 
   mouseDownLeft() {
       const left = setInterval(() => {
-        if(this.state.scrollTo > -this.props.odds.length*73.8888888888) {
+        if(this.state.scrollTo > -this.props.games.length*120) {
           this.setState({ scrollTo: this.state.scrollTo - 10 })
         }
       }, 20)
