@@ -58,7 +58,6 @@ const InProgressMatch = props => (
         }
       </DetailContainer>
       <TeamOddsContainer>
-        {console.log('TEST', oddsOrScore(props.activeSport, props.match, props.match.HomeScore, true))}
         <div>{oddsOrScore(props.activeSport, props.match, props.match.HomeScore, true)}</div>
         <div>{oddsOrScore(props.activeSport, props.match, props.match.AwayScore, false)}</div>
       </TeamOddsContainer>
