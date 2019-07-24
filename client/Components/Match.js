@@ -82,18 +82,18 @@ class Match extends Component {
   chooseLine(home) {
     if(home) {
       if(this.props.activeSport === 'mlb' || this.props.activeSport === 'nhl') {
-        return addPlus(this.props.match.Odds[0].MoneyLineHome)
+        return addPlus(this.props.match.MoneyLineHome)
       }
       else if(this.props.activeSport === 'nfl' || this.props.activeSport === 'nba') {
-        return addPlus(this.props.match.Odds[0].PointSpreadHome)
+        return addPlus(this.props.match.PointSpreadHome)
       }
     }
     else {
       if(this.props.activeSport === 'mlb' || this.props.activeSport === 'nhl') {
-        return addPlus(this.props.match.Odds[0].MoneyLineAway)
+        return addPlus(this.props.match.MoneyLineAway)
       }
       else if(this.props.activeSport === 'nfl' || this.props.activeSport === 'nba') {
-        return addPlus(this.props.match.Odds[0].PointSpreadAway)
+        return addPlus(this.props.match.PointSpreadAway)
       }
     }
   }

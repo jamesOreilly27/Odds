@@ -222,10 +222,10 @@ class Banner extends Component {
         }
 
         <MatchContainer id="match-container" dropDown={this.state.dropDown}>
-          {this.props.odds && this.props.games.length &&
-            getDatesArray(this.props.odds).map(date => {
-              if(truncateTeamName(this.props.activeSport, this.props.odds[0]['HomeTeam'])) {
-                return <DateSection key={date} date={date} odds={filterOddsByDay(this.props.odds, date)} games={this.props.games} />
+          {this.props.games &&
+            getDatesArray(this.props.games).map(date => {
+              if(truncateTeamName(this.props.activeSport, this.props.games[0]['HomeTeam'])) {
+                return <DateSection key={date} date={date} games={filterOddsByDay(this.props.games, date)} />
               }
             })
           }

@@ -60,7 +60,7 @@ export const processDayMonthTime = match => {
   return `${getMatchDate(match)} ${convertMonthNumToWord(getMatchMonth(match))} ${processTime(match.MatchTime)}`
 }
 
-export const getDatesArray = (odds) => {
+export const getDatesArray = odds => {
   const checked = []
 
   odds.forEach( match => {
@@ -69,7 +69,7 @@ export const getDatesArray = (odds) => {
       checked.push(date)
     }
   })
-  return checked
+  return checked.sort((a, b) => +a - +b)
 }
 
 export const filterOddsByDay = (odds, date) => {
