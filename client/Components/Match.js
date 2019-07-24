@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
+import { InProgressMatch } from '../Components'
 import { TeamGameWrapper, TeamGameHeader, TeamGameDetails, DetailContainer, NameLogoContainer, TeamOddsContainer } from './TeamSportsStyledComponents'
 import { processTime, truncateTeamName, addPlus } from './helpers'
 
@@ -44,6 +45,7 @@ class Match extends Component {
       )
     }
     else {
+      if(this.props.match.HomeScore !== null && !this.props.match.Final) return <InProgressMatch match={this.props.match} activeSport={this.props.activeSport}/>
       return (
         <TeamGameWrapper>
               <TeamGameHeader>
