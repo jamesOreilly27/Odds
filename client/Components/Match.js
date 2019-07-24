@@ -45,38 +45,39 @@ class Match extends Component {
       )
     }
     else {
-      if(this.props.match.HomeScore !== null && !this.props.match.Final) return <InProgressMatch match={this.props.match} activeSport={this.props.activeSport}/>
+      // if(this.props.match.HomeScore !== null && !this.props.match.Final) return <InProgressMatch match={this.props.match} activeSport={this.props.activeSport} />
       return (
-        <TeamGameWrapper>
-              <TeamGameHeader>
-                {processTime(this.props.match.MatchTime)}
-              </TeamGameHeader>
+        // <TeamGameWrapper>
+        //       <TeamGameHeader>
+        //         {processTime(this.props.match.MatchTime)}
+        //       </TeamGameHeader>
 
-              <TeamGameDetails>
-                <DetailContainer>
-                {truncateTeamName(this.props.activeSport, this.props.match.HomeTeam) &&
-                <div>
-                  <NameLogoContainer>
-                    <img src={require(`../../public/assets/${this.props.activeSport}-logos/${truncateTeamName(this.props.activeSport, this.props.match.HomeTeam)}.png`)} />
-                    <div>{truncateTeamName(this.props.activeSport, this.props.match.HomeTeam)}</div>
-                  </NameLogoContainer>
-                </div>
-                }
-                {truncateTeamName(this.props.activeSport, this.props.match.AwayTeam) &&
-                <div>
-                  <NameLogoContainer>
-                    <img src={require(`../../public/assets/${this.props.activeSport}-logos/${truncateTeamName(this.props.activeSport, this.props.match.AwayTeam)}.png`)} />
-                    <div>{truncateTeamName(this.props.activeSport, this.props.match.AwayTeam)}</div>
-                  </NameLogoContainer>
-                </div>
-                }
-                </DetailContainer>
-                <TeamOddsContainer>
-                  <div>{this.chooseLine(true)}</div>
-                  <div>{this.chooseLine(false)}</div>
-                </TeamOddsContainer>
-              </TeamGameDetails>
-        </TeamGameWrapper>
+        //       <TeamGameDetails>
+        //         <DetailContainer>
+        //         {truncateTeamName(this.props.activeSport, this.props.match.HomeTeam) &&
+        //         <div>
+        //           <NameLogoContainer>
+        //             <img src={require(`../../public/assets/${this.props.activeSport}-logos/${truncateTeamName(this.props.activeSport, this.props.match.HomeTeam)}.png`)} />
+        //             <div>{truncateTeamName(this.props.activeSport, this.props.match.HomeTeam)}</div>
+        //           </NameLogoContainer>
+        //         </div>
+        //         }
+        //         {truncateTeamName(this.props.activeSport, this.props.match.AwayTeam) &&
+        //         <div>
+        //           <NameLogoContainer>
+        //             <img src={require(`../../public/assets/${this.props.activeSport}-logos/${truncateTeamName(this.props.activeSport, this.props.match.AwayTeam)}.png`)} />
+        //             <div>{truncateTeamName(this.props.activeSport, this.props.match.AwayTeam)}</div>
+        //           </NameLogoContainer>
+        //         </div>
+        //         }
+        //         </DetailContainer>
+        //         <TeamOddsContainer>
+        //           <div>{this.chooseLine(true)}</div>
+        //           <div>{this.chooseLine(false)}</div>
+        //         </TeamOddsContainer>
+        //       </TeamGameDetails>
+        // </TeamGameWrapper>
+        <InProgressMatch match={this.props.match} activeSport={this.props.activeSport} />
       )
     }
   }

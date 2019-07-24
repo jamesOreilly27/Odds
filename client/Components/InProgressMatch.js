@@ -1,11 +1,41 @@
 import React from 'react'
 import { TeamGameWrapper, TeamGameHeader, TeamGameDetails, DetailContainer, NameLogoContainer, TeamOddsContainer } from './TeamSportsStyledComponents'
-import { truncateTeamName } from './helpers'
+import { truncateTeamName, processTime, addPlus } from './helpers'
+
+const chooseBannerText = (score, final, MatchTime) => {
+  if(score !== null && !final) return 'In Progress'
+  else if(score !== null && final) return 'Final'
+  else return processTime(MatchTime)
+}
+
+const chooseLine = (activeSport, match, home) => {
+  if(home) {
+    if(activeSport === 'mlb' || activeSport === 'nhl') {
+      return addPlus(match.MoneyLineHome)
+    }
+    else if(activeSport === 'nfl' || activeSport === 'nba') {
+      return addPlus(match.PointSpreadHome)
+    }
+  }
+  else {
+    if(activeSport === 'mlb' || activeSport === 'nhl') {
+      return addPlus(match.MoneyLineAway)
+    }
+    else if(activeSport === 'nfl' || activeSport === 'nba') {
+      return addPlus(match.PointSpreadAway)
+    }
+  }
+}
+
+const oddsOrScore = (activeSport, match, score, home) => {
+  if(score !== null) return score
+  else return chooseLine(activeSport, match, home)
+}
 
 const InProgressMatch = props => (
   <TeamGameWrapper>
     <TeamGameHeader>
-      In Progress
+      {chooseBannerText(props.match.HomeScore, props.match.Final, props.match.MatchTime)}
     </TeamGameHeader>
 
     <TeamGameDetails>
@@ -28,8 +58,9 @@ const InProgressMatch = props => (
         }
       </DetailContainer>
       <TeamOddsContainer>
-        <div>{props.match.HomeScore}</div>
-        <div>{props.match.AwayScore}</div>
+        {console.log('TEST', oddsOrScore(props.activeSport, props.match, props.match.HomeScore, true))}
+        <div>{oddsOrScore(props.activeSport, props.match, props.match.HomeScore, true)}</div>
+        <div>{oddsOrScore(props.activeSport, props.match, props.match.AwayScore, false)}</div>
       </TeamOddsContainer>
     </TeamGameDetails>
   </TeamGameWrapper>
