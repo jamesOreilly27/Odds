@@ -43,7 +43,7 @@ router.get('/:sport', (req, res, next) => {
 
 router.get('/:sport/games', (req, res, next) => {
   Game.findAll({
-    where: { Final: false, Sport: req.params.sport }
+    where: { Sport: req.params.sport }
   })
   .then(games => res.json(games))
   .catch(next)
@@ -65,8 +65,10 @@ router.post('/:sport/games', (req, res, next) => {
     AwayScore: req.body.AwayScore,
     Final: req.body.Final
   }
-
+  console.log(chalk.green.bgWhite.bold(game.MatchTime))
+  console.log(chalk.red.bgWhite.bold(game.HomeTeam))
   console.log(chalk.red.bgWhite.bold(game.HomeScore))
+  console.log(chalk.blue.bgWhite.bold(game.AwayTeam))
   console.log(chalk.blue.bgWhite.bold(game.AwayScore))
 
   upsert(game, { MatchId: game.MatchId })
