@@ -36,7 +36,6 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
       <WidgetTeamDetails>
         {truncateTeamName(activeSport, match.AwayTeam) && 
           <LogoSwitchWrapper>
-            <ROT>{match.AwayROT}</ROT>
             <img src={require(`../../public/assets/${activeSport}-logos/${truncateTeamName(activeSport, match.AwayTeam)}.png`)} />
             <div>{truncateTeamName(activeSport, match.AwayTeam)}</div>
           </LogoSwitchWrapper>
@@ -46,7 +45,6 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
       <WidgetTeamDetails>
         {truncateTeamName(activeSport, match.HomeTeam) && 
           <LogoSwitchWrapper>
-            <ROT>{match.HomeROT}</ROT>
             <img src={require(`../../public/assets/${activeSport}-logos/${truncateTeamName(activeSport, match.HomeTeam)}.png`)} />
             <div>{truncateTeamName(activeSport, match.HomeTeam)}</div>
           </LogoSwitchWrapper>
