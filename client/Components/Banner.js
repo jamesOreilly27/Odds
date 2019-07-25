@@ -117,12 +117,18 @@ class Banner extends Component {
 
 
   mouseDownLeft() {
-      const left = setInterval(() => {
-        if(this.state.scrollTo > -this.props.games.length*120) {
-          this.setState({ scrollTo: this.state.scrollTo - 10 })
+    //   const left = setInterval(() => {
+    //     if(this.state.scrollTo > -this.props.games.length*120) {
+    //       this.setState({ scrollTo: this.state.scrollTo - 10 })
+    //     }
+    //   }, 20)
+    // this.setState({ intervalCount: this.state.intervalCount + 1})
+      const right = setInterval(() => {
+        if(this.state.scrollTo < 0) {
+          this.setState({ scrollTo: this.state.scrollTo + 10 })
         }
       }, 20)
-    this.setState({ intervalCount: this.state.intervalCount + 1})
+      this.setState({ intervalCount: this.state.intervalCount + 1})
   }
 
   mouseUpLeft() { 
@@ -130,11 +136,17 @@ class Banner extends Component {
   }
 
   mouseDownRight() {
-      const right = setInterval(() => {
-        if(this.state.scrollTo < 0) {
-          this.setState({ scrollTo: this.state.scrollTo + 10 })
-        }
-      }, 20)
+    //   const right = setInterval(() => {
+    //     if(this.state.scrollTo < 0) {
+    //       this.setState({ scrollTo: this.state.scrollTo + 10 })
+    //     }
+    //   }, 20)
+    // this.setState({ intervalCount: this.state.intervalCount + 1})
+    const left = setInterval(() => {
+      if(this.state.scrollTo > -this.props.games.length*120) {
+        this.setState({ scrollTo: this.state.scrollTo - 10 })
+      }
+    }, 20)
     this.setState({ intervalCount: this.state.intervalCount + 1})
   }
 
