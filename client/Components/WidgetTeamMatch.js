@@ -33,16 +33,6 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
       <WidgetGameDate>
         {processDayMonthTime(match)}
       </WidgetGameDate>
-      {/* <WidgetTeamDetails>
-        {truncateTeamName(activeSport, match.HomeTeam) && 
-          <LogoSwitchWrapper>
-            <ROT>{match.HomeROT}</ROT>
-            <img src={require(`../../public/assets/${activeSport}-logos/${truncateTeamName(activeSport, match.HomeTeam)}.png`)} />
-            <div>{truncateTeamName(activeSport, match.HomeTeam)}</div>
-          </LogoSwitchWrapper>
-        }
-        <Score> 0 </Score>
-      </WidgetTeamDetails> */}
       <WidgetTeamDetails>
         {truncateTeamName(activeSport, match.AwayTeam) && 
           <LogoSwitchWrapper>
