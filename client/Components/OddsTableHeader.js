@@ -27,7 +27,7 @@ const OddContainer = styled(FlexColumnContainer)`
 `
 
 const Schedule = styled(OddContainer)`
-  padding-left: 4vw;
+  padding-left: 2vw;
 `
 
 const OddsTableHeader = props => (

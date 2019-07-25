@@ -14,7 +14,7 @@ const Wrapper = styled(FlexRowContainer)`
   background-color: #FFF;
 `
 const LogoSwitchWrapper = styled(FlexRowContainer)`
-
+  font-weight: bold;
 `
 
 const Score = styled(FlexRowContainer)`
