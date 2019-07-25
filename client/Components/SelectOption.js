@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { FlexButton } from './baseComponents'
+import { FlexColumnContainer, FlexButton } from './baseComponents'
 
 const Wrapper = styled(FlexButton)`
   height: 100%;
@@ -12,10 +13,32 @@ const Wrapper = styled(FlexButton)`
   width: 50%;
 `
 
-const SelectOption = (props) => (
-  <Wrapper onClick={() => { return props.handleClick(props.value)}} location={props.location}>
-    {props.value.toUpperCase()}
-  </Wrapper>
-)
+const Container = styled(FlexColumnContainer)`
+  height: 60%;
+  width: 30%;
+  border-bottom: ${({ location, activeSport, value }) => {
+    if(location === 'three-team' && value === activeSport) return '3px solid black'
+    else return 'none'
+  }}
+  font-weight: bold;
+`
 
-export default SelectOption
+class SelectOption extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <Wrapper onClick={() => { return this.props.handleClick(this.props.value)}} location={this.props.location}>
+        <Container location={this.props.location} activeSport={this.props.activeSport} value={this.props.value}>
+          {this.props.value.toUpperCase()}
+        </Container>
+      </Wrapper>
+    )
+  }
+}
+
+const mapState = state => state
+
+export default connect(mapState)(SelectOption)
