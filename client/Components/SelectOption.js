@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { FlexColumnContainer, FlexButton } from './baseComponents'
 
-const Wrapper = styled(FlexButton)`
+const Wrapper = styled(FlexColumnContainer)`
   height: 100%;
   color: ${({ location }) => {
     let color;
@@ -13,7 +13,7 @@ const Wrapper = styled(FlexButton)`
   width: 50%;
 `
 
-const Container = styled(FlexColumnContainer)`
+const Container = styled(FlexButton)`
   height: 60%;
   width: 30%;
   border-bottom: ${({ location, activeSport, value }) => {
