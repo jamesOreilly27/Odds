@@ -13,12 +13,12 @@ export const FlexColumnContainer = styled(FlexRowContainer)`
 `
 
 export const FlexRowButton = styled(FlexRowContainer)`
-  cursor: default;
+  cursor: pointer;
 `
 
 export const FlexButton = styled(FlexColumnContainer)`
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: default;
+  cursor: pointer;
 `

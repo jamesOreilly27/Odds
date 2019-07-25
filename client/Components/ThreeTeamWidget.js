@@ -17,7 +17,7 @@ class ThreeTeamWidget extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      options: [ 'mlb', 'nfl', 'nba', 'nhl', 'golf' ],
+      options: [ 'mlb', 'nfl', 'nba', 'nhl' ],
       logos: 'mlb-logos'
     }
   }

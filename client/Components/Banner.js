@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk, getGamesThunk } from '../store'
-import { Match, BannerSelect, SelectOption, DateSection } from '../Components'
+import { Match, BannerSelect, SelectOption, DateSection, GolfContainer } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
 import { getDatesArray, filterOddsByDay, truncateTeamName, findResult, sortGamesByTime } from './helpers'
@@ -92,7 +92,7 @@ class Banner extends Component {
       intervalCount: 0,
       scrollTo: 0,
       dropDown: false,
-      options: [ 'mlb', 'nfl', 'nba', 'nhl', 'golf' ]
+      options: [ 'mlb', 'nfl', 'nba', 'nhl' ]
     }
   }
 
@@ -141,33 +141,8 @@ class Banner extends Component {
   mouseUpRight(event) { clearInterval(this.state.intervalCount) }
 
   componentDidMount() {
-    this.props.getOdds(this.props.activeSport)
-    .then(() => {
-      return this.props.getResults(this.props.activeSport)
-    })
-    .then(res => res.payload)
-    .then(results => {
-      this.props.odds.forEach(game => {
-        this.props.createGame(this.props.activeSport, game, findResult(game.ID, results))
-      })
-    })
-    .then(() => {
-      return this.props.getGames(this.props.activeSport)
-    })
-    .then(action => action.payload)
-    .then(games => {
-      this.props.games.forEach(game => {
-        this.props.createGame(this.props.activeSport, game, findResult(game.MatchId, this.props.results))
-      })
-    })
-    .then(() => {
-      this.props.getGames(this.props.activeSport)
-    })
-    .catch(err => console.log(err))
-  }
+    if(this.props.activeSport !== 'golf') {
 
-  componentDidUpdate(prevProps) {
-    if(this.props.activeSport !== prevProps.activeSport) {
       this.props.getOdds(this.props.activeSport)
       .then(() => {
         return this.props.getResults(this.props.activeSport)
@@ -179,9 +154,45 @@ class Banner extends Component {
         })
       })
       .then(() => {
+        return this.props.getGames(this.props.activeSport)
+      })
+      .then(action => action.payload)
+      .then(games => {
+        this.props.games.forEach(game => {
+          this.props.createGame(this.props.activeSport, game, findResult(game.MatchId, this.props.results))
+        })
+      })
+      .then(() => {
         this.props.getGames(this.props.activeSport)
       })
       .catch(err => console.log(err))
+    }
+    else {
+      this.props.getOdds(this.props.activeSport)
+    }
+  }
+  
+  componentDidUpdate(prevProps) {
+    if(this.props.activeSport !== prevProps.activeSport) {
+      if(this.props.activeSport !== 'golf') {
+        this.props.getOdds(this.props.activeSport)
+        .then(() => {
+          return this.props.getResults(this.props.activeSport)
+        })
+        .then(res => res.payload)
+        .then(results => {
+          this.props.odds.forEach(game => {
+            this.props.createGame(this.props.activeSport, game, findResult(game.ID, results))
+          })
+        })
+        .then(() => {
+          this.props.getGames(this.props.activeSport)
+        })
+        .catch(err => console.log(err))
+      }
+      else {
+        this.props.getOdds(this.props.activeSport)
+      }
     }
   }
 
@@ -221,11 +232,14 @@ class Banner extends Component {
 
         <MatchContainer id="match-container" dropDown={this.state.dropDown}>
           {this.props.games &&
+            this.props.activeSport !== 'golf' ?
             getDatesArray(this.props.games).map(date => {
               if(truncateTeamName(this.props.activeSport, this.props.games[0]['HomeTeam'])) {
                 return <DateSection key={date} date={date} games={sortGamesByTime(filterOddsByDay(this.props.games, date))} />
               }
             })
+            :
+            <GolfContainer odds={this.props.odds} />
           }
         </MatchContainer>
       </BannerContainer>

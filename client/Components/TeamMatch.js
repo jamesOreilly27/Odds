@@ -32,7 +32,7 @@ const oddsOrScore = (activeSport, match, score, home) => {
   else return chooseLine(activeSport, match, home)
 }
 
-const InProgressMatch = props => (
+const TeamMatch = props => (
   <TeamGameWrapper>
     <TeamGameHeader>
       {chooseBannerText(props.match.HomeScore, props.match.Final, props.match.MatchTime)}
@@ -65,4 +65,4 @@ const InProgressMatch = props => (
   </TeamGameWrapper>
 )
 
-export default InProgressMatch
+export default TeamMatch
