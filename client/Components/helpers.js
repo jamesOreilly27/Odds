@@ -16,7 +16,7 @@ export const processTime = dateString => {
   // if(hours <= 4) hours = hours + 8
   // else if(hours > 4) hours = hours - 4
   const minutes = date.getMinutes()
-  return minutes < 10 ? `${hours}:0${minutes} PM EST` : `${hours}:${minutes} PM EST`
+  return minutes < 10 ? `${hours}:0${minutes} PM EST` : `${hours}:${minutes} PM`
 }
 
 /********** Filtering Odds By Date ************/
