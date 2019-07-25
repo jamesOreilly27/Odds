@@ -23,7 +23,7 @@ const ActiveSport = styled.div`
 `
 
 const Arrow = styled.div`
-  font-size: 10px;
+  font-size: 20px;
 `
 
 class BannerSelect extends Component {
