@@ -4,16 +4,17 @@ const convertTime = string => {
 }
 
 export const processTime = dateString => {
-  const date = convertTime(dateString)
+  const date = convertTime(`${dateString}Z`)
   let hours = date.getHours()
   //subtract by 12 to convert to 12 hour time
   if(hours > 12) hours = hours - 12
+  console.log('HOURS', hours)
 
   //convert the UTC 12 hour clock to EST
     //If 4 or less, add 8 to roll back into the 12 hour clock. 0 hour(midnight) becomes 8PM instead of -4
     //if great than 4, subtract 4
-  if(hours <= 4) hours = hours + 8
-  else if(hours > 4) hours = hours - 4
+  // if(hours <= 4) hours = hours + 8
+  // else if(hours > 4) hours = hours - 4
   const minutes = date.getMinutes()
   return minutes < 10 ? `${hours}:0${minutes} PM EST` : `${hours}:${minutes} PM EST`
 }
