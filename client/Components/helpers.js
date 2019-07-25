@@ -62,7 +62,7 @@ export const convertMonthNumToWord = monthNum => {
 }
 
 export const processDayMonthTime = match => {
-  return `${getMatchDate(match)} ${convertMonthNumToWord(getMatchMonth(match))} ${processTime(match.MatchTime)}`
+  return `${processTime(match.MatchTime)} ${getMatchDate(match)} ${convertMonthNumToWord(getMatchMonth(match))}`
 }
 
 export const getDatesArray = odds => {
