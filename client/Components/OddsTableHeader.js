@@ -7,6 +7,7 @@ const Wrapper = styled(FlexRowContainer)`
   width: 98vw;
   height: 5.5vh;
   font-size: 15px;
+  font-weight: bold;
   justify-content: space-between;
   background-color: #FFF;
 `
