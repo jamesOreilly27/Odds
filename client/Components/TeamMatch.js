@@ -40,19 +40,19 @@ const TeamMatch = props => (
 
     <TeamGameDetails>
       <DetailContainer>
-        {truncateTeamName(props.activeSport, props.match.HomeTeam) &&
-          <div>
-            <NameLogoContainer>
-              <img src={require(`../../public/assets/${props.activeSport}-logos/${truncateTeamName(props.activeSport, props.match.HomeTeam)}.png`)} />
-              <div>{truncateTeamName(props.activeSport, props.match.HomeTeam)}</div>
-            </NameLogoContainer>
-          </div>
-        }
         {truncateTeamName(props.activeSport, props.match.AwayTeam) &&
           <div>
             <NameLogoContainer>
               <img src={require(`../../public/assets/${props.activeSport}-logos/${truncateTeamName(props.activeSport, props.match.AwayTeam)}.png`)} />
               <div>{truncateTeamName(props.activeSport, props.match.AwayTeam)}</div>
+            </NameLogoContainer>
+          </div>
+        }
+        {truncateTeamName(props.activeSport, props.match.HomeTeam) &&
+          <div>
+            <NameLogoContainer>
+              <img src={require(`../../public/assets/${props.activeSport}-logos/${truncateTeamName(props.activeSport, props.match.HomeTeam)}.png`)} />
+              <div>{truncateTeamName(props.activeSport, props.match.HomeTeam)}</div>
             </NameLogoContainer>
           </div>
         }
