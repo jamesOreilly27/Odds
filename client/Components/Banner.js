@@ -78,15 +78,16 @@ const RightClickScrollContainer = styled(ClickScrollContainer)`
   top: 7px;
 `
 
+let test;
+
 class Banner extends Component {
   constructor(props) {
     super(props)
     this.handleDropDownClick = this.handleDropDownClick.bind(this)
     this.handleSelectClick = this.handleSelectClick.bind(this)
     this.mouseDownLeft= this.mouseDownLeft.bind(this)
-    this.mouseUpLeft = this.mouseUpLeft.bind(this)
+    this.mouseUp = this.mouseUp.bind(this)
     this.mouseDownRight= this.mouseDownRight.bind(this)
-    this.mouseUpRight = this.mouseUpRight.bind(this)
     
     this.state = {
       intervalCount: 0,
@@ -117,40 +118,28 @@ class Banner extends Component {
 
 
   mouseDownLeft() {
-    //   const left = setInterval(() => {
-    //     if(this.state.scrollTo > -this.props.games.length*120) {
-    //       this.setState({ scrollTo: this.state.scrollTo - 10 })
-    //     }
-    //   }, 20)
-    // this.setState({ intervalCount: this.state.intervalCount + 1})
-      const right = setInterval(() => {
-        if(this.state.scrollTo < 0) {
-          this.setState({ scrollTo: this.state.scrollTo + 10 })
-        }
-      }, 20)
-      this.setState({ intervalCount: this.state.intervalCount + 1})
+    if(test) clearInterval(test)
+    test = setInterval(() => {
+      if(this.state.scrollTo < 0) {
+        this.setState({ scrollTo: this.state.scrollTo + 10 })
+      }
+    }, 20)
+    this.setState({ intervalCount: this.state.intervalCount + 1})
   }
 
-  mouseUpLeft() { 
-    clearInterval(this.state.intervalCount)
+  mouseUp() { 
+    clearInterval(test)
   }
 
   mouseDownRight() {
-    //   const right = setInterval(() => {
-    //     if(this.state.scrollTo < 0) {
-    //       this.setState({ scrollTo: this.state.scrollTo + 10 })
-    //     }
-    //   }, 20)
-    // this.setState({ intervalCount: this.state.intervalCount + 1})
-    const left = setInterval(() => {
+    if(test) clearInterval(test)
+    test = setInterval(() => {
       if(this.state.scrollTo > -this.props.games.length*120) {
         this.setState({ scrollTo: this.state.scrollTo - 10 })
       }
     }, 20)
     this.setState({ intervalCount: this.state.intervalCount + 1})
   }
-
-  mouseUpRight(event) { clearInterval(this.state.intervalCount) }
 
   componentDidMount() {
     if(this.props.activeSport !== 'golf') {
@@ -214,6 +203,7 @@ class Banner extends Component {
         scrollLeft={this.state.scrollLeft}
         scrollRight={this.state.scrollRight}
         scrollTo={this.state.scrollTo}
+        onMouseUp={this.mouseUp}
       >
         <Menu dropDown={this.state.dropDown}>
           <BannerSelect handleClick={this.handleDropDownClick} triangle={this.renderTriangle()}/>
@@ -231,12 +221,12 @@ class Banner extends Component {
           <div>
           <LeftClickScrollContainer
             onMouseDown={this.mouseDownLeft}
-            onMouseUp={this.mouseUpLeft}
+            onMouseUp={this.mouseUp}
           >
             {'<'}
           </LeftClickScrollContainer>
 
-          <RightClickScrollContainer onMouseDown={this.mouseDownRight} onMouseUp={this.mouseUpRight}>
+          <RightClickScrollContainer onMouseDown={this.mouseDownRight} onMouseUp={this.mouseUp}>
             {'>'}
           </RightClickScrollContainer>
           </div>
