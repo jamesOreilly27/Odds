@@ -8,7 +8,6 @@ export const processTime = dateString => {
   let hours = date.getHours()
   //subtract by 12 to convert to 12 hour time
   if(hours > 12) hours = hours - 12
-  console.log('HOURS', hours)
 
   //convert the UTC 12 hour clock to EST
     //If 4 or less, add 8 to roll back into the 12 hour clock. 0 hour(midnight) becomes 8PM instead of -4

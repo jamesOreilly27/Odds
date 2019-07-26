@@ -142,6 +142,7 @@ class Banner extends Component {
   }
 
   componentDidMount() {
+    top.postMessage(`${this.props.activeSport}`, '*')
     if(this.props.activeSport !== 'golf') {
 
       this.props.getOdds(this.props.activeSport)
@@ -175,6 +176,7 @@ class Banner extends Component {
   
   componentDidUpdate(prevProps) {
     if(this.props.activeSport !== prevProps.activeSport) {
+      top.postMessage(`${this.props.activeSport}`, '*')
       if(this.props.activeSport !== 'golf') {
         this.props.getOdds(this.props.activeSport)
         .then(() => {
