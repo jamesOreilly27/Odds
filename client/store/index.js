@@ -22,6 +22,8 @@ const store = createStore(reducer, middleware)
 export * from './odds'
 export * from './activeSport'
 export * from './games'
+export * from './finalGames'
+export * from './nonFinalGames'
 export * from './singleGame'
 export * from './results'
 
