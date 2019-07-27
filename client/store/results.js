@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { API_URL } from '../../secrets'
 
 const GOT_RESULTS = 'GOT_RESULTS'
 
@@ -8,7 +9,7 @@ const gotResults = results => ({
 })
 
 export const gotResultsThunk = sport => dispatch =>
-  axios.get(`/api/margretthatcher/tastytendies/results/${sport}`)
+  axios.get(`${API_URL}/results/${sport}`)
   .then(res => dispatch(gotResults(res.data)))
   .catch(err => dispatch(gotResults(err)))
 
