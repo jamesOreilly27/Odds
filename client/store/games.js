@@ -13,7 +13,7 @@ export const getGamesThunk = sport => dispatch =>
   .then(res => dispatch(gotGames(res.data)))
   .catch(err => dispatch(gotGames(err)))
 
-const reducer = (finalGames = [], action) => {
+const reducer = (games = [], action) => {
   switch(action.type) {
     case GOT_GAMES:
       return action.payload
