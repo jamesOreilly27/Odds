@@ -237,7 +237,7 @@ class Banner extends Component {
         <MatchContainer id="match-container" dropDown={this.state.dropDown}>
           {this.props.nonFinalGames &&
             this.props.activeSport !== 'golf' ?
-            getDatesArray(this.props.nonFinalGamesr).map(date => {
+            getDatesArray(this.props.nonFinalGames).map(date => {
               if(truncateTeamName(this.props.activeSport, this.props.nonFinalGames[0]['HomeTeam'])) {
                 return <DateSection key={date} date={date} games={sortGamesByTime(filterOddsByDay(this.props.nonFinalGames, date))} />
               }
