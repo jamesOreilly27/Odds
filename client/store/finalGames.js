@@ -13,12 +13,12 @@ export const getFinalGames = sport => dispatch =>
   .then(res => dispatch(gotFinalGames(res.data)))
   .catch(err => dispatch(gotFinalGames(err)))
 
-const reducer = (games = [], action) => {
+const reducer = (finalGames = [], action) => {
   switch(action.type) {
     case GOT_FINAL_GAMES:
       return action.payload
     default:
-      return games
+      return finalGames
   }
 }
 

@@ -7,8 +7,10 @@ import activeSport from './activeSport'
 import games from './games'
 import singleGame from './singleGame'
 import results from './results'
+import finalGames from './finalGames'
+import nonFinalGames from './nonFinalGames'
 
-const reducer = combineReducers({ odds, activeSport, games, results, singleGame })
+const reducer = combineReducers({ odds, activeSport, games, results, singleGame, finalGames, nonFinalGames })
 
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
