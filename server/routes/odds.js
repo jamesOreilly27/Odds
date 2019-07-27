@@ -65,6 +65,14 @@ router.post('/:sport/games', (req, res, next) => {
     AwayScore: req.body.AwayScore,
     Final: req.body.Final
   }
+
+  router.get('/:sport/games/notfinal', (req, res, next) => {
+    Game.findAll({
+      where: { Sport: req.params.sport, Final: false }
+    })
+    .then(games => res.json(games))
+    .catch(next)
+  })
   console.log(chalk.green.bgWhite.bold(game.MatchTime))
   console.log(chalk.red.bgWhite.bold(game.HomeTeam))
   console.log(chalk.red.bgWhite.bold(game.HomeScore))
