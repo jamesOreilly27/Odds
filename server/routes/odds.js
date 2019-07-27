@@ -33,16 +33,6 @@ const chooseId = obj => {
   }
 }
 
-router.get('/:sport/:final', (req, res, next) => {
-  let final
-  req.params.final === 'final' ? final = true : final = false
-  Game.findAll({
-    where: { Sport: req.params.sport, Final: final }
-  })
-  .then(games => res.json(games))
-  .catch(next)
-})
-
 router.get('/:sport', (req, res, next) => {
   const sportString = req.params.sport
   jsonOdds.get(`https://jsonodds.com/api/odds/${sportString}?oddType=Game`)
@@ -59,6 +49,15 @@ router.get('/:sport/games', (req, res, next) => {
   .catch(next)
 })
 
+router.get('/:sport/:final', (req, res, next) => {
+  let final
+  req.params.final === 'final' ? final = true : final = false
+  Game.findAll({
+    where: { Sport: req.params.sport, Final: final }
+  })
+  .then(games => res.json(games))
+  .catch(next)
+})
 router.post('/:sport/games', (req, res, next) => {
   const game = {
     Sport: req.params.sport,
