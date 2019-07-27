@@ -14,7 +14,7 @@ const Wrapper = styled(FlexRowContainer)`
   background-color: #FFF;
 `
 const LogoSwitchWrapper = styled(FlexRowContainer)`
-
+  font-weight: bold;
 `
 
 const Score = styled(FlexRowContainer)`
@@ -34,21 +34,19 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
         {processDayMonthTime(match)}
       </WidgetGameDate>
       <WidgetTeamDetails>
-        {truncateTeamName(activeSport, match.HomeTeam) && 
+        {truncateTeamName(activeSport, match.AwayTeam) && 
           <LogoSwitchWrapper>
-            <ROT>{match.HomeROT}</ROT>
-            <img src={require(`../../public/assets/${activeSport}-logos/${truncateTeamName(activeSport, match.HomeTeam)}.png`)} />
-            <div>{truncateTeamName(activeSport, match.HomeTeam)}</div>
+            <img src={require(`../../public/assets/${activeSport}-logos/${truncateTeamName(activeSport, match.AwayTeam)}.png`)} />
+            <div>{truncateTeamName(activeSport, match.AwayTeam)}</div>
           </LogoSwitchWrapper>
         }
         <Score> 0 </Score>
       </WidgetTeamDetails>
       <WidgetTeamDetails>
-        {truncateTeamName(activeSport, match.AwayTeam) && 
+        {truncateTeamName(activeSport, match.HomeTeam) && 
           <LogoSwitchWrapper>
-            <ROT>{match.AwayROT}</ROT>
-            <img src={require(`../../public/assets/${activeSport}-logos/${truncateTeamName(activeSport, match.AwayTeam)}.png`)} />
-            <div>{truncateTeamName(activeSport, match.AwayTeam)}</div>
+            <img src={require(`../../public/assets/${activeSport}-logos/${truncateTeamName(activeSport, match.HomeTeam)}.png`)} />
+            <div>{truncateTeamName(activeSport, match.HomeTeam)}</div>
           </LogoSwitchWrapper>
         }
         <Score> 0 </Score>

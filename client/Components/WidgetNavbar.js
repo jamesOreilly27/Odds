@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { SelectOption } from '../Components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton, FlexRowButton } from './baseComponents'
 
-const Wrapper = styled(FlexRowButton)`
+const Wrapper = styled(FlexRowContainer)`
   width: 98vw;
   height: 10vh;
   border-top: 3px solid #EDEDF2;

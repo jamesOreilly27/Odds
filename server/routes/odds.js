@@ -15,6 +15,24 @@ const upsert = (values, condition) => {
   .catch(err => console.log(err))
 }
 
+const chooseOdds = (obj, string) => {
+  if(obj.Odds) {
+    return obj.Odds[0][string]
+  }
+  else {
+    return obj[string]
+  }
+}
+
+const chooseId = obj => {
+  if(obj.ID) {
+    return obj.ID
+  }
+  else {
+    return obj.MatchId
+  }
+}
+
 router.get('/:sport', (req, res, next) => {
   const sportString = req.params.sport
   jsonOdds.get(`https://jsonodds.com/api/odds/${sportString}?oddType=Game`)
@@ -25,23 +43,38 @@ router.get('/:sport', (req, res, next) => {
 
 router.get('/:sport/games', (req, res, next) => {
   Game.findAll({
-    where: { Final: false }
+    where: { Sport: req.params.sport }
   })
   .then(games => res.json(games))
   .catch(next)
 })
 
+router.get('/:sport/:final', (req, res, next) => {
+  let final
+  req.params.final === 'final' ? final = true : final = false
+  Game.findAll({
+    where: { Sport: req.params.sport, Final: final }
+  })
+  .then(games => res.json(games))
+  .catch(next)
+})
 router.post('/:sport/games', (req, res, next) => {
-  console.log(req.body)
   const game = {
-    MatchId: req.body.ID,
+    Sport: req.params.sport,
+    MatchId: chooseId(req.body),
     MatchTime: req.body.MatchTime,
+    MoneyLineHome: chooseOdds(req.body, 'MoneyLineHome'),
+    PointSpreadHome: chooseOdds(req.body, 'PointSpreadHome'),
+    MoneyLineAway: chooseOdds(req.body, 'MoneyLineAway'),
+    PointSpreadAway: chooseOdds(req.body, 'PointSpreadAway'),
+    TotalNumber: chooseOdds(req.body, 'TotalNumber'),
     HomeTeam: req.body.HomeTeam,
     AwayTeam: req.body.AwayTeam,
     HomeScore: req.body.HomeScore,
     AwayScore: req.body.AwayScore,
     Final: req.body.Final
   }
+
 
   upsert(game, { MatchId: game.MatchId })
   .then(game => res.json(game))

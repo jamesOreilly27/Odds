@@ -15,10 +15,6 @@ const Main = () => {
       <Switch>
         <Route exact path='/widget/banner' component={Banner} />
         <Route exact path='/widget/threeteam' component={ThreeTeamWidget} />
-        {/* <BannerWrapper>
-          <Banner />
-        </BannerWrapper> */}
-        {/* <ThreeTeamWidget /> */}
       </Switch>
     </Router>
     )

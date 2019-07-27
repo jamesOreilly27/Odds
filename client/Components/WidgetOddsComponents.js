@@ -16,8 +16,7 @@ export const TotalsNum = styled(FlexColumnContainer)`
   font-size: 14px;
   width: 100%;
   padding-top: 16px;
-  align-items: flex-end;
-  margin-right: 4vw;
+  margin-right: 3vw;
 `
 
 export const TotalsLines = styled(FlexRowContainer)`

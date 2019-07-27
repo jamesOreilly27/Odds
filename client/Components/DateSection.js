@@ -22,12 +22,12 @@ const GamesContainer = styled(FlexRowContainer)`
 const DateSection = props => (
   <Wrapper>
     <DateContainer>
-      <div>{convertMonthNumToWord(new Date(props.odds[0]['MatchTime']).getMonth())}</div>
+      <div>{convertMonthNumToWord(new Date(props.games[0]['MatchTime']).getMonth())}</div>
       <div>{props.date}</div>
     </DateContainer>
 
     <GamesContainer>
-      {props.odds.map(match => <Match key={match.id} match={match} /> )}
+      {props.games.map(match => <Match key={match.id} match={match} /> )}
     </GamesContainer>
   </Wrapper>
 )

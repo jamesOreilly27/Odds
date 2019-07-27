@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk } from '../store'
-import { Match, BannerSelect, SelectOption, DateSection } from '../Components'
+import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk, getGamesThunk, getFinalGamesThunk, getNonFinalGamesThunk } from '../store'
+import { Match, BannerSelect, SelectOption, DateSection, GolfContainer } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
-import { getDatesArray, filterOddsByDay, truncateTeamName, findResult } from './helpers'
+import { getDatesArray, filterOddsByDay, truncateTeamName, findResult, sortGamesByTime } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
   align-items: flex-start;
@@ -78,21 +78,22 @@ const RightClickScrollContainer = styled(ClickScrollContainer)`
   top: 7px;
 `
 
+let test;
+
 class Banner extends Component {
   constructor(props) {
     super(props)
     this.handleDropDownClick = this.handleDropDownClick.bind(this)
     this.handleSelectClick = this.handleSelectClick.bind(this)
     this.mouseDownLeft= this.mouseDownLeft.bind(this)
-    this.mouseUpLeft = this.mouseUpLeft.bind(this)
+    this.mouseUp = this.mouseUp.bind(this)
     this.mouseDownRight= this.mouseDownRight.bind(this)
-    this.mouseUpRight = this.mouseUpRight.bind(this)
     
     this.state = {
-      intervalCount: 1,
+      intervalCount: 0,
       scrollTo: 0,
       dropDown: false,
-      options: [ 'mlb', 'nfl', 'nba', 'nhl', 'golf' ]
+      options: [ 'mlb', 'nfl', 'nba', 'nhl' ]
     }
   }
 
@@ -117,60 +118,94 @@ class Banner extends Component {
 
 
   mouseDownLeft() {
-      const left = setInterval(() => {
-        if(this.state.scrollTo > -this.props.odds.length*73.8888888888) {
-          this.setState({ scrollTo: this.state.scrollTo - 10 })
-        }
-      }, 20)
+    if(test) clearInterval(test)
+    test = setInterval(() => {
+      if(this.state.scrollTo < 0) {
+        this.setState({ scrollTo: this.state.scrollTo + 10 })
+      }
+    }, 20)
     this.setState({ intervalCount: this.state.intervalCount + 1})
   }
 
-  mouseUpLeft() { 
-    clearInterval(this.state.intervalCount)
+  mouseUp() { 
+    clearInterval(test)
   }
 
   mouseDownRight() {
-      const right = setInterval(() => {
-        if(this.state.scrollTo < 0) {
-          this.setState({ scrollTo: this.state.scrollTo + 10 })
-        }
-      }, 20)
+    if(test) clearInterval(test)
+    test = setInterval(() => {
+      if(this.state.scrollTo > -this.props.games.length*120) {
+        this.setState({ scrollTo: this.state.scrollTo - 10 })
+      }
+    }, 20)
     this.setState({ intervalCount: this.state.intervalCount + 1})
   }
 
-  mouseUpRight(event) { clearInterval(this.state.intervalCount) }
-
   componentDidMount() {
-    this.props.getOdds(this.props.activeSport)
-    .then(() => {
-      return this.props.getResults(this.props.activeSport)
-    })
-    .then(res => res.payload)
-    .then(results => {
-      this.props.odds.forEach(game => {
-        this.props.createGame(this.props.activeSport, game, findResult(game.ID, results))
-      })
-    })
-    .catch(err => console.log(err))
-  }
+    top.postMessage(`${this.props.activeSport}`, '*')
+    if(this.props.activeSport !== 'golf') {
 
-  componentDidUpdate(prevProps) {
-    if(this.props.activeSport !== prevProps.activeSport) {
       this.props.getOdds(this.props.activeSport)
       .then(() => {
-        this.props.getResults(this.props.activeSport)
+        return this.props.getResults(this.props.activeSport)
       })
+      .then(res => res.payload)
+      .then(results => {
+        this.props.odds.forEach(game => {
+          this.props.createGame(this.props.activeSport, game, findResult(game.ID, results))
+        })
+      })
+      .then(() => {
+        return this.props.getGames(this.props.activeSport)
+      })
+      .then(action => action.payload)
+      .then(games => {
+        this.props.games.forEach(game => {
+          this.props.createGame(this.props.activeSport, game, findResult(game.MatchId, this.props.results))
+        })
+      })
+      .then(() => {
+        this.props.getAllGameTypes(this.props.activeSport)
+      })
+      .catch(err => console.log(err))
+    }
+    else {
+      this.props.getOdds(this.props.activeSport)
+    }
+  }
+  
+  componentDidUpdate(prevProps) {
+    if(this.props.activeSport !== prevProps.activeSport) {
+      top.postMessage(`${this.props.activeSport}`, '*')
+      if(this.props.activeSport !== 'golf') {
+        this.props.getOdds(this.props.activeSport)
+        .then(() => {
+          return this.props.getResults(this.props.activeSport)
+        })
+        .then(res => res.payload)
+        .then(results => {
+          this.props.odds.forEach(game => {
+            this.props.createGame(this.props.activeSport, game, findResult(game.ID, results))
+          })
+        })
+        .then(() => {
+          this.props.getAllGameTypes(this.props.activeSport)
+        })
+        .catch(err => console.log(err))
+      }
+      else {
+        this.props.getOdds(this.props.activeSport)
+      }
     }
   }
 
   render() {
-    let left;
-    if(this.props.odds) filterOddsByDay(this.props.odds, new Date().getDate() + 1)
     return (
       <BannerContainer
         scrollLeft={this.state.scrollLeft}
         scrollRight={this.state.scrollRight}
         scrollTo={this.state.scrollTo}
+        onMouseUp={this.mouseUp}
       >
         <Menu dropDown={this.state.dropDown}>
           <BannerSelect handleClick={this.handleDropDownClick} triangle={this.renderTriangle()}/>
@@ -184,28 +219,31 @@ class Banner extends Component {
               </OptionsContainer>
             }
         </Menu>
-        {this.props.odds && 
+        {this.props.nonFinalGames && 
           <div>
           <LeftClickScrollContainer
             onMouseDown={this.mouseDownLeft}
-            onMouseUp={this.mouseUpLeft}
+            onMouseUp={this.mouseUp}
           >
             {'<'}
           </LeftClickScrollContainer>
 
-          <RightClickScrollContainer onMouseDown={this.mouseDownRight} onMouseUp={this.mouseUpRight}>
+          <RightClickScrollContainer onMouseDown={this.mouseDownRight} onMouseUp={this.mouseUp}>
             {'>'}
           </RightClickScrollContainer>
           </div>
         }
 
         <MatchContainer id="match-container" dropDown={this.state.dropDown}>
-          {this.props.odds &&
-            getDatesArray(this.props.odds).map(date => {
-              if(truncateTeamName(this.props.activeSport, this.props.odds[0]['HomeTeam'])) {
-                return <DateSection key={date} date={date} odds={filterOddsByDay(this.props.odds, date)} />
+          {this.props.nonFinalGames &&
+            this.props.activeSport !== 'golf' ?
+            getDatesArray(this.props.nonFinalGames).map(date => {
+              if(truncateTeamName(this.props.activeSport, this.props.nonFinalGames[0]['HomeTeam'])) {
+                return <DateSection key={date} date={date} games={sortGamesByTime(filterOddsByDay(this.props.nonFinalGames, date))} />
               }
             })
+            :
+            <GolfContainer odds={this.props.odds} />
           }
         </MatchContainer>
       </BannerContainer>
@@ -227,6 +265,15 @@ const mapDispatch = dispatch => ({
   },
   getResults(sport) {
     return dispatch(gotResultsThunk(sport))
+  },
+  getGames(sport) {
+    return dispatch(getGamesThunk(sport))
+  },
+  getAllGameTypes(sport) {
+    return dispatch(getGamesThunk(sport))
+    .then(() => dispatch(getFinalGamesThunk(sport)))
+    .then(() => dispatch(getNonFinalGamesThunk(sport)))
+    .catch(error => console.log(error))
   }
 })
 

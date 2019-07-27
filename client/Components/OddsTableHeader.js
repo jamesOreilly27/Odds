@@ -7,6 +7,7 @@ const Wrapper = styled(FlexRowContainer)`
   width: 98vw;
   height: 5.5vh;
   font-size: 15px;
+  font-weight: bold;
   justify-content: space-between;
   background-color: #FFF;
 `
@@ -26,7 +27,7 @@ const OddContainer = styled(FlexColumnContainer)`
 `
 
 const Schedule = styled(OddContainer)`
-  padding-left: 4vw;
+  padding-left: 2vw;
 `
 
 const OddsTableHeader = props => (

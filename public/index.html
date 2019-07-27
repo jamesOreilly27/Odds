@@ -6,8 +6,24 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <title>Boilerplate</title>
     <script defer src="/bundle.js"></script>
+    <script defer>
+      function receive() {
+        window.addEventListener('message', receiveMessage, false);
+      }
+      
+        function receiveMessage(event) {
+        if(event.origin !== 'https://a05eb17f.ngrok.io') return
+        if(event.data === 'mlb' || event.data === 'nfl' || event.data === 'nba' || event.data === 'nhl') {
+          send(event.data)
+        }
+      }
+
+      function send(msg) {
+        parent.postMessage(msg, '*');
+      }
+  </script>
   </head>
-  <body style="margin: 0;">
+  <body id="body-app" style="margin: 0;" onload="send()" onmessage="receive()">
     <div id="app"></div>
   </body>
 </html>
