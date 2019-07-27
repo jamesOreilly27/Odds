@@ -8,7 +8,7 @@ const gotNonFinalGames = games => ({
   payload: games
 })
 
-export const getNonFinalGames = sport => dispatch =>
+export const getNonFinalGamesThunk = sport => dispatch =>
   axios.get(`${API_URL}/odds/${sport}/nonfinal`)
   .then(res => dispatch(gotNonFinalGames(res.data)))
   .catch(err => dispatch(gotNonFinalGames(err)))

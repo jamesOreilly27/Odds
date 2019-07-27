@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk, getGamesThunk } from '../store'
+import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk, getGamesThunk, getFinalGamesThunk, getNonFinalGamesThunk } from '../store'
 import { Match, BannerSelect, SelectOption, DateSection, GolfContainer } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
@@ -165,7 +165,7 @@ class Banner extends Component {
         })
       })
       .then(() => {
-        this.props.getGames(this.props.activeSport)
+        this.props.getAllGameTypes(this.props.activeSport)
       })
       .catch(err => console.log(err))
     }
@@ -189,7 +189,7 @@ class Banner extends Component {
           })
         })
         .then(() => {
-          this.props.getGames(this.props.activeSport)
+          this.props.getAllGameTypes(this.props.activeSport)
         })
         .catch(err => console.log(err))
       }
@@ -219,7 +219,7 @@ class Banner extends Component {
               </OptionsContainer>
             }
         </Menu>
-        {this.props.games && 
+        {this.props.nonFinalGames && 
           <div>
           <LeftClickScrollContainer
             onMouseDown={this.mouseDownLeft}
@@ -235,11 +235,11 @@ class Banner extends Component {
         }
 
         <MatchContainer id="match-container" dropDown={this.state.dropDown}>
-          {this.props.games &&
+          {this.props.nonFinalGames &&
             this.props.activeSport !== 'golf' ?
-            getDatesArray(this.props.games).map(date => {
-              if(truncateTeamName(this.props.activeSport, this.props.games[0]['HomeTeam'])) {
-                return <DateSection key={date} date={date} games={sortGamesByTime(filterOddsByDay(this.props.games, date))} />
+            getDatesArray(this.props.nonFinalGamesr).map(date => {
+              if(truncateTeamName(this.props.activeSport, this.props.nonFinalGames[0]['HomeTeam'])) {
+                return <DateSection key={date} date={date} games={sortGamesByTime(filterOddsByDay(this.props.nonFinalGames, date))} />
               }
             })
             :
@@ -268,6 +268,12 @@ const mapDispatch = dispatch => ({
   },
   getGames(sport) {
     return dispatch(getGamesThunk(sport))
+  },
+  getAllGameTypes(sport) {
+    return dispatch(getGamesThunk(sport))
+    .then(() => dispatch(getFinalGamesThunk(sport)))
+    .then(() => dispatch(getNonFinalGamesThunk(sport)))
+    .catch(error => console.log(error))
   }
 })
 
