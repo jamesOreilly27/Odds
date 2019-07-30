@@ -1,3 +1,5 @@
+const Dotenv = require('dotenv-webpack');
+
 module.exports = {
   entry: './client/index.js',
   output: {
@@ -21,5 +23,14 @@ module.exports = {
        loader: 'url-loader'
       }
     ]
-  }
+  },
+  plugins: [
+    new Dotenv({
+      path: './.env',
+      safe: true,
+      systemvars: true,
+      silent: false,
+      defaults: false
+    })
+  ]
 }
