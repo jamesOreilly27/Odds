@@ -11,11 +11,11 @@ const Wrapper = styled(FlexColumnContainer)`
   margin-top: -30px;
 `
 
-const ThreeTeamOddsTable = ({ odds, activeSport }) => (
+const ThreeTeamOddsTable = ({ games, activeSport }) => (
   <Wrapper>
-    {firstNumItems(odds, 5) && truncateTeamName(activeSport, odds[0]['HomeTeam']) &&
+    {firstNumItems(games, 5) && truncateTeamName(activeSport, games[0]['HomeTeam']) &&
       <div>
-        {firstNumItems(odds, 5).map(match => <WidgetTeamMatch key={match.Id} match={match} activeSport={activeSport} />)}
+        {firstNumItems(games, 5).map(match => <WidgetTeamMatch key={match.Id} match={match} activeSport={activeSport} />)}
       </div>
     }
   </Wrapper>

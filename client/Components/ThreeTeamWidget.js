@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
 import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk, getGamesThunk, getFinalGamesThunk, getNonFinalGamesThunk } from '../store'
-import { truncateTeamName, findResult } from './helpers'
+import { truncateTeamName, findResult, sortGamesByTime } from './helpers'
 import { WidgetNavbar, ThreeTeamOddsTable, OddsTableHeader } from '../Components'
 
 const Wrapper = styled(FlexColumnContainer)`
@@ -81,8 +81,8 @@ class ThreeTeamWidget extends Component {
       <Wrapper>
         <WidgetNavbar options={this.state.options} handleClick={this.props.updateSport} />
           <OddsTableHeader />
-          {this.props.odds &&
-            <ThreeTeamOddsTable odds={this.props.odds} activeSport={this.props.activeSport} />
+          {this.props.nonFinalGames &&
+            <ThreeTeamOddsTable games={sortGamesByTime((this.props.nonFinalGames))} activeSport={this.props.activeSport} />
           }
       </Wrapper>
     )

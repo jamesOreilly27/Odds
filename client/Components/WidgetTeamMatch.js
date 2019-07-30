@@ -29,6 +29,7 @@ const OddsContainer = styled(FlexRowContainer)`
 
 const WidgetTeamMatch = ({ activeSport, match }) => (
   <Wrapper>
+    {console.log('MATCH', match)}
     <WidgetTeamsWrapper>
       <WidgetGameDate>
         {processDayMonthTime(match)}
@@ -54,8 +55,8 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
     </WidgetTeamsWrapper>
 
     <OddsContainer>
-      <WidgetMatchOdds lines={match.Odds} />
-      <TotalsContainer lines={match.Odds} />
+      <WidgetMatchOdds lines={{ MoneyLineHome: match.MoneyLineHome, MoneyLineAway: match.MoneyLineAway, PointSpreadHome: match.PointSpreadHome, PointSpreadAway: match.PointSpreadAway}} />
+      <TotalsContainer totalNum={match.TotalNumber} />
     </OddsContainer>
   </Wrapper>
 )
