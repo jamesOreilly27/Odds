@@ -13,16 +13,15 @@ const Wrapper = styled(FlexColumnContainer)`
 `
 
 const WidgetMatchOdds = ({ lines }) => {
-  const theLines = lines[0]
   return (
     <Wrapper>
       <TeamOdds>
-        <TeamOddsItem>{addPlus(theLines.MoneyLineHome)}</TeamOddsItem>
-        <TeamOddsItem>{addPlus(theLines.PointSpreadHome)}</TeamOddsItem>
+        <TeamOddsItem>{addPlus(lines.MoneyLineHome)}</TeamOddsItem>
+        <TeamOddsItem>{addPlus(lines.PointSpreadHome)}</TeamOddsItem>
       </TeamOdds>
       <TeamOdds>
-        <TeamOddsItem>{addPlus(theLines.MoneyLineAway)}</TeamOddsItem>
-        <TeamOddsItem>{addPlus(theLines.PointSpreadAway)}</TeamOddsItem>
+        <TeamOddsItem>{addPlus(lines.MoneyLineAway)}</TeamOddsItem>
+        <TeamOddsItem>{addPlus(lines.PointSpreadAway)}</TeamOddsItem>
       </TeamOdds>
     </Wrapper>
   )

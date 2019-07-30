@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
-import { fetchOddsBySport, updateActiveSport } from '../store'
-import { truncateTeamName } from './helpers'
+import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk, getGamesThunk, getFinalGamesThunk, getNonFinalGamesThunk } from '../store'
+import { truncateTeamName, findResult, sortGamesByTime } from './helpers'
 import { WidgetNavbar, ThreeTeamOddsTable, OddsTableHeader } from '../Components'
 
 const Wrapper = styled(FlexColumnContainer)`
@@ -24,11 +24,55 @@ class ThreeTeamWidget extends Component {
 
   componentDidMount() {
     this.props.getOdds(this.props.activeSport)
+    .then(() => {
+      return this.props.getResults(this.props.activeSport)
+    })
+    .then(res => res.payload)
+    .then(results => {
+      this.props.odds.forEach(game => {
+        this.props.createGame(this.props.activeSport, game, findResult(game.ID, results))
+      })
+    })
+    .then(() => {
+      return this.props.getGames(this.props.activeSport)
+    })
+    .then(action => action.payload)
+    .then(games => {
+      this.props.games.forEach(game => {
+        this.props.createGame(this.props.activeSport, game, findResult(game.MatchId, this.props.results))
+      })
+    })
+    .then(() => {
+      this.props.getAllGameTypes(this.props.activeSport)
+    })
+    .catch(err => console.log(err))
   }
 
   componentDidUpdate(prevProps) {
     if(this.props.activeSport !== prevProps.activeSport) {
       this.props.getOdds(this.props.activeSport)
+      .then(() => {
+        return this.props.getResults(this.props.activeSport)
+      })
+      .then(res => res.payload)
+      .then(results => {
+        this.props.odds.forEach(game => {
+          this.props.createGame(this.props.activeSport, game, findResult(game.ID, results))
+        })
+      })
+      .then(() => {
+        return this.props.getGames(this.props.activeSport)
+      })
+      .then(action => action.payload)
+      .then(games => {
+        this.props.games.forEach(game => {
+          this.props.createGame(this.props.activeSport, game, findResult(game.MatchId, this.props.results))
+        })
+      })
+      .then(() => {
+        this.props.getAllGameTypes(this.props.activeSport)
+      })
+      .catch(err => console.log(err))
     }
   }
 
@@ -37,8 +81,8 @@ class ThreeTeamWidget extends Component {
       <Wrapper>
         <WidgetNavbar options={this.state.options} handleClick={this.props.updateSport} />
           <OddsTableHeader />
-          {this.props.odds &&
-            <ThreeTeamOddsTable odds={this.props.odds} activeSport={this.props.activeSport} />
+          {this.props.nonFinalGames &&
+            <ThreeTeamOddsTable games={sortGamesByTime((this.props.nonFinalGames))} activeSport={this.props.activeSport} />
           }
       </Wrapper>
     )
@@ -53,6 +97,21 @@ const mapDispatch = dispatch => ({
   },
   updateSport(sportString) {
     return dispatch(updateActiveSport(sportString))
+  },
+  createGame(sport, game, result) {
+    return dispatch(createGameThunk(sport, game, result))
+  },
+  getResults(sport) {
+    return dispatch(gotResultsThunk(sport))
+  },
+  getGames(sport) {
+    return dispatch(getGamesThunk(sport))
+  },
+  getAllGameTypes(sport) {
+    return dispatch(getGamesThunk(sport))
+    .then(() => dispatch(getFinalGamesThunk(sport)))
+    .then(() => dispatch(getNonFinalGamesThunk(sport)))
+    .catch(error => console.log(error))
   }
 })
 

@@ -9,11 +9,10 @@ const Wrapper = styled(FlexColumnContainer)`
   width: 8vw;
 `
 
-const TotalsContainer = ({ lines }) => {
-  const theLines = lines[0]
+const TotalsContainer = ({ totalNum }) => {
   return (
     <Wrapper>
-      <TotalsNum>{theLines.TotalNumber}</TotalsNum>
+      <TotalsNum>{totalNum}</TotalsNum>
     </Wrapper>
   )
 }

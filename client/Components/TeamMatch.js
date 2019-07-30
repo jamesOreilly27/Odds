@@ -58,8 +58,8 @@ const TeamMatch = props => (
         }
       </DetailContainer>
       <TeamOddsContainer>
-        <div>{oddsOrScore(props.activeSport, props.match, props.match.HomeScore, true)}</div>
         <div>{oddsOrScore(props.activeSport, props.match, props.match.AwayScore, false)}</div>
+        <div>{oddsOrScore(props.activeSport, props.match, props.match.HomeScore, true)}</div>
       </TeamOddsContainer>
     </TeamGameDetails>
   </TeamGameWrapper>

@@ -31,7 +31,11 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
   <Wrapper>
     <WidgetTeamsWrapper>
       <WidgetGameDate>
-        {processDayMonthTime(match)}
+        {match.HomeScore === null ?
+          processDayMonthTime(match)
+          :
+          <div>In Progress</div>
+        }
       </WidgetGameDate>
       <WidgetTeamDetails>
         {truncateTeamName(activeSport, match.AwayTeam) && 
@@ -40,7 +44,7 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
             <div>{truncateTeamName(activeSport, match.AwayTeam)}</div>
           </LogoSwitchWrapper>
         }
-        <Score> 0 </Score>
+        <Score> {match.AwayScore} </Score>
       </WidgetTeamDetails>
       <WidgetTeamDetails>
         {truncateTeamName(activeSport, match.HomeTeam) && 
@@ -49,13 +53,13 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
             <div>{truncateTeamName(activeSport, match.HomeTeam)}</div>
           </LogoSwitchWrapper>
         }
-        <Score> 0 </Score>
+        <Score> {match.HomeScore} </Score>
       </WidgetTeamDetails>
     </WidgetTeamsWrapper>
 
     <OddsContainer>
-      <WidgetMatchOdds lines={match.Odds} />
-      <TotalsContainer lines={match.Odds} />
+      <WidgetMatchOdds lines={{ MoneyLineHome: match.MoneyLineHome, MoneyLineAway: match.MoneyLineAway, PointSpreadHome: match.PointSpreadHome, PointSpreadAway: match.PointSpreadAway}} />
+      <TotalsContainer totalNum={match.TotalNumber} />
     </OddsContainer>
   </Wrapper>
 )
