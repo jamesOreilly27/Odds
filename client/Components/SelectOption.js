@@ -10,6 +10,12 @@ const Wrapper = styled(FlexColumnContainer)`
     location ? color = '#0A0A0A' : color = '#F8F8FF'
     return color;
   }};
+  :hover {
+    background-color: ${({ location }) => {
+      if(location !== 'three-team') return '#5A696F'
+    }}
+    transition: all .8s;
+   }
   width: 50%;
 `
 
