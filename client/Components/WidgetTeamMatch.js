@@ -32,7 +32,11 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
     {console.log('MATCH', match)}
     <WidgetTeamsWrapper>
       <WidgetGameDate>
-        {processDayMonthTime(match)}
+        {match.HomeScore === null ?
+          processDayMonthTime(match)
+          :
+          <div>In Progress</div>
+        }
       </WidgetGameDate>
       <WidgetTeamDetails>
         {truncateTeamName(activeSport, match.AwayTeam) && 
@@ -41,7 +45,7 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
             <div>{truncateTeamName(activeSport, match.AwayTeam)}</div>
           </LogoSwitchWrapper>
         }
-        <Score> 0 </Score>
+        <Score> {match.AwayScore} </Score>
       </WidgetTeamDetails>
       <WidgetTeamDetails>
         {truncateTeamName(activeSport, match.HomeTeam) && 
@@ -50,7 +54,7 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
             <div>{truncateTeamName(activeSport, match.HomeTeam)}</div>
           </LogoSwitchWrapper>
         }
-        <Score> 0 </Score>
+        <Score> {match.HomeScore} </Score>
       </WidgetTeamDetails>
     </WidgetTeamsWrapper>
 
