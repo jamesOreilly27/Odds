@@ -27,6 +27,13 @@ const Container = styled(FlexButton)`
     else return 'none'
   }}
   font-weight: bold;
+  :hover {
+    border-bottom: ${({ location }) => {
+      if(location === 'three-team') return '3px solid black'
+      else return 'none'
+    }}
+    transition: all .05s;
+  }
 `
 
 class SelectOption extends Component {
