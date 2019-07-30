@@ -29,7 +29,6 @@ const OddsContainer = styled(FlexRowContainer)`
 
 const WidgetTeamMatch = ({ activeSport, match }) => (
   <Wrapper>
-    {console.log('MATCH', match)}
     <WidgetTeamsWrapper>
       <WidgetGameDate>
         {match.HomeScore === null ?
