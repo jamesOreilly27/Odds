@@ -15,7 +15,30 @@ class SportsScore extends Component {
   }
 
   componentDidMount() {
-    this.props.getOdds(this.props.match.params.sport)
+    const sport = this.props.match.params.sport
+    this.props.getOdds(sport)
+    .then(() => {
+      return this.props.getResults(sport)
+    })
+    .then(res => res.payload)
+    .then(results => {
+      this.props.odds.forEach(game => {
+        this.props.createGame(sport, game, findResult(game.ID, results))
+      })
+    })
+    .then(() => {
+      return this.props.getGames(sport)
+    })
+    .then(action => action.payload)
+    .then(games => {
+      this.props.games.forEach(game => {
+        this.props.createGame(sport, game, findResult(game.MatchId, this.props.results))
+      })
+    })
+    .then(() => {
+      this.props.getAllGameTypes(sport)
+    })
+    .catch(err => console.log(err))
   }
 
   render() {
