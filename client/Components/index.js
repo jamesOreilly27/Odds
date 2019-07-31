@@ -18,3 +18,6 @@ export { default as OddsTableHeader } from './OddsTableHeader'
 export { default as WidgetTeamMatch } from './WidgetTeamMatch'
 export { default as WidgetMatchOdds } from './WidgetMatchOdds'
 export { default as TotalsContainer } from './TotalsContainer'
+
+//Sports Scores
+export { default as SportsScores } from './SportsScores'

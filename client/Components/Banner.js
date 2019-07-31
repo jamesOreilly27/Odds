@@ -207,7 +207,6 @@ class Banner extends Component {
         scrollTo={this.state.scrollTo}
         onMouseUp={this.mouseUp}
       >
-        {console.log(process.env.API_URL)}
         <Menu dropDown={this.state.dropDown}>
           <BannerSelect handleClick={this.handleDropDownClick} triangle={this.renderTriangle()}/>
             {this.state.dropDown &&
