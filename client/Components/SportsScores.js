@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
 import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk, getGamesThunk, getFinalGamesThunk, getNonFinalGamesThunk } from '../store'
 import { truncateTeamName, findResult, sortGamesByTime } from './helpers'
+import { ThreeTeamOddsTable, OddsTableHeader } from '../Components'
 
 const Wrapper = styled(FlexColumnContainer)`
 
@@ -44,7 +45,10 @@ class SportsScore extends Component {
   render() {
     return (
       <Wrapper>
-        Hello World
+        <OddsTableHeader />
+        {this.props.nonFinalGames && 
+          <ThreeTeamOddsTable games={sortGamesByTime(this.props.nonFinalGames)} activeSport={this.props.match.params.sport} scorePage />
+        }
       </Wrapper>
     )
   }
