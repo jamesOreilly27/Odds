@@ -16,12 +16,12 @@ const WidgetMatchOdds = ({ lines }) => {
   return (
     <Wrapper>
       <TeamOdds>
-        <TeamOddsItem>{addPlus(lines.MoneyLineHome)}</TeamOddsItem>
-        <TeamOddsItem>{addPlus(lines.PointSpreadHome)}</TeamOddsItem>
-      </TeamOdds>
-      <TeamOdds>
         <TeamOddsItem>{addPlus(lines.MoneyLineAway)}</TeamOddsItem>
         <TeamOddsItem>{addPlus(lines.PointSpreadAway)}</TeamOddsItem>
+      </TeamOdds>
+      <TeamOdds>
+        <TeamOddsItem>{addPlus(lines.MoneyLineHome)}</TeamOddsItem>
+        <TeamOddsItem>{addPlus(lines.PointSpreadHome)}</TeamOddsItem>
       </TeamOdds>
     </Wrapper>
   )
