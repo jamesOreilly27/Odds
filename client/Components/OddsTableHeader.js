@@ -23,10 +23,11 @@ const LinesContainer = styled(FlexRowContainer)`
 `
 
 const OddContainer = styled(FlexColumnContainer)`
-  
+  width: 15vw;
 `
 
 const Schedule = styled(OddContainer)`
+  align-items: flex-start
   padding-left: 2vw;
 `
 

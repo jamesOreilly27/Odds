@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { API_URL } from '../../secrets'
 
 const GOT_NON_FINAL_GAMES = 'GOT_NON_FINAL_GAMES'
 
@@ -9,7 +8,7 @@ const gotNonFinalGames = games => ({
 })
 
 export const getNonFinalGamesThunk = sport => dispatch =>
-  axios.get(`${API_URL}/odds/${sport}/nonfinal`)
+  axios.get(`${process.env.API_URL}/odds/${sport}/nonfinal`)
   .then(res => dispatch(gotNonFinalGames(res.data)))
   .catch(err => dispatch(gotNonFinalGames(err)))
 
