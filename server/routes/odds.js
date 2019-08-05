@@ -59,15 +59,20 @@ router.get('/:sport/:final', (req, res, next) => {
   .catch(next)
 })
 router.post('/:sport/games', (req, res, next) => {
+  console.log(req.body)
   const game = {
     Sport: req.params.sport,
     MatchId: chooseId(req.body),
     MatchTime: req.body.MatchTime,
     MoneyLineHome: chooseOdds(req.body, 'MoneyLineHome'),
     PointSpreadHome: chooseOdds(req.body, 'PointSpreadHome'),
+    PointSpreadHomeLine: chooseOdds(req.body, 'PointSpreadHomeLine'),
     MoneyLineAway: chooseOdds(req.body, 'MoneyLineAway'),
     PointSpreadAway: chooseOdds(req.body, 'PointSpreadAway'),
+    PointSpreadAwayLine: chooseOdds(req.body, 'PointSpreadAwayLine'),
     TotalNumber: chooseOdds(req.body, 'TotalNumber'),
+    OverLine: chooseOdds(req.body, 'OverLine'),
+    UnderLine: chooseOdds(req.body, 'UnderLine'),
     HomeTeam: req.body.HomeTeam,
     AwayTeam: req.body.AwayTeam,
     HomeScore: req.body.HomeScore,

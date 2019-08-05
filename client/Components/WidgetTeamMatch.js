@@ -69,8 +69,16 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
     </WidgetTeamsWrapper>
 
     <OddsContainer homeScore={match.HomeScore}>
-      <WidgetMatchOdds lines={{ MoneyLineHome: match.MoneyLineHome, MoneyLineAway: match.MoneyLineAway, PointSpreadHome: match.PointSpreadHome, PointSpreadAway: match.PointSpreadAway}} />
-      <TotalsContainer totalNum={match.TotalNumber} />
+      <WidgetMatchOdds lines={{
+        MoneyLineHome: match.MoneyLineHome,
+        MoneyLineAway: match.MoneyLineAway,
+        PointSpreadHome: match.PointSpreadHome,
+        PointSpreadHomeLine: match.PointSpreadHomeLine,
+        PointSpreadAway: match.PointSpreadAway,
+        PointSpreadAwayLine: match.PointSpreadAwayLine
+        }}
+      />
+      <TotalsContainer totalNum={match.TotalNumber} lines={{ OverLine: match.OverLine, UnderLine: match.UnderLine }}/>
     </OddsContainer>
   </Wrapper>
 )
