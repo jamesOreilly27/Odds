@@ -7,12 +7,19 @@ export const TeamOdds = styled(FlexRowContainer)`
   height: 44%;
 `
 
-export const TeamOddsItem = styled(FlexColumnContainer)`
+export const TeamOddsItem = styled(FlexRowContainer)`
+  @media(max-width: 600px) {
+    flex-direction: column;
+    font-size: 12px;
+  }
   width: 15vw;
   font-size: 14px;
 `
 
 export const TotalsNum = styled(FlexColumnContainer)`
+  @media(max-width: 600px) {
+    font-size: 12px;
+  }
   font-size: 14px;
   width: 100%;
   `

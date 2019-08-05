@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
 
 const Wrapper = styled(FlexRowContainer)`
+  @media(max-width: 600px) {
+    font-size: 12px;
+  }
   margin: 5px 0 30px 0;
   width: 98vw;
   height: 5.5vh;

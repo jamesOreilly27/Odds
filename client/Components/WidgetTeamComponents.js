@@ -2,6 +2,9 @@ import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
 
 export const WidgetTeamsWrapper = styled(FlexColumnContainer)`
+  @media(max-width: 600px) {
+    font-size: 12px;
+  }
   font-size: 14px;
   height: 100%;
   min-width: 38vw;

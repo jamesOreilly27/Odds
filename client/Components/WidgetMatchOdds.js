@@ -12,18 +12,36 @@ const Wrapper = styled(FlexColumnContainer)`
   width: 50vw;
 `
 
+const Juice = styled(FlexRowContainer)`
+  @media(max-width: 600px) {
+    font-size: 10px;
+  }
+`
+
 const WidgetMatchOdds = ({ lines }) => {
   return (
     <Wrapper>
       <TeamOdds>
         <TeamOddsItem>{addPlus(lines.MoneyLineAway)}</TeamOddsItem>
-        <TeamOddsItem>{`${addPlus(lines.PointSpreadAway)} (${addPlus(lines.PointSpreadAwayLine)})`}</TeamOddsItem>
-        <TeamOddsItem>{`O${lines.TotalNumber} (${addPlus(lines.OverLine)})`}</TeamOddsItem>
+        <TeamOddsItem>
+          <div>{`${addPlus(lines.PointSpreadAway)}`}</div>
+          <Juice>{`(${addPlus(lines.PointSpreadAwayLine)})`}</Juice>
+        </TeamOddsItem>
+        <TeamOddsItem>
+          <div>{`O ${lines.TotalNumber}`}</div>
+          <Juice>{`(${addPlus(lines.OverLine)})`}</Juice>
+        </TeamOddsItem>
       </TeamOdds>
       <TeamOdds>
         <TeamOddsItem>{addPlus(lines.MoneyLineHome)}</TeamOddsItem>
-        <TeamOddsItem>{`${addPlus(lines.PointSpreadHome)} (${addPlus(lines.PointSpreadHomeLine)})`}</TeamOddsItem>
-        <TeamOddsItem>{`U${lines.TotalNumber} (${addPlus(lines.UnderLine)})`}</TeamOddsItem>
+        <TeamOddsItem>
+          <div>{`${addPlus(lines.PointSpreadHome)}`}</div>
+          <Juice>{`(${addPlus(lines.PointSpreadHomeLine)})`}</Juice>
+        </TeamOddsItem>
+        <TeamOddsItem>
+          <div>{`U ${lines.TotalNumber}`}</div>
+          <Juice>{`(${addPlus(lines.UnderLine)})`}</Juice>
+        </TeamOddsItem>
       </TeamOdds>
     </Wrapper>
   )
