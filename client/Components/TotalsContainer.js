@@ -12,7 +12,8 @@ const Wrapper = styled(FlexColumnContainer)`
 const TotalsContainer = ({ totalNum }) => {
   return (
     <Wrapper>
-      <TotalsNum>{totalNum}</TotalsNum>
+      <TotalsNum>{`O${totalNum}`}</TotalsNum>
+      <TotalsNum>{`U${totalNum}`}</TotalsNum>
     </Wrapper>
   )
 }

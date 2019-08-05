@@ -18,7 +18,7 @@ const ScheduleContainer = styled(FlexRowContainer)`
 `
 
 const LinesContainer = styled(FlexRowContainer)`
-  min-width: 35vw;
+  min-width: 50vw;
   justify-content: space-evenly;
 `
 
@@ -32,7 +32,7 @@ const Schedule = styled(OddContainer)`
 `
 
 const MoneyLine = styled(OddContainer)`
-  margin-right: 2vw;
+
 `
 
 const OddsTableHeader = props => (

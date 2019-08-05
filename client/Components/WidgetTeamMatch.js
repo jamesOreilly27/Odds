@@ -75,10 +75,13 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
         PointSpreadHome: match.PointSpreadHome,
         PointSpreadHomeLine: match.PointSpreadHomeLine,
         PointSpreadAway: match.PointSpreadAway,
-        PointSpreadAwayLine: match.PointSpreadAwayLine
+        PointSpreadAwayLine: match.PointSpreadAwayLine,
+        TotalNumber: match.TotalNumber,
+        OverLine: match.OverLine,
+        UnderLine: match.UnderLine
         }}
       />
-      <TotalsContainer totalNum={match.TotalNumber} lines={{ OverLine: match.OverLine, UnderLine: match.UnderLine }}/>
+      {/* <TotalsContainer totalNum={match.TotalNumber} lines={{ OverLine: match.OverLine, UnderLine: match.UnderLine }}/> */}
     </OddsContainer>
   </Wrapper>
 )
