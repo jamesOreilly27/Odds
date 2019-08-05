@@ -18,7 +18,7 @@ const ScheduleContainer = styled(FlexRowContainer)`
 `
 
 const LinesContainer = styled(FlexRowContainer)`
-  min-width: 56vw;
+  min-width: 35vw;
   justify-content: space-evenly;
 `
 
@@ -31,6 +31,10 @@ const Schedule = styled(OddContainer)`
   padding-left: 2vw;
 `
 
+const MoneyLine = styled(OddContainer)`
+  margin-right: 2vw;
+`
+
 const OddsTableHeader = props => (
   <Wrapper>
     <ScheduleContainer>
@@ -38,7 +42,7 @@ const OddsTableHeader = props => (
       <OddContainer>Score</OddContainer>
     </ScheduleContainer>
     <LinesContainer>
-      <OddContainer>Line</OddContainer>
+      <MoneyLine>Moneyline</MoneyLine>
       <OddContainer>Spread</OddContainer>
       <OddContainer>Total</OddContainer>
     </LinesContainer>
