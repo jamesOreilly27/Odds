@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import styled from 'styled-components'
-import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
-import { WidgetMatchOdds, TotalsContainer } from '../Components'
-import { WidgetTeamsWrapper, WidgetTeamDetails, WidgetGameDate, ROT } from './WidgetTeamComponents'
-import { processTime, truncateTeamName, addPlus, processDayMonthTime } from './helpers'
+import { FlexRowContainer } from './baseComponents'
+import { WidgetMatchOdds } from '../Components'
+import { WidgetTeamsWrapper, WidgetTeamDetails, WidgetGameDate } from './WidgetTeamComponents'
+import { truncateTeamName, processDayMonthTime } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
   justify-content: space-between;
