@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
-import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk, getGamesThunk, getFinalGamesThunk, getNonFinalGamesThunk } from '../store'
-import { truncateTeamName, findResult, sortGamesByTime } from './helpers'
+import { FlexColumnContainer } from './baseComponents'
+import { fetchOddsBySport, createGameThunk, gotResultsThunk, getGamesThunk, getFinalGamesThunk, getNonFinalGamesThunk } from '../store'
+import { findResult, sortGamesByTime } from './helpers'
 import { ThreeTeamOddsTable, OddsTableHeader } from '../Components'
 
 const Wrapper = styled(FlexColumnContainer)`
