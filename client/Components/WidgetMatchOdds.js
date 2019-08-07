@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
-import { TeamOdds, TeamOddsItem, TotalsNum } from './WidgetOddsComponents'
+import { TeamOdds, TeamOddsItem } from './WidgetOddsComponents'
 import { addPlus } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`

@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
-import { TotalsNum, TotalsLines } from './WidgetOddsComponents'
-import { addPlus } from './helpers'
+import { FlexColumnContainer } from './baseComponents'
+import { TotalsNum } from './WidgetOddsComponents'
 
 const Wrapper = styled(FlexColumnContainer)`
   height: 43%;

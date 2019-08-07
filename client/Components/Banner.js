@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk, getGamesThunk, getFinalGamesThunk, getNonFinalGamesThunk } from '../store'
-import { Match, BannerSelect, SelectOption, DateSection, GolfContainer } from '../Components'
+import { BannerSelect, SelectOption, DateSection, GolfContainer } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
 import { getDatesArray, filterOddsByDay, truncateTeamName, findResult, sortGamesByTime } from './helpers'

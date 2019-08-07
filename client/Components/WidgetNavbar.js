@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { SelectOption } from '../Components'
-import { FlexRowContainer, FlexColumnContainer, FlexButton, FlexRowButton } from './baseComponents'
+import { FlexRowContainer } from './baseComponents'
 
 const Wrapper = styled(FlexRowContainer)`
   width: 98vw;

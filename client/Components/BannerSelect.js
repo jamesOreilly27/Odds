@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
+import { FlexRowContainer, FlexButton } from './baseComponents'
 import styled from 'styled-components'
 
 const Wrapper = styled(FlexButton)`
