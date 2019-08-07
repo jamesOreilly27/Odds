@@ -7,28 +7,23 @@ export const TeamOdds = styled(FlexRowContainer)`
   height: 44%;
 `
 
-export const TeamOddsItem = styled(FlexColumnContainer)`
-  @media(max-width: 3000px) {
-    margin-right: 1.6vw;
-  }
+export const TeamOddsItem = styled(FlexRowContainer)`
   @media(max-width: 600px) {
-    margin-right: 0;
+    flex-direction: column;
+    font-size: 12px;
   }
   width: 15vw;
   font-size: 14px;
 `
 
 export const TotalsNum = styled(FlexColumnContainer)`
-  @media(max-width: 3000px) {
-    margin-right: 2vw;
-  }
   @media(max-width: 600px) {
-    margin-right: 0;
+    font-size: 12px;
   }
   font-size: 14px;
   width: 100%;
-  padding-top: 16px;
-`
+  `
+  // padding-top: 16px;
 
 export const TotalsLines = styled(FlexRowContainer)`
   justify-content: space-between;

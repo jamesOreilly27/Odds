@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
 
 const Wrapper = styled(FlexRowContainer)`
+  @media(max-width: 600px) {
+    font-size: 12px;
+  }
   margin: 5px 0 30px 0;
   width: 98vw;
   height: 5.5vh;
@@ -18,7 +21,7 @@ const ScheduleContainer = styled(FlexRowContainer)`
 `
 
 const LinesContainer = styled(FlexRowContainer)`
-  min-width: 56vw;
+  min-width: 50vw;
   justify-content: space-evenly;
 `
 
@@ -31,6 +34,10 @@ const Schedule = styled(OddContainer)`
   padding-left: 2vw;
 `
 
+const MoneyLine = styled(OddContainer)`
+
+`
+
 const OddsTableHeader = props => (
   <Wrapper>
     <ScheduleContainer>
@@ -38,7 +45,7 @@ const OddsTableHeader = props => (
       <OddContainer>Score</OddContainer>
     </ScheduleContainer>
     <LinesContainer>
-      <OddContainer>Line</OddContainer>
+      <MoneyLine>Moneyline</MoneyLine>
       <OddContainer>Spread</OddContainer>
       <OddContainer>Total</OddContainer>
     </LinesContainer>

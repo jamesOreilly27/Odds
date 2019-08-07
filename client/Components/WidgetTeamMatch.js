@@ -23,8 +23,19 @@ const Score = styled(FlexRowContainer)`
 
 const OddsContainer = styled(FlexRowContainer)`
   justify-content: space-evenly;
-  min-width: 60vw;
+  border-radius: 10px;
+  min-width: 50vw;
   height: 100%;
+
+  background-color: ${({ homeScore }) => {
+    if(homeScore !== null) return '#59756F'
+    else return 'none'
+  }};
+
+  color: ${({ homeScore }) => {
+    if(homeScore !== null) return '#F8F8FF'
+    else return '#0A0A0A'
+  }};
 `
 
 const WidgetTeamMatch = ({ activeSport, match }) => (
@@ -57,9 +68,20 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
       </WidgetTeamDetails>
     </WidgetTeamsWrapper>
 
-    <OddsContainer>
-      <WidgetMatchOdds lines={{ MoneyLineHome: match.MoneyLineHome, MoneyLineAway: match.MoneyLineAway, PointSpreadHome: match.PointSpreadHome, PointSpreadAway: match.PointSpreadAway}} />
-      <TotalsContainer totalNum={match.TotalNumber} />
+    <OddsContainer homeScore={match.HomeScore}>
+      <WidgetMatchOdds lines={{
+        MoneyLineHome: match.MoneyLineHome,
+        MoneyLineAway: match.MoneyLineAway,
+        PointSpreadHome: match.PointSpreadHome,
+        PointSpreadHomeLine: match.PointSpreadHomeLine,
+        PointSpreadAway: match.PointSpreadAway,
+        PointSpreadAwayLine: match.PointSpreadAwayLine,
+        TotalNumber: match.TotalNumber,
+        OverLine: match.OverLine,
+        UnderLine: match.UnderLine
+        }}
+      />
+      {/* <TotalsContainer totalNum={match.TotalNumber} lines={{ OverLine: match.OverLine, UnderLine: match.UnderLine }}/> */}
     </OddsContainer>
   </Wrapper>
 )

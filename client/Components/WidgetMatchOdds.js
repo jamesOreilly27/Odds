@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
-import { TeamOdds, TeamOddsItem } from './WidgetOddsComponents'
+import { TeamOdds, TeamOddsItem, TotalsNum } from './WidgetOddsComponents'
 import { addPlus } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
@@ -9,7 +9,13 @@ const Wrapper = styled(FlexColumnContainer)`
   justify-content: flex-end;
   align-items: flex-start;
   padding-top: 13px;
-  width: 35vw;
+  width: 50vw;
+`
+
+const Juice = styled(FlexRowContainer)`
+  @media(max-width: 600px) {
+    font-size: 10px;
+  }
 `
 
 const WidgetMatchOdds = ({ lines }) => {
@@ -17,11 +23,25 @@ const WidgetMatchOdds = ({ lines }) => {
     <Wrapper>
       <TeamOdds>
         <TeamOddsItem>{addPlus(lines.MoneyLineAway)}</TeamOddsItem>
-        <TeamOddsItem>{addPlus(lines.PointSpreadAway)}</TeamOddsItem>
+        <TeamOddsItem>
+          <div>{`${addPlus(lines.PointSpreadAway)}`}</div>
+          <Juice>{`(${addPlus(lines.PointSpreadAwayLine)})`}</Juice>
+        </TeamOddsItem>
+        <TeamOddsItem>
+          <div>{`O ${lines.TotalNumber}`}</div>
+          <Juice>{`(${addPlus(lines.OverLine)})`}</Juice>
+        </TeamOddsItem>
       </TeamOdds>
       <TeamOdds>
         <TeamOddsItem>{addPlus(lines.MoneyLineHome)}</TeamOddsItem>
-        <TeamOddsItem>{addPlus(lines.PointSpreadHome)}</TeamOddsItem>
+        <TeamOddsItem>
+          <div>{`${addPlus(lines.PointSpreadHome)}`}</div>
+          <Juice>{`(${addPlus(lines.PointSpreadHomeLine)})`}</Juice>
+        </TeamOddsItem>
+        <TeamOddsItem>
+          <div>{`U ${lines.TotalNumber}`}</div>
+          <Juice>{`(${addPlus(lines.UnderLine)})`}</Juice>
+        </TeamOddsItem>
       </TeamOdds>
     </Wrapper>
   )
