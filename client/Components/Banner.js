@@ -152,7 +152,6 @@ class Banner extends Component {
       .then(res => res.payload)
       .then(results => {
         this.props.odds.forEach(game => {
-          console.log('TESTING', game)
           this.props.createGame(this.props.activeSport, game, findResult(game.ID, results))
         })
       })
