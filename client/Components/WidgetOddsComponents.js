@@ -8,16 +8,17 @@ export const TeamOdds = styled(FlexRowContainer)`
 `
 
 export const TeamOddsItem = styled(FlexRowContainer)`
-  @media(max-width: 600px) {
+  @media(max-width: 700px) {
     flex-direction: column;
     font-size: 12px;
   }
-  width: 15vw;
+  width: 10vw;
   font-size: 14px;
+  justify-content: space-evenly;
 `
 
 export const TotalsNum = styled(FlexColumnContainer)`
-  @media(max-width: 600px) {
+  @media(max-width: 700px) {
     font-size: 12px;
   }
   font-size: 14px;

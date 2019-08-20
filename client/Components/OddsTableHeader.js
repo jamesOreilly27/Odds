@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer } from './baseComponents'
 
 const Wrapper = styled(FlexRowContainer)`
-  @media(max-width: 600px) {
+  @media(max-width: 700px) {
     font-size: 12px;
   }
   margin: 5px 0 30px 0;
@@ -27,6 +27,7 @@ const LinesContainer = styled(FlexRowContainer)`
 
 const OddContainer = styled(FlexColumnContainer)`
   width: 15vw;
+  padding-left: 1.555vw;
 `
 
 const Schedule = styled(OddContainer)`

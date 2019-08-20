@@ -13,7 +13,7 @@ const Wrapper = styled(FlexColumnContainer)`
 `
 
 const Juice = styled(FlexRowContainer)`
-  @media(max-width: 600px) {
+  @media(max-width: 700px) {
     font-size: 10px;
   }
 `
