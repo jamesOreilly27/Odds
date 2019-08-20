@@ -5,7 +5,7 @@ import { FlexColumnContainer } from './baseComponents'
 import { firstNumItems, truncateTeamName } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
-  width: 100vw;
+  width: 99vw;
   align-items: center;
   justify-content: flex-start;
   margin-top: -30px;

@@ -7,7 +7,7 @@ import { findResult, sortGamesByTime } from './helpers'
 import { WidgetNavbar, ThreeTeamOddsTable, OddsTableHeader } from '../Components'
 
 const Wrapper = styled(FlexColumnContainer)`
-  width: 100vw;
+  width: 99vw;
   height: 700px;
   justify-content: flex-start;
   background-color: #EDEDF2;
