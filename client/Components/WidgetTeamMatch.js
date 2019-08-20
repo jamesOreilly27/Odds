@@ -28,14 +28,18 @@ const OddsContainer = styled(FlexRowContainer)`
 
   background-color: ${({ homeScore }) => {
     if(homeScore !== null) return '#59756F'
-    else return 'none'
+    else return '#59756f'
   }};
 
   color: ${({ homeScore }) => {
     if(homeScore !== null) return '#F8F8FF'
-    else return '#0A0A0A'
+    else return '#F8F8FF'
   }};
 `
+
+//#0A0A0A
+//#06325c
+//#002b54
 
 const WidgetTeamMatch = ({ activeSport, match }) => (
   <Wrapper>
