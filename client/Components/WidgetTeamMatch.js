@@ -28,12 +28,12 @@ const OddsContainer = styled(FlexRowContainer)`
 
   background-color: ${({ homeScore }) => {
     if(homeScore !== null) return '#59756F'
-    else return '#59756f'
+    else return 'none'
   }};
 
   color: ${({ homeScore }) => {
     if(homeScore !== null) return '#F8F8FF'
-    else return '#F8F8FF'
+    else return 'none'
   }};
 `
 
