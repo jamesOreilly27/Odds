@@ -12,23 +12,30 @@ const Wrapper = styled(FlexColumnContainer)`
 `
 
 const KeyWrapper = styled(FlexRowContainer)`
+  @media(max-width: 700px) {
+    font-size: 12px;
+    height: 3vh;
+  }
+  @media(max-width: 500px) {
+    font-size: 8px;
+    height: 2vh;
+  }
   width: 98vw;
   height: 5vh;
-  margin-top: 4px;
   background-color: #FFF
 `
 
 const Key = styled(FlexRowContainer)`
   align-items: center;
   justify-content: space-around;
-  width: 20vw;
+  width: 25vw;
 `
 
 const Color = styled(FlexRowContainer)`
   background-color: #59756f;
   height: 90%;
   color: #F8F8FF;
-  width: 13vw;
+  width: 18vw;
   border-radius: 5px;
 `
 
