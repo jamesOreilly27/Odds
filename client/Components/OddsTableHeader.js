@@ -27,7 +27,6 @@ const LinesContainer = styled(FlexRowContainer)`
 
 const OddContainer = styled(FlexColumnContainer)`
   width: 15vw;
-  padding-left: 1.555vw;
 `
 
 const Schedule = styled(OddContainer)`

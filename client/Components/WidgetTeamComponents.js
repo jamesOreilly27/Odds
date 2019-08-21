@@ -7,7 +7,7 @@ export const WidgetTeamsWrapper = styled(FlexColumnContainer)`
   }
   font-size: 14px;
   height: 100%;
-  min-width: 38vw;
+  min-width: 34vw;
   justify-content: space-between;
   align-items: flex-start;
   padding: 5px;

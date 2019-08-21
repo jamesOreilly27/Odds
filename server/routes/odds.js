@@ -59,7 +59,6 @@ router.get('/:sport/:final', (req, res, next) => {
   .catch(next)
 })
 router.post('/:sport/games', (req, res, next) => {
-  console.log(req.body)
   const game = {
     Sport: req.params.sport,
     MatchId: chooseId(req.body),

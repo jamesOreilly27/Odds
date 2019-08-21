@@ -9,7 +9,7 @@ const Wrapper = styled(FlexRowContainer)`
   justify-content: space-between;
   height: 95px;
   border: 3px solid #EDEDF2;
-  width: 100vw;
+  width: 99vw;
   background-color: #FFF;
 `
 const LogoSwitchWrapper = styled(FlexRowContainer)`
@@ -33,9 +33,13 @@ const OddsContainer = styled(FlexRowContainer)`
 
   color: ${({ homeScore }) => {
     if(homeScore !== null) return '#F8F8FF'
-    else return '#0A0A0A'
+    else return 'none'
   }};
 `
+
+//#0A0A0A
+//#06325c
+//#002b54
 
 const WidgetTeamMatch = ({ activeSport, match }) => (
   <Wrapper>
