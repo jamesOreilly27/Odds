@@ -31,6 +31,7 @@ export const TeamGameDetails = styled(FlexRowContainer)`
 
 export const DetailContainer = styled(FlexColumnContainer)`
   height: 100%;
+  align-items: flex-start;
   justify-content: space-around;
   padding-top: 3px;
   width: 45%;
@@ -47,6 +48,9 @@ export const NameLogoContainer = styled(FlexRowContainer)`
   }
 `
 
-export const TeamOddsContainer = styled(DetailContainer)`
-
+export const TeamOddsContainer = styled(FlexColumnContainer)`
+height: 100%;
+justify-content: space-around;
+padding-top: 3px;
+width: 45%;
 `
