@@ -44,7 +44,7 @@ export const NameLogoContainer = styled(FlexRowContainer)`
   img {
     width: 15px;
     height: 15px;
-    margin-right: 5px;
+    margin-right: 6px;
   }
 `
 
