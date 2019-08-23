@@ -37,7 +37,7 @@ const createApp = () => {
   app.use(express.static(path.join(__dirname, '..', 'public'))); 
 
   app.use(`${process.env.API_URL}`, require('./routes'))
-  app.use('/shopify', require('./shopify'))
+  // app.use('/shopify', require('./shopify'))
 
   app.use('/static', express.static(path.join(__dirname, 'public')))
   app.use('*', (req, res, next) => res.sendFile(path.join(__dirname, '..', 'public', 'index.html')))
