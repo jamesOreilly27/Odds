@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { FlexColumnContainer } from './baseComponents'
-import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk, getGamesThunk, getFinalGamesThunk, getNonFinalGamesThunk } from '../store'
+import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk, getGamesThunk, getFinalGamesThunk, getNonFinalGamesThunk, clearNonFinalGames } from '../store'
 import { findResult, sortGamesByTime } from './helpers'
 import { WidgetNavbar, ThreeTeamOddsTable, OddsTableHeader } from '../Components'
 
@@ -50,6 +50,7 @@ class ThreeTeamWidget extends Component {
 
   componentDidUpdate(prevProps) {
     if(this.props.activeSport !== prevProps.activeSport) {
+      this.props.clearNonFinal()
       this.props.getOdds(this.props.activeSport)
       .then(() => {
         return this.props.getResults(this.props.activeSport)
@@ -92,6 +93,9 @@ class ThreeTeamWidget extends Component {
 const mapState = state => state
 
 const mapDispatch = dispatch => ({
+  clearNonFinal() {
+    return dispatch(clearNonFinalGames())
+  },
   getOdds(sport) {
     return dispatch(fetchOddsBySport(sport))
   },

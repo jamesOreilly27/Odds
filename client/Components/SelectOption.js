@@ -15,7 +15,7 @@ const Wrapper = styled(FlexColumnContainer)`
       if(location !== 'three-team') return '#5A696F'
     }}
     transition: all .8s;
-   }
+  }
   width: 50%;
 `
 
