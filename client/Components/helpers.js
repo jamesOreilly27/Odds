@@ -65,22 +65,48 @@ export const processDayMonthTime = match => {
   return `${processTime(match.MatchTime)} ${convertMonthNumToWord(getMatchMonth(match))} ${getMatchDate(match)} `
 }
 
+const sortByMonthAndDay = datesArr => {
+  return datesArr.sort((a, b) => {
+    if(a.month !== b.month) return a.month - b.month
+    else return a.date - b.date
+  })
+}
+
+const checkMonthAndDay = (datesArr, date) => {
+  let found = false
+  for(let i = 0; i < datesArr.length; i++) {
+    if(datesArr[i].month === date.month && datesArr[i].date === date.date) {
+      found = true
+      break
+    }
+  }
+  return found
+}
+
 export const getDatesArray = odds => {
   const checked = []
+  const testChecked = []
 
   odds.forEach( match => {
     const date = getMatchDate(match)
+    const month = getMatchMonth(match)
+    const monthAndDay = {month: month, date: date}
     if(checked.indexOf(date) < 0) {
       checked.push(date)
     }
+    if(!checkMonthAndDay(testChecked, monthAndDay)) {
+      testChecked.push(monthAndDay)
+    }
   })
-  return checked.sort((a, b) => +a - +b)
+  return sortByMonthAndDay(testChecked)
 }
 
 export const filterOddsByDay = (odds, date) => {
   return odds.filter(match => {
     const matchDate = getMatchDate(match)
-    return matchDate === date
+    const matchMonth = getMatchMonth(match)
+    const dateObj = {month: matchMonth, date: matchDate}
+    return dateObj.date === date.date && dateObj.month === date.month
   })
 }
 

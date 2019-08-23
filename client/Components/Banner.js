@@ -239,7 +239,7 @@ class Banner extends Component {
             this.props.activeSport !== 'golf' ?
             getDatesArray(this.props.nonFinalGames).map(date => {
               if(truncateTeamName(this.props.activeSport, this.props.nonFinalGames[0]['HomeTeam'])) {
-                return <DateSection key={date} date={date} games={sortGamesByTime(filterOddsByDay(this.props.nonFinalGames, date))} />
+                return <DateSection key={date.month / date.date} date={date} games={sortGamesByTime(filterOddsByDay(this.props.nonFinalGames, date))} />
               }
             })
             :
