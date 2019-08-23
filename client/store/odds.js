@@ -8,7 +8,6 @@ const gotOdds = odds => ({
 })
 
 export const fetchOddsBySport = sport => dispatch => 
-console.log(process.env.API_URL)
   axios.get(`${process.env.API_URL}/odds/${sport}`)
   .then(res => dispatch(gotOdds(res.data)))
   .catch(err => dispatch(gotOdds(err.message)))
