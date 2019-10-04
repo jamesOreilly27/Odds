@@ -44,7 +44,11 @@ const ThreeTeamOddsTable = ({ games, activeSport, scorePage }) => (
     {firstNumItems(games, 5) && truncateTeamName(activeSport, games[0]['HomeTeam']) &&
     !scorePage ? 
       <div>
-        {firstNumItems(games, 5).map(match => <WidgetTeamMatch key={match.Id} match={match} activeSport={activeSport} />)}
+        {
+          firstNumItems(games, 5).map(match => {
+            if(match) return <WidgetTeamMatch key={match.id} match={match} activeSport={activeSport} />
+          })
+        }
       </div>
       :
       <div>
