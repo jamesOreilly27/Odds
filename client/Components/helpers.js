@@ -295,7 +295,7 @@ const truncateNHLTeamName = string => {
       return 'VGK'
     case 'Washington Capitals':
       return 'WAS'
-    case 'Winnepeg Jets':
+    case 'Winnipeg Jets':
       return 'WPG'
   }
 }
