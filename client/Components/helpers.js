@@ -253,9 +253,9 @@ const truncateNHLTeamName = string => {
       return 'COL'
     case 'Dallas Stars':
       return 'DAL'
-    case 'Detroit Redwings':
+    case 'Detroit Red Wings':
       return 'DET'
-    case 'Edmenton Oilers':
+    case 'Edmonton Oilers':
       return 'EDM'
     case 'Florida Panthers':
       return 'FLA'
@@ -285,7 +285,7 @@ const truncateNHLTeamName = string => {
       return 'SJ'
     case 'St. Louis Blues':
       return 'STL'
-    case 'Tampa Bay Lightening':
+    case 'Tampa Bay Lightning':
       return 'TB'
     case 'Toronto Maple Leafs':
       return 'TOR'
