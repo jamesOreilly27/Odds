@@ -253,9 +253,9 @@ const truncateNHLTeamName = string => {
       return 'COL'
     case 'Dallas Stars':
       return 'DAL'
-    case 'Detroit Redwings':
+    case 'Detroit Red Wings':
       return 'DET'
-    case 'Edmenton Oilers':
+    case 'Edmonton Oilers':
       return 'EDM'
     case 'Florida Panthers':
       return 'FLA'
@@ -285,7 +285,7 @@ const truncateNHLTeamName = string => {
       return 'SJ'
     case 'St. Louis Blues':
       return 'STL'
-    case 'Tampa Bay Lightening':
+    case 'Tampa Bay Lightning':
       return 'TB'
     case 'Toronto Maple Leafs':
       return 'TOR'
@@ -295,8 +295,73 @@ const truncateNHLTeamName = string => {
       return 'VGK'
     case 'Washington Capitals':
       return 'WAS'
-    case 'Winnepeg Jets':
+    case 'Winnipeg Jets':
       return 'WPG'
+  }
+}
+
+const truncateNBATeamName = string => {
+  switch(string) {
+    case "Atlanta Hawks":
+      return 'ATL'
+    case "Brooklyn Nets":
+      return "BKN"
+    case "Boston Celtics":
+      return "BOS"
+    case "Charlotte Hornets":
+      return "CHA"
+    case "Chicago Bulls":
+      return "CHI"
+    case "Cleveland Cavaliers":
+      return "CLE"
+    case "Dallas Mavericks":
+      return "DAL"
+    case "Denver Nuggets":
+      return "DEN"
+    case "Detroit Pistons":
+      return "DET"
+    case "Golden State Warriors":
+      return "GSW"
+    case "Houston Rockets":
+      return "HOU"
+    case "Indiana Pacers":
+      return "IND"
+    case "Los Angeles Clippers":
+      return "LAC"
+    case "Los Angeles Lakers":
+      return "LAL"
+    case "Memphis Grizzlies":
+      return "MEM"
+    case "Miami Heat":
+      return "MIA"
+    case "Milwaukee Bucks":
+      return "MIL"
+    case "Minnesota Timberwolves":
+      return "MIN"
+    case "New Orleans Pelicans":
+      return "NO"
+    case "New York Knicks":
+      return "NYK"
+    case "Oklahoma City Thunder":
+      return "OKC"
+    case "Orlando Magic":
+      return "ORL"
+    case "Philedelphia 76ers":
+      return "PHI"
+    case "Phoenix Suns":
+      return "PHX"
+    case "Portland Trailblazers":
+      return "POR"
+    case "Sacramento Kings":
+      return "SAC"
+    case "San Antonion Spurs":
+      return "SA"
+    case "Toronto Raptors":
+      return "TOR"
+    case "Utah Jazz":
+      return "UTA"
+    case "Washington Wizards":
+      return "WAS"
   }
 }
 
@@ -304,6 +369,7 @@ export const truncateTeamName = (sportString, team) => {
   if(sportString === 'mlb') return truncateMLBTeamName(team)
   else if(sportString === 'nfl') return truncateNFLTeamName(team)
   else if(sportString === 'nhl') return truncateNHLTeamName(team)
+  else if(sportString === 'nba') return truncateNBATeamName(team)
 }
 
 /***** Odds Processors *****/
