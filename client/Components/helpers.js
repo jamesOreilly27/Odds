@@ -321,7 +321,7 @@ const truncateNBATeamName = string => {
     case "Detroit Pistons":
       return "DET"
     case "Golden State Warriors":
-      return "GSW"
+      return "GS"
     case "Houston Rockets":
       return "HOU"
     case "Indiana Pacers":
