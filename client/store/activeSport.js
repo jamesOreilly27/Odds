@@ -15,7 +15,7 @@ export const updateActiveSport = sport => dispatch => {
   return value
 }
 
-const reducer = (activeSport = 'mlb', action) => {
+const reducer = (activeSport = 'nfl', action) => {
   switch(action.type) {
     case SWITCH_SPORT:
       return action.payload

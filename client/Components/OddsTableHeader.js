@@ -45,7 +45,7 @@ const OddsTableHeader = props => (
       <OddContainer>Score</OddContainer>
     </ScheduleContainer>
     <LinesContainer>
-      <MoneyLine>Moneyline</MoneyLine>
+      <MoneyLine>Line</MoneyLine>
       <OddContainer>Spread</OddContainer>
       <OddContainer>Total</OddContainer>
     </LinesContainer>
