@@ -9,7 +9,7 @@ const Wrapper = styled(FlexColumnContainer)`
   justify-content: flex-end;
   align-items: flex-start;
   padding-top: 13px;
-  width: 50vw;
+  width: 55vw;
 `
 
 const Juice = styled(FlexRowContainer)`

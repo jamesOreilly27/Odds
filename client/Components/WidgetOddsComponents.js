@@ -12,7 +12,7 @@ export const TeamOddsItem = styled(FlexRowContainer)`
     flex-direction: column;
     font-size: 12px;
   }
-  width: 10vw;
+  width: 15vw;
   font-size: 14px;
   justify-content: space-evenly;
 `
