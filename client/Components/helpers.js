@@ -354,7 +354,7 @@ const truncateNBATeamName = string => {
       return "POR"
     case "Sacramento Kings":
       return "SAC"
-    case "San Antonion Spurs":
+    case "San Antonio Spurs":
       return "SA"
     case "Toronto Raptors":
       return "TOR"
