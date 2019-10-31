@@ -44,14 +44,11 @@ const createApp = () => {
 }
 
 const startListening = () => {
-  // const run = app.listen(PORT, () => console.log(chalk.blue.bgWhite.bold(`We are live on port ${PORT}`)))
   if(process.env.PORT) {
     app.listen(PORT, () => console.log(chalk.red.bgWhite.bold(`We are live on port ${PORT}`)))
   } else {
     server.listen(PORT, () => console.log(chalk.blue.bgWhite.bold(`We are live on port ${server.address().port}`)))
   }
-  // app.listen(PORT, () => console.log(chalk.red.bgWhite.bold(`We are live on port ${PORT}`)))
-  // server.listen(PORT, () => console.log(chalk.blue.bgWhite.bold(`We are live on port ${server.address().port}`)))
 }
 
 // app.listen(PORT, () => console.log(chalk.red.bgWhite.bold(`We are live on port ${PORT}`)))
