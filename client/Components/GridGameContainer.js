@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
-import { processDayMonthTime } from './helpers'
+import { processDayMonthTime, splitTeamName } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
   @media(max-width: 960px) {
@@ -32,6 +32,7 @@ const TeamsContainer = styled(FlexRowContainer)`
 `
 
 const Team = styled(FlexColumnContainer)`
+  justify-content: flex-start;
   height: 25vh;
   border: 1px dotted red;
   width: 45%;
@@ -52,8 +53,20 @@ const GridGameContainer = ({ activeSport, match }) => (
         }
       </GameDate>
       <TeamsContainer>
-        <Team>{match.AwayTeam}</Team>
-        <Team>{match.HomeTeam}</Team>
+        <Team>
+          <TeamName>
+            {/* <div>{splitTeamName(match.AwayTeam)[0]}</div>
+            <div>{splitTeamName(match.AwayTeam)[1]}</div> */}
+            {splitTeamName(match.AwayTeam).map(word => <div key={word}> {word} </div>)}
+          </TeamName>
+        </Team>
+        <Team>
+        <TeamName>
+            {/* <div>{splitTeamName(match.HomeTeam)[0]}</div>
+            <div>{splitTeamName(match.HomeTeam)[1]}</div> */}
+            {splitTeamName(match.HomeTeam).map(word => <div key={word}> {word} </div>)}
+          </TeamName>
+        </Team>
       </TeamsContainer>
     </Container>
   </Wrapper>

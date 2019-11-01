@@ -372,6 +372,12 @@ export const truncateTeamName = (sportString, team) => {
   else if(sportString === 'nba') return truncateNBATeamName(team)
 }
 
+/***** Split Team Names ******/
+export const splitTeamName = nameString => {
+  const array = nameString.split(' ')
+  return array
+}
+
 /***** Odds Processors *****/
 
 export const addPlus = string => {
