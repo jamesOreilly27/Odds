@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { FlexColumnContainer } from './baseComponents'
 import { fetchOddsBySport, createGameThunk, gotResultsThunk, getGamesThunk, getFinalGamesThunk, getNonFinalGamesThunk } from '../store'
 import { findResult, sortGamesByTime } from './helpers'
-import { ThreeTeamOddsTable, OddsTableHeader } from '../Components'
+import { ThreeTeamOddsTable, OddsTableHeader, OddsGrid } from '../Components'
 
 const Wrapper = styled(FlexColumnContainer)`
 
@@ -54,9 +54,7 @@ class SportsScore extends Component {
             }
           </div>
           :
-          <div>
-            Hello World
-          </div>
+          <OddsGrid />
         }
       </Wrapper>
     )

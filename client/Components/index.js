@@ -21,3 +21,4 @@ export { default as TotalsContainer } from './TotalsContainer'
 
 //Sports Scores
 export { default as SportsScores } from './SportsScores'
+export { default as OddsGrid } from './OddsGrid'
