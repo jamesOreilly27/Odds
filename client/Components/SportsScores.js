@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import windowSize from 'react-window-size'
 import styled from 'styled-components'
 import { FlexColumnContainer } from './baseComponents'
 import { fetchOddsBySport, createGameThunk, gotResultsThunk, getGamesThunk, getFinalGamesThunk, getNonFinalGamesThunk } from '../store'
@@ -78,4 +79,4 @@ const mapDispatch = dispatch => ({
 })
 
 
-export default connect(mapState, mapDispatch)(SportsScore)
+export default windowSize(connect(mapState, mapDispatch)(SportsScore))
