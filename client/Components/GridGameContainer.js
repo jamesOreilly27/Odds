@@ -90,9 +90,6 @@ const GridGameContainer = ({ activeSport, match }) => (
               <div>{splitTeamName(match.AwayTeam)[1]}</div>
             </TeamName>
           </NameAndLogo>
-          <OddsHeader>
-            Odds
-          </OddsHeader>
           <GridTeamOddsContainer lines={{
             MoneyLine: match.MoneyLineAway,
             PointSpread: match.PointSpreadAway,
@@ -112,9 +109,6 @@ const GridGameContainer = ({ activeSport, match }) => (
               <div>{splitTeamName(match.HomeTeam)[1]}</div>
             </TeamName>
           </NameAndLogo>
-          <OddsHeader>
-            Odds
-          </OddsHeader>
           <GridTeamOddsContainer lines={{
             MoneyLine: match.MoneyLineHome,
             PointSpread: match.PointSpreadHome,
