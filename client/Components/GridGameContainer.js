@@ -13,7 +13,7 @@ const Wrapper = styled(FlexRowContainer)`
   }
   flex: 0 0 33%
   border: 3px solid #EDEDF2;
-  height: 30vh;
+  height: 35vh;
 `
 
 const Container = styled(FlexColumnContainer)`
@@ -88,13 +88,16 @@ const GridGameContainer = ({ activeSport, match }) => (
             <TeamName>
               <div>{splitTeamName(match.AwayTeam)[0]}</div>
               <div>{splitTeamName(match.AwayTeam)[1]}</div>
-              {/* {splitTeamName(match.AwayTeam).map(word => <div key={word}> {word} </div>)} */}
             </TeamName>
           </NameAndLogo>
           <OddsHeader>
             Odds
           </OddsHeader>
-          <GridTeamOddsContainer />
+          <GridTeamOddsContainer lines={{
+            MoneyLine: match.MoneyLineAway,
+            PointSpread: match.PointSpreadAway,
+            PointSpreadLine: match.PointSpreadAwayLine
+          }}/>
         </Team>
         <AtSymbol> @ </AtSymbol>
         <Team>
@@ -107,13 +110,16 @@ const GridGameContainer = ({ activeSport, match }) => (
             <TeamName>
               <div>{splitTeamName(match.HomeTeam)[0]}</div>
               <div>{splitTeamName(match.HomeTeam)[1]}</div>
-              {/* {splitTeamName(match.HomeTeam).map(word => <div key={word}> {word} </div>)} */}
             </TeamName>
           </NameAndLogo>
           <OddsHeader>
             Odds
           </OddsHeader>
-          <GridTeamOddsContainer />
+          <GridTeamOddsContainer lines={{
+            MoneyLine: match.MoneyLineHome,
+            PointSpread: match.PointSpreadHome,
+            PointSpreadLine: match.PointSpreadHomeLine
+          }}/>
         </Team>
       </TeamsContainer>
     </Container>
