@@ -375,7 +375,15 @@ export const truncateTeamName = (sportString, team) => {
 /***** Split Team Names ******/
 export const splitTeamName = nameString => {
   const array = nameString.split(' ')
-  return array
+  const changeArr = []
+  if(array.length === 2) {
+    return array
+  }
+  else {
+    changeArr[0] = `${array[0]} ${array[1]}`
+    changeArr[1] = array[2]
+    return changeArr
+  }
 }
 
 /***** Odds Processors *****/

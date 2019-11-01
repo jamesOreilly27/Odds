@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
-import { processDayMonthTime, splitTeamName } from './helpers'
+import { truncateTeamName, processDayMonthTime, splitTeamName } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
   @media(max-width: 960px) {
@@ -19,27 +19,51 @@ const Container = styled(FlexColumnContainer)`
   justify-content: flex-start;
   width: 100%;
   height: 100%;
-  padding: 15px 20px;
+  padding: 15px 0;
 `
 
 const GameDate = styled(FlexRowContainer)`
   margin-bottom: 8px;
+  font-size: 25px;
 `
 
 const TeamsContainer = styled(FlexRowContainer)`
-  width: 90%;
+  width: 100%;
   justify-content: space-between;
 `
 
 const Team = styled(FlexColumnContainer)`
   justify-content: flex-start;
   height: 25vh;
-  border: 1px dotted red;
-  width: 45%;
+  width: 50%;
+`
+
+const NameAndLogo = styled(FlexColumnContainer)`
+  width: 100%;
+  margin-bottom: 30px;
+`
+
+const LogoContainer = styled(FlexRowContainer)`
+  
+`
+
+const Logo = styled.img`
+  width: 100px;
+  height: 100px;
 `
 
 const TeamName = styled(FlexColumnContainer)`
+  height: 100%;
+  font-size: 20px;
+`
 
+const AtSymbol = styled.div`
+  font-size: 54px;
+  margin-bottom: 82px;
+`
+
+const OddsHeader = styled(FlexRowContainer)`
+  font-size: 25px;
 `
 
 const GridGameContainer = ({ activeSport, match }) => (
@@ -54,18 +78,39 @@ const GridGameContainer = ({ activeSport, match }) => (
       </GameDate>
       <TeamsContainer>
         <Team>
-          <TeamName>
-            {/* <div>{splitTeamName(match.AwayTeam)[0]}</div>
-            <div>{splitTeamName(match.AwayTeam)[1]}</div> */}
-            {splitTeamName(match.AwayTeam).map(word => <div key={word}> {word} </div>)}
-          </TeamName>
+          <NameAndLogo>
+            <LogoContainer>
+              {truncateTeamName(activeSport, match.AwayTeam) && 
+                <Logo src={require(`../../public/assets/${activeSport}-logos/${truncateTeamName(activeSport, match.AwayTeam)}.png`)} />
+              }
+            </LogoContainer>
+            <TeamName>
+              <div>{splitTeamName(match.AwayTeam)[0]}</div>
+              <div>{splitTeamName(match.AwayTeam)[1]}</div>
+              {/* {splitTeamName(match.AwayTeam).map(word => <div key={word}> {word} </div>)} */}
+            </TeamName>
+          </NameAndLogo>
+          <OddsHeader>
+            Odds
+          </OddsHeader>
         </Team>
+        <AtSymbol> @ </AtSymbol>
         <Team>
-        <TeamName>
-            {/* <div>{splitTeamName(match.HomeTeam)[0]}</div>
-            <div>{splitTeamName(match.HomeTeam)[1]}</div> */}
-            {splitTeamName(match.HomeTeam).map(word => <div key={word}> {word} </div>)}
-          </TeamName>
+          <NameAndLogo>
+            <LogoContainer>
+              {truncateTeamName(activeSport, match.HomeTeam) && 
+                <Logo src={require(`../../public/assets/${activeSport}-logos/${truncateTeamName(activeSport, match.HomeTeam)}.png`)} />
+              }
+            </LogoContainer>
+            <TeamName>
+              <div>{splitTeamName(match.HomeTeam)[0]}</div>
+              <div>{splitTeamName(match.HomeTeam)[1]}</div>
+              {/* {splitTeamName(match.HomeTeam).map(word => <div key={word}> {word} </div>)} */}
+            </TeamName>
+          </NameAndLogo>
+          <OddsHeader>
+            Odds
+          </OddsHeader>
         </Team>
       </TeamsContainer>
     </Container>
