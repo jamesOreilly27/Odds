@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
+import { GridTeamOddsContainer } from '../Components'
 import { truncateTeamName, processDayMonthTime, splitTeamName } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
@@ -93,6 +94,7 @@ const GridGameContainer = ({ activeSport, match }) => (
           <OddsHeader>
             Odds
           </OddsHeader>
+          <GridTeamOddsContainer />
         </Team>
         <AtSymbol> @ </AtSymbol>
         <Team>
@@ -111,6 +113,7 @@ const GridGameContainer = ({ activeSport, match }) => (
           <OddsHeader>
             Odds
           </OddsHeader>
+          <GridTeamOddsContainer />
         </Team>
       </TeamsContainer>
     </Container>
