@@ -46,9 +46,17 @@ class SportsScore extends Component {
   render() {
     return (
       <Wrapper>
-        <OddsTableHeader />
-        {this.props.nonFinalGames && 
-          <ThreeTeamOddsTable games={sortGamesByTime(this.props.nonFinalGames)} activeSport={this.props.match.params.sport} scorePage />
+        {this.props.windowWidth < 750 ?
+          <div>
+            <OddsTableHeader />
+            {this.props.nonFinalGames && 
+              <ThreeTeamOddsTable games={sortGamesByTime(this.props.nonFinalGames)} activeSport={this.props.match.params.sport} scorePage />
+            }
+          </div>
+          :
+          <div>
+            Hello World
+          </div>
         }
       </Wrapper>
     )
