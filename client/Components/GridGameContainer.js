@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
-import { GridTeamOddsContainer } from '../Components'
+import { GridTeamOddsContainer, GridTotalsContainer } from '../Components'
 import { truncateTeamName, processDayMonthTime, splitTeamName } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
@@ -13,7 +13,6 @@ const Wrapper = styled(FlexRowContainer)`
   }
   flex: 0 0 33%
   border: 3px solid #EDEDF2;
-  height: 35vh;
 `
 
 const Container = styled(FlexColumnContainer)`
@@ -26,16 +25,19 @@ const Container = styled(FlexColumnContainer)`
 const GameDate = styled(FlexRowContainer)`
   margin-bottom: 8px;
   font-size: 25px;
+  width: 100%;
+  border-bottom: 2px solid #EDEDF2;
 `
 
 const TeamsContainer = styled(FlexRowContainer)`
   width: 100%;
   justify-content: space-between;
+  border-bottom: 2px solid #EDEDF2;
+  padding: 10px 5px;
 `
 
 const Team = styled(FlexColumnContainer)`
   justify-content: flex-start;
-  height: 25vh;
   width: 50%;
 `
 
@@ -116,6 +118,11 @@ const GridGameContainer = ({ activeSport, match }) => (
           }}/>
         </Team>
       </TeamsContainer>
+      <GridTotalsContainer totals={{
+        TotalNumber: match.TotalNumber,
+        OverLine: match.OverLine,
+        UnderLine: match.UnderLine
+      }}/>
     </Container>
   </Wrapper>
 )

@@ -15,8 +15,12 @@ const Header = styled.div`
   font-size: 20px;
 `
 
-const Content = styled.div`
+const Content = styled(FlexColumnContainer)`
   font-size: 27px;
+`
+
+const Juice = styled.div`
+  font-size: 20px;
 `
 
 const GridTeamOddsContainer = ({ lines }) => (
@@ -26,7 +30,7 @@ const GridTeamOddsContainer = ({ lines }) => (
         Moneyline
       </Header>
       <Content>
-        {lines.MoneyLine}
+        {`${addPlus(lines.MoneyLine)}`}
       </Content>
     </LineContainer>
     <LineContainer>
@@ -34,7 +38,12 @@ const GridTeamOddsContainer = ({ lines }) => (
         Spread
       </Header>
       <Content>
-        {`${addPlus(lines.PointSpread)} (${addPlus(lines.PointSpreadLine)})`}
+        <div>
+          {addPlus(lines.PointSpread)}
+        </div>
+        <Juice>
+          {`(${addPlus(lines.PointSpreadLine)})`}
+        </Juice>
       </Content>
     </LineContainer>
   </Wrapper>
