@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
-import { ScoresPageGameContainer } from '../Components'
+import { GridGameContainer } from '../Components'
 
 const testGridArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -14,7 +14,7 @@ const Wrapper = styled(FlexRowContainer)`
 
 const OddsGrid = ({ games, activeSport }) => (
   <Wrapper>
-    {games.map(game => <ScoresPageGameContainer key={game.HomeTeam} match={game} activeSport={activeSport} /> )}
+    {games.map(game => <GridGameContainer key={game.HomeTeam} match={game} activeSport={activeSport} /> )}
   </Wrapper>
 )
 

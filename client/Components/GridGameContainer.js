@@ -14,10 +14,10 @@ const Wrapper = styled(FlexRowContainer)`
   height: 30vh;
 `
 
-const ScoresPageGameContainer = ({ activeSport, match }) => (
+const GridGameContainer = ({ activeSport, match }) => (
   <Wrapper>
     {match.HomeTeam}
   </Wrapper>
 )
 
-export default ScoresPageGameContainer
+export default GridGameContainer
