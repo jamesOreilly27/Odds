@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { WidgetTeamMatch } from '../Components'
-import { FlexColumnContainer, FlexRowContainer} from './baseComponents'
+import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
 import { firstNumItems, truncateTeamName } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
