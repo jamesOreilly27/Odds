@@ -29,7 +29,25 @@ const OddContainer = styled(FlexColumnContainer)`
   width: 15vw;
 `
 
+const Spread = styled(OddContainer)`
+  @media(max-width: 760px) {
+    margin-left: 8px
+  }
+  @media(max-width: 600px) {
+    margin-left: 5px;
+  }
+  @media(max-width: 450px) {
+    margin-left: 0;
+  }
+`
+
 const Total = styled(OddContainer)`
+  @media(max-width: 760px) {
+    margin-left: 8px;
+  }
+  @media(max-width: 600px) {
+    margin-left: 5px;
+  }
   @media(max-width: 450px) {
     margin-left: 2px;
   }
@@ -41,11 +59,16 @@ const Schedule = styled(OddContainer)`
 `
 
 const MoneyLine = styled(OddContainer)`
+  @media(max-width: 760px) {
+    margin-left: 3px;
+  }
+  @media(max-width: 600px) {
+    margin-right: 0;
+    margin-left: 0;
+  }
   @media(max-width: 450px) {
     margin-right: 3px;
   }
-
-
 `
 
 const OddsTableHeader = props => (
@@ -56,7 +79,7 @@ const OddsTableHeader = props => (
     </ScheduleContainer>
     <LinesContainer>
       <MoneyLine>Line</MoneyLine>
-      <OddContainer>Spread</OddContainer>
+      <Spread>Spread</Spread>
       <Total>Total</Total>
     </LinesContainer>
   </Wrapper>
