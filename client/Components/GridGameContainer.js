@@ -57,6 +57,7 @@ const Logo = styled.img`
 
 const TeamName = styled(FlexColumnContainer)`
   height: 100%;
+  font-weight: bold;
   font-size: 15px;
 `
 
