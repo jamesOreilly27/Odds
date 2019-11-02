@@ -346,11 +346,11 @@ const truncateNBATeamName = string => {
       return "OKC"
     case "Orlando Magic":
       return "ORL"
-    case "Philedelphia 76ers":
+    case "Philadelphia 76ers":
       return "PHI"
     case "Phoenix Suns":
       return "PHX"
-    case "Portland Trailblazers":
+    case "Portland Trail Blazers":
       return "POR"
     case "Sacramento Kings":
       return "SAC"
@@ -370,6 +370,20 @@ export const truncateTeamName = (sportString, team) => {
   else if(sportString === 'nfl') return truncateNFLTeamName(team)
   else if(sportString === 'nhl') return truncateNHLTeamName(team)
   else if(sportString === 'nba') return truncateNBATeamName(team)
+}
+
+/***** Split Team Names ******/
+export const splitTeamName = nameString => {
+  const array = nameString.split(' ')
+  const changeArr = []
+  if(array.length === 2) {
+    return array
+  }
+  else {
+    changeArr[0] = `${array[0]} ${array[1]}`
+    changeArr[1] = array[2]
+    return changeArr
+  }
 }
 
 /***** Odds Processors *****/
