@@ -22,12 +22,13 @@ const chooseLine = (activeSport, match, home) => {
       return addPlus(match.MoneyLineAway)
     }
     else if(activeSport === 'nfl' || activeSport === 'nba') {
-      return addPlus(match.PointSpreadAway)
+      return match.TotalNumber
     }
   }
 }
 
 const oddsOrScore = (activeSport, match, score, home) => {
+  console.log(chooseLine(activeSport, match, home))
   if(score !== null) return score
   else return chooseLine(activeSport, match, home)
 }
