@@ -43,7 +43,7 @@ const Team = styled(FlexColumnContainer)`
 
 const NameAndLogo = styled(FlexColumnContainer)`
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 `
 
 const LogoContainer = styled(FlexRowContainer)`
@@ -61,13 +61,19 @@ const TeamName = styled(FlexColumnContainer)`
   font-size: 15px;
 `
 
-const AtSymbol = styled.div`
+const Score = styled(FlexRowContainer)`
   font-size: 30px;
-  margin-bottom: 82px;
+  width: 15px;
+  height: 40px;
 `
 
-const OddsHeader = styled(FlexRowContainer)`
-  font-size: 20px;
+const Amount = styled(FlexRowContainer)`
+
+`
+
+const AtSymbol = styled.div`
+  font-size: 30px;
+  margin-bottom: 120px;
 `
 
 const GridGameContainer = ({ activeSport, match }) => (
@@ -77,7 +83,7 @@ const GridGameContainer = ({ activeSport, match }) => (
         {match.HomeScore === null ? 
           processDayMonthTime(match)
           :
-          <div>In Progress</div>
+          <div>In Progress: Odds Closed</div>
         }
       </GameDate>
       <TeamsContainer>
@@ -93,6 +99,11 @@ const GridGameContainer = ({ activeSport, match }) => (
               <div>{splitTeamName(match.AwayTeam)[1]}</div>
             </TeamName>
           </NameAndLogo>
+          <Score>
+            {match.AwayScore !== null &&
+              <Amount>{match.AwayScore}</Amount>
+            }
+          </Score>
           <GridTeamOddsContainer lines={{
             MoneyLine: match.MoneyLineAway,
             PointSpread: match.PointSpreadAway,
@@ -112,6 +123,11 @@ const GridGameContainer = ({ activeSport, match }) => (
               <div>{splitTeamName(match.HomeTeam)[1]}</div>
             </TeamName>
           </NameAndLogo>
+          <Score>
+            {match.HomeScore !== null &&
+              <Amount>{match.HomeScore}</Amount>
+            }
+          </Score>
           <GridTeamOddsContainer lines={{
             MoneyLine: match.MoneyLineHome,
             PointSpread: match.PointSpreadHome,

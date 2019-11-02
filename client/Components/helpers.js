@@ -346,11 +346,11 @@ const truncateNBATeamName = string => {
       return "OKC"
     case "Orlando Magic":
       return "ORL"
-    case "Philedelphia 76ers":
+    case "Philadelphia 76ers":
       return "PHI"
     case "Phoenix Suns":
       return "PHX"
-    case "Portland Trailblazers":
+    case "Portland Trail Blazers":
       return "POR"
     case "Sacramento Kings":
       return "SAC"
