@@ -21,7 +21,6 @@ const GamesContainer = styled(FlexRowContainer)`
 
 const DateSection = props => (
   <Wrapper>
-    {/* {console.log('TEST', props.date)} */}
     <DateContainer>
       <div>{convertMonthNumToWord(props.date.month)}</div>
       <div>{props.date.date}</div>
