@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import windowSize from 'react-window-size'
 import styled from 'styled-components'
 import { FlexColumnContainer } from './baseComponents'
 import { fetchOddsBySport, createGameThunk, gotResultsThunk, getGamesThunk, getFinalGamesThunk, getNonFinalGamesThunk } from '../store'
@@ -46,20 +45,9 @@ class SportsScore extends Component {
   render() {
     return (
       <Wrapper>
-        {this.props.windowWidth < 641 ?
-          <div>
-            <OddsTableHeader />
-            {this.props.nonFinalGames && 
-              <ThreeTeamOddsTable games={sortGamesByTime(this.props.nonFinalGames)} activeSport={this.props.match.params.sport} scorePage />
-            }
-          </div>
-          :
-          <div>
             {this.props.nonFinalGames && 
               <OddsGrid games={sortGamesByTime(this.props.nonFinalGames)} activeSport={this.props.match.params.sport} />
             }
-          </div>
-        }
       </Wrapper>
     )
   }
@@ -89,4 +77,4 @@ const mapDispatch = dispatch => ({
 })
 
 
-export default windowSize(connect(mapState, mapDispatch)(SportsScore))
+export default connect(mapState, mapDispatch)(SportsScore)
