@@ -24,7 +24,7 @@ const Container = styled(FlexColumnContainer)`
 
 const GameDate = styled(FlexRowContainer)`
   margin-bottom: 8px;
-  font-size: 25px;
+  font-size: 20px;
   width: 100%;
   border-bottom: 2px solid #EDEDF2;
 `
@@ -51,22 +51,22 @@ const LogoContainer = styled(FlexRowContainer)`
 `
 
 const Logo = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 `
 
 const TeamName = styled(FlexColumnContainer)`
   height: 100%;
-  font-size: 20px;
+  font-size: 15px;
 `
 
 const AtSymbol = styled.div`
-  font-size: 54px;
+  font-size: 30px;
   margin-bottom: 82px;
 `
 
 const OddsHeader = styled(FlexRowContainer)`
-  font-size: 25px;
+  font-size: 20px;
 `
 
 const GridGameContainer = ({ activeSport, match }) => (

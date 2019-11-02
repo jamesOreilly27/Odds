@@ -10,7 +10,7 @@ const Wrapper = styled(FlexRowContainer)`
 `
 
 const TotalNumberContainer = styled(FlexColumnContainer)`
-  font-size: 35px;
+  font-size: 22px;
 `
 
 const OverUnderContainer = styled(FlexColumnContainer)`
@@ -18,14 +18,14 @@ const OverUnderContainer = styled(FlexColumnContainer)`
 `
 
 const HeaderAndLine = styled.div`
-  font-size: 28px;
+  font-size: 18px;
 `
 
 const GridTotalsContainer = ({ totals }) => (
   <Wrapper>
     <OverUnderContainer>
       <HeaderAndLine>Under</HeaderAndLine>
-      <HeaderAndLine>{totals.UnderLine}</HeaderAndLine>
+      <HeaderAndLine>{`(${totals.UnderLine})`}</HeaderAndLine>
     </OverUnderContainer>
     <TotalNumberContainer>
       <div>Total</div>
@@ -33,7 +33,7 @@ const GridTotalsContainer = ({ totals }) => (
     </TotalNumberContainer>
     <OverUnderContainer>
       <HeaderAndLine>Over</HeaderAndLine>
-      <HeaderAndLine>{totals.OverLine}</HeaderAndLine>
+      <HeaderAndLine>{`(${totals.OverLine})`}</HeaderAndLine>
     </OverUnderContainer>
   </Wrapper>
 )

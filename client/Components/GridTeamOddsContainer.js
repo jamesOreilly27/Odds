@@ -12,15 +12,15 @@ const LineContainer = styled(FlexColumnContainer)`
 `
 
 const Header = styled.div`
-  font-size: 20px;
+  font-size: 15px;
 `
 
 const Content = styled(FlexColumnContainer)`
-  font-size: 27px;
+  font-size: 21px;
 `
 
 const Juice = styled.div`
-  font-size: 20px;
+  font-size: 13px;
 `
 
 const GridTeamOddsContainer = ({ lines }) => (

@@ -46,7 +46,7 @@ class SportsScore extends Component {
   render() {
     return (
       <Wrapper>
-        {this.props.windowWidth < 750 ?
+        {this.props.windowWidth < 641 ?
           <div>
             <OddsTableHeader />
             {this.props.nonFinalGames && 
