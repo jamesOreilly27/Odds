@@ -224,11 +224,18 @@ class Banner extends Component {
           <LeftClickScrollContainer
             onMouseDown={this.mouseDownLeft}
             onMouseUp={this.mouseUp}
+            onTouchStart={this.mouseDownLeft}
+            onTouchEnd={this.mouseUp}
           >
             {'<'}
           </LeftClickScrollContainer>
 
-          <RightClickScrollContainer onMouseDown={this.mouseDownRight} onMouseUp={this.mouseUp}>
+          <RightClickScrollContainer
+            onMouseDown={this.mouseDownRight}
+            onMouseUp={this.mouseUp}
+            onTouchStart={this.mouseDownRight}
+            onTouchEnd={this.mouseUp}
+          >
             {'>'}
           </RightClickScrollContainer>
           </div>

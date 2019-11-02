@@ -28,7 +28,6 @@ const chooseLine = (activeSport, match, home) => {
 }
 
 const oddsOrScore = (activeSport, match, score, home) => {
-  console.log(chooseLine(activeSport, match, home))
   if(score !== null) return score
   else return chooseLine(activeSport, match, home)
 }
