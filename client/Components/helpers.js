@@ -277,8 +277,8 @@ const truncateNHLTeamName = string => {
       return 'OTT'
     case 'Philadelphia Flyers':
       return 'PHI'
-    case 'Phoenix Coyotes':
-      return 'PHX'
+    case 'Arizona Coyotes':
+      return 'ARI'
     case 'Pittsburgh Penguins':
       return 'PIT'
     case 'San Jose Sharks':
