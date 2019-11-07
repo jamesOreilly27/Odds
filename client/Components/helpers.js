@@ -413,7 +413,7 @@ export const findResult = (id, results) => {
 /***** Final Games *****/
 export const isGameWithinTwelveHours = match => {
   const now = new Date()
-  return now.getTime() - new Date(match.MatchTime).getTime() < 43200000
+  return now.getTime() - new Date(match.MatchTime).getTime() < 50200000
 }
 
 export const filterOutOldGames = finalGamesArr => {
@@ -432,11 +432,32 @@ export const finalOrInProgress = game => {
 }
 
 const didHomeWin = (homeScore, awayScore) => {
-  if(homeScore > awayScore) return true
-  else if(awayScore > homeScore) return false
+  if(parseInt(homeScore) > parseInt(awayScore)) return true
+  else if(parseInt(awayScore) > parseInt(homeScore)) return false
 }
 
 export const didBetWin = (homeScore, awayScore, home) => {
-  if(home && didHomeWin(homeScore, awayScore)) return true
+  if(
+    home && didHomeWin(homeScore, awayScore) ||
+    !home && !didHomeWin(homeScore, awayScore)
+  ) return true
+  else return false
+}
+
+const didHomeCover = (homeScore, awayScore, spread) => {
+  console.log('TESTING', homeScore, awayScore, spread)
+  const numHomeScore = parseInt(homeScore)
+  const numAwayScore = parseInt(awayScore)
+  const numSpread = parseFloat(spread)
+  if(numHomeScore + numSpread > numAwayScore) return true
+  else return false
+}
+
+export const didBetCover = (homeScore, awayScore, spread, home) => {
+  console.log(awayScore, spread, home)
+  if(
+    home && didHomeCover(homeScore, awayScore, spread) ||
+    !home && !didHomeCover(homeScore, awayScore, -spread)
+  ) return true
   else return false
 }
