@@ -461,3 +461,13 @@ export const didBetCover = (homeScore, awayScore, spread, home) => {
   ) return true
   else return false
 }
+
+const didOverCover = (homeScore, awayScore, total) => {
+  if(parseInt(homeScore) + parseInt(awayScore) > parseFloat(total)) return true
+  else return false
+}
+
+const didUnderCover = (homeScore, awayScore, total) => {
+  if(parseInt(homeScore) + parseInt(awayScore) < parseFloat(total)) return true
+  else return false
+}
