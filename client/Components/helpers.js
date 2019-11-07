@@ -18,6 +18,11 @@ export const processTime = dateString => {
   return minutes < 10 ? `${hours}:0${minutes} PM EST` : `${hours}:${minutes} PM`
 }
 
+const isStartOfMonth = dayNum => {
+  if(dayNum === 1) return true
+  else return false
+}
+
 /********** Filtering Odds By Date ************/
 export const getMatchDate = match => {
   const dateObj = new Date(match.MatchTime)
@@ -87,7 +92,7 @@ export const getDatesArray = odds => {
   const checked = []
   const testChecked = []
 
-  odds.forEach( match => {
+  odds.forEach(match => {
     const date = getMatchDate(match)
     const month = getMatchMonth(match)
     const monthAndDay = {month: month, date: date}
@@ -398,3 +403,6 @@ export const addPlus = string => {
 export const findResult = (id, results) => {
   return results.filter(result => result.ID === id)[0]
 }
+
+/***** Final Games *****/
+

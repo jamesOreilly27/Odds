@@ -7,7 +7,7 @@ import { findResult, sortGamesByTime } from './helpers'
 import { ThreeTeamOddsTable, OddsTableHeader, OddsGrid } from '../Components'
 
 const Wrapper = styled(FlexColumnContainer)`
-
+  
 `
 
 class SportsScore extends Component {
@@ -45,9 +45,12 @@ class SportsScore extends Component {
   render() {
     return (
       <Wrapper>
-            {this.props.nonFinalGames && 
-              <OddsGrid games={sortGamesByTime(this.props.nonFinalGames)} activeSport={this.props.match.params.sport} />
-            }
+        {this.props.finalGames &&
+          <OddsGrid games={sortGamesByTime(this.props.finalGames)} activeSport={this.props.match.params.sport} />
+        }
+        {/* {this.props.nonFinalGames && 
+          <OddsGrid games={sortGamesByTime(this.props.nonFinalGames)} activeSport={this.props.match.params.sport} />
+        } */}
       </Wrapper>
     )
   }
