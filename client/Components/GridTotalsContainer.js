@@ -10,11 +10,26 @@ const Wrapper = styled(FlexRowContainer)`
 `
 
 const TotalNumberContainer = styled(FlexColumnContainer)`
+  width: 25%
+  height: 70px;
   font-size: 22px;
 `
 
 const OverUnderContainer = styled(FlexColumnContainer)`
-
+  width: 30%;
+  height: 70px;
+  border-radius: 30px;
+  padding: 10px;
+  background-color: ${({ won }) => {
+    let color;
+    won ? color = 'green' : color = '#FFF'
+    return color
+  }}
+  color: ${({ won }) => {
+    let color
+    won ? color = '#FFF' : color = '#000'
+    return color
+  }}
 `
 
 const HeaderAndLine = styled.div`
@@ -23,7 +38,7 @@ const HeaderAndLine = styled.div`
 
 const GridTotalsContainer = ({ totals }) => (
   <Wrapper>
-    <OverUnderContainer>
+    <OverUnderContainer won>
       <HeaderAndLine>Under</HeaderAndLine>
       <HeaderAndLine>{`(${totals.UnderLine})`}</HeaderAndLine>
     </OverUnderContainer>
