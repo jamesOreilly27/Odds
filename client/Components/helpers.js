@@ -23,6 +23,11 @@ const isStartOfMonth = dayNum => {
   else return false
 }
 
+export const isGameWithinTenHours = match => {
+  const now = new Date()
+  return now.getTime() - new Date(match.MatchTime).getTime() < 36000000
+}
+
 /********** Filtering Odds By Date ************/
 export const getMatchDate = match => {
   const dateObj = new Date(match.MatchTime)
