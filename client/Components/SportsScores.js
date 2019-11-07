@@ -48,9 +48,6 @@ class SportsScore extends Component {
         {this.props.finalGames && this.props.nonFinalGames &&
           <OddsGrid games={sortGamesByTime(combineGameArrays(filterOutOldGames(this.props.finalGames), this.props.nonFinalGames))} activeSport={this.props.match.params.sport} />
         }
-        {/* {this.props.nonFinalGames && 
-          <OddsGrid games={sortGamesByTime(this.props.nonFinalGames)} activeSport={this.props.match.params.sport} />
-        } */}
       </Wrapper>
     )
   }
