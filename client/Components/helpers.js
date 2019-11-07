@@ -1,3 +1,5 @@
+import React from 'react'
+
 /***** Handling UTC time strings ******/
 const convertTime = string => {
   return new Date(string)
@@ -68,6 +70,10 @@ export const convertMonthNumToWord = monthNum => {
 
 export const processDayMonthTime = match => {
   return `${processTime(match.MatchTime)} ${convertMonthNumToWord(getMatchMonth(match))} ${getMatchDate(match)} `
+}
+
+export const processDayMonth = match => {
+  return `${convertMonthNumToWord(getMatchMonth(match))} ${getMatchDate(match)}`
 }
 
 const sortByMonthAndDay = datesArr => {
@@ -418,4 +424,9 @@ export const filterOutOldGames = finalGamesArr => {
 
 export const combineGameArrays = (final, nonFinal) => {
   return final.concat(nonFinal)
+}
+
+export const finalOrInProgress = game => {
+  if(game.Final === true) return <div>{`Final ${processDayMonth(game)}`}</div>
+  else return <div>In Progress: Odds Closed</div>
 }
