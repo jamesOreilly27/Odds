@@ -104,11 +104,16 @@ const GridGameContainer = ({ activeSport, match }) => (
               <Amount>{match.AwayScore}</Amount>
             }
           </Score>
-          <GridTeamOddsContainer lines={{
-            MoneyLine: match.MoneyLineAway,
-            PointSpread: match.PointSpreadAway,
-            PointSpreadLine: match.PointSpreadAwayLine
-          }}/>
+          <GridTeamOddsContainer
+            lines={{
+              MoneyLine: match.MoneyLineAway,
+              PointSpread: match.PointSpreadAway,
+              PointSpreadLine: match.PointSpreadAwayLine
+            }}
+            final={match.Final}
+            homeScore={match.HomeScore}
+            awayScore={match.AwayScore}
+          />
         </Team>
         <AtSymbol> @ </AtSymbol>
         <Team>
