@@ -23,8 +23,9 @@ const Juice = styled.div`
   font-size: 13px;
 `
 
-const GridTeamOddsContainer = ({ lines }) => (
+const GridTeamOddsContainer = ({ lines, final, homeScore, awayScore, home }) => (
   <Wrapper>
+    {console.log('HOMESCORE', homeScore, 'AWAYSCORE', awayScore, 'MONEYLINE', lines.MoneyLine, 'HOME', home)}
     <LineContainer>
       <Header>
         Moneyline

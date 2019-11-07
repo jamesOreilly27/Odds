@@ -430,3 +430,13 @@ export const finalOrInProgress = game => {
   if(game.Final === true) return <div>{`Final ${processDayMonth(game)}`}</div>
   else return <div>In Progress: Odds Closed</div>
 }
+
+const didHomeWin = (homeScore, awayScore) => {
+  if(homeScore > awayScore) return true
+  else if(awayScore > homeScore) return false
+}
+
+export const didTeamWin = (homeScore, awayScore, home) => {
+  if(home && didHomeWin(homeScore, awayScore)) return true
+  else return false
+}
