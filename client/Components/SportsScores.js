@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { FlexColumnContainer } from './baseComponents'
 import { fetchOddsBySport, createGameThunk, gotResultsThunk, getGamesThunk, getFinalGamesThunk, getNonFinalGamesThunk } from '../store'
-import { findResult, sortGamesByTime } from './helpers'
+import { findResult, sortGamesByTime, filterOutOldGames, combineGameArrays } from './helpers'
 import { ThreeTeamOddsTable, OddsTableHeader, OddsGrid } from '../Components'
 
 const Wrapper = styled(FlexColumnContainer)`
@@ -45,8 +45,8 @@ class SportsScore extends Component {
   render() {
     return (
       <Wrapper>
-        {this.props.finalGames &&
-          <OddsGrid games={sortGamesByTime(this.props.finalGames)} activeSport={this.props.match.params.sport} />
+        {this.props.finalGames && this.props.nonFinalGames &&
+          <OddsGrid games={sortGamesByTime(combineGameArrays(filterOutOldGames(this.props.finalGames), this.props.nonFinalGames))} activeSport={this.props.match.params.sport} />
         }
         {/* {this.props.nonFinalGames && 
           <OddsGrid games={sortGamesByTime(this.props.nonFinalGames)} activeSport={this.props.match.params.sport} />
