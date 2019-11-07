@@ -1,14 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
-import { addPlus } from './helpers'
+import { addPlus, didBetWin } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
 
 `
 
 const LineContainer = styled(FlexColumnContainer)`
-  margin-top: 15px;
+  padding: 15px;
+  border-radius: 40px
+  background-color: ${({ won }) => {
+    let color;
+    won ? color = 'green' : color = '#FFF'
+    return color
+  }}
+  color: ${({ won }) => {
+    let color
+    won ? color = '#FFF' : color = '#000'
+    return color
+  }}
 `
 
 const Header = styled.div`
@@ -25,8 +36,7 @@ const Juice = styled.div`
 
 const GridTeamOddsContainer = ({ lines, final, homeScore, awayScore, home }) => (
   <Wrapper>
-    {console.log('HOMESCORE', homeScore, 'AWAYSCORE', awayScore, 'MONEYLINE', lines.MoneyLine, 'HOME', home)}
-    <LineContainer>
+    <LineContainer won={didBetWin(homeScore, awayScore, home)}>
       <Header>
         Moneyline
       </Header>

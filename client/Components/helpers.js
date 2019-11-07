@@ -436,7 +436,7 @@ const didHomeWin = (homeScore, awayScore) => {
   else if(awayScore > homeScore) return false
 }
 
-export const didTeamWin = (homeScore, awayScore, home) => {
+export const didBetWin = (homeScore, awayScore, home) => {
   if(home && didHomeWin(homeScore, awayScore)) return true
   else return false
 }
