@@ -413,7 +413,7 @@ export const findResult = (id, results) => {
 /***** Final Games *****/
 export const isGameWithinTwelveHours = match => {
   const now = new Date()
-  return now.getTime() - new Date(match.MatchTime).getTime() < 250200000
+  return now.getTime() - new Date(match.MatchTime).getTime() < 46800000
 }
 
 export const filterOutOldGames = finalGamesArr => {
