@@ -1,3 +1,5 @@
+import React from 'react'
+
 /***** Handling UTC time strings ******/
 const convertTime = string => {
   return new Date(string)
@@ -16,6 +18,11 @@ export const processTime = dateString => {
   // else if(hours > 4) hours = hours - 4
   const minutes = date.getMinutes()
   return minutes < 10 ? `${hours}:0${minutes} PM EST` : `${hours}:${minutes} PM`
+}
+
+const isStartOfMonth = dayNum => {
+  if(dayNum === 1) return true
+  else return false
 }
 
 /********** Filtering Odds By Date ************/
@@ -65,6 +72,10 @@ export const processDayMonthTime = match => {
   return `${processTime(match.MatchTime)} ${convertMonthNumToWord(getMatchMonth(match))} ${getMatchDate(match)} `
 }
 
+export const processDayMonth = match => {
+  return `${convertMonthNumToWord(getMatchMonth(match))} ${getMatchDate(match)}`
+}
+
 const sortByMonthAndDay = datesArr => {
   return datesArr.sort((a, b) => {
     if(a.month !== b.month) return a.month - b.month
@@ -87,7 +98,7 @@ export const getDatesArray = odds => {
   const checked = []
   const testChecked = []
 
-  odds.forEach( match => {
+  odds.forEach(match => {
     const date = getMatchDate(match)
     const month = getMatchMonth(match)
     const monthAndDay = {month: month, date: date}
@@ -397,4 +408,92 @@ export const addPlus = string => {
 /********** Live Scoring ***********/
 export const findResult = (id, results) => {
   return results.filter(result => result.ID === id)[0]
+}
+
+/***** Final Games *****/
+export const isGameWithinTwelveHours = match => {
+  const now = new Date()
+  return now.getTime() - new Date(match.MatchTime).getTime() < 46800000
+}
+
+export const filterOutOldGames = finalGamesArr => {
+  return finalGamesArr.filter(game => {
+    return isGameWithinTwelveHours(game)
+  })
+}
+
+export const combineGameArrays = (final, nonFinal) => {
+  return final.concat(nonFinal)
+}
+
+export const finalOrInProgress = game => {
+  if(game.Final === true) return <div>{`Final ${processDayMonth(game)}`}</div>
+  else return <div>In Progress: Odds Closed</div>
+}
+
+const didHomeWin = (homeScore, awayScore) => {
+  if(parseInt(homeScore) > parseInt(awayScore)) return true
+  else if(parseInt(awayScore) > parseInt(homeScore)) return false
+}
+
+export const isSpreadPush = (homeScore, awayScore, spread) => {
+  if(
+    parseInt(homeScore) + parseFloat(spread) === parseInt(awayScore) ||
+    parseInt(awayScore) + parseFloat(spread) === parseInt(homeScore)
+  ) return true
+  else return false
+}
+
+export const isMoneylinePush = (homeScore, awayScore, final) => {
+  if(parseInt(homeScore) === parseInt(awayScore) && final ) return true
+  return false
+}
+
+export const didBetWin = (homeScore, awayScore, home, final) => {
+  if(
+    home && didHomeWin(homeScore, awayScore) ||
+    !home && !didHomeWin(homeScore, awayScore) &&
+    final
+  ) return true
+  else return false
+}
+
+const didHomeCover = (homeScore, awayScore, spread) => {
+  const numHomeScore = parseInt(homeScore)
+  const numAwayScore = parseInt(awayScore)
+  const numSpread = parseFloat(spread)
+  if(numHomeScore + numSpread > numAwayScore) return true
+  else return false
+}
+
+const didAwayCover = (homeScore, awayScore, spread) => {
+  const numHomeScore = parseInt(homeScore)
+  const numAwayScore = parseInt(awayScore)
+  const numSpread = parseFloat(spread)
+  if(numAwayScore + numSpread > numHomeScore) return true
+  else return false
+}
+
+export const didBetCover = (homeScore, awayScore, spread, home, final) => {
+  if(
+    home && didHomeCover(homeScore, awayScore, spread) ||
+    !home && didAwayCover(homeScore, awayScore, spread) &&
+    final
+  ) return true
+  else return false
+}
+
+export const didOverCover = (homeScore, awayScore, total, final) => {
+  if(parseInt(homeScore) + parseInt(awayScore) > parseFloat(total) && final) return true
+  else return false
+}
+
+export const didUnderCover = (homeScore, awayScore, total, final) => {
+  if(parseInt(homeScore) + parseInt(awayScore) < parseFloat(total) && final) return true
+  else return false
+}
+
+export const didTotalPush = (homeScore, awayScore, total, final) => {
+  if(parseInt(homeScore) + parseInt(awayScore) === parseFloat(total) && final) return true
+  else return false
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
 import { GridTeamOddsContainer, GridTotalsContainer } from '../Components'
-import { truncateTeamName, processDayMonthTime, splitTeamName } from './helpers'
+import { truncateTeamName, processDayMonthTime, splitTeamName, finalOrInProgress } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
   @media(max-width: 960px) {
@@ -83,7 +83,7 @@ const GridGameContainer = ({ activeSport, match }) => (
         {match.HomeScore === null ? 
           processDayMonthTime(match)
           :
-          <div>In Progress: Odds Closed</div>
+          finalOrInProgress(match)
         }
       </GameDate>
       <TeamsContainer>
@@ -104,11 +104,16 @@ const GridGameContainer = ({ activeSport, match }) => (
               <Amount>{match.AwayScore}</Amount>
             }
           </Score>
-          <GridTeamOddsContainer lines={{
-            MoneyLine: match.MoneyLineAway,
-            PointSpread: match.PointSpreadAway,
-            PointSpreadLine: match.PointSpreadAwayLine
-          }}/>
+          <GridTeamOddsContainer
+            lines={{
+              MoneyLine: match.MoneyLineAway,
+              PointSpread: match.PointSpreadAway,
+              PointSpreadLine: match.PointSpreadAwayLine
+            }}
+            final={match.Final}
+            homeScore={match.HomeScore}
+            awayScore={match.AwayScore}
+          />
         </Team>
         <AtSymbol> @ </AtSymbol>
         <Team>
@@ -128,18 +133,29 @@ const GridGameContainer = ({ activeSport, match }) => (
               <Amount>{match.HomeScore}</Amount>
             }
           </Score>
-          <GridTeamOddsContainer lines={{
-            MoneyLine: match.MoneyLineHome,
-            PointSpread: match.PointSpreadHome,
-            PointSpreadLine: match.PointSpreadHomeLine
-          }}/>
+          <GridTeamOddsContainer
+            lines={{
+              MoneyLine: match.MoneyLineHome,
+              PointSpread: match.PointSpreadHome,
+              PointSpreadLine: match.PointSpreadHomeLine
+            }}
+            final={match.Final}
+            homeScore={match.HomeScore}
+            awayScore={match.AwayScore}
+            home
+          />
         </Team>
       </TeamsContainer>
-      <GridTotalsContainer totals={{
-        TotalNumber: match.TotalNumber,
-        OverLine: match.OverLine,
-        UnderLine: match.UnderLine
-      }}/>
+      <GridTotalsContainer
+        totals={{
+          TotalNumber: match.TotalNumber,
+          OverLine: match.OverLine,
+          UnderLine: match.UnderLine
+        }}
+        final={match.Final}
+        homeScore={match.HomeScore}
+        awayScore={match.AwayScore}
+      />
     </Container>
   </Wrapper>
 )
