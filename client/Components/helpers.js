@@ -436,12 +436,17 @@ const didHomeWin = (homeScore, awayScore) => {
   else if(parseInt(awayScore) > parseInt(homeScore)) return false
 }
 
-export const isSpreadPush = (homeScore, awayScore, spread, home, final) => {
+export const isSpreadPush = (homeScore, awayScore, spread) => {
   if(
     parseInt(homeScore) + parseFloat(spread) === parseInt(awayScore) ||
     parseInt(awayScore) + parseFloat(spread) === parseInt(homeScore)
   ) return true
   else return false
+}
+
+export const isMoneylinePush = (homeScore, awayScore, final) => {
+  if(parseInt(homeScore) === parseInt(awayScore) && final ) return true
+  return false
 }
 
 export const didBetWin = (homeScore, awayScore, home, final) => {
@@ -457,7 +462,6 @@ const didHomeCover = (homeScore, awayScore, spread) => {
   const numHomeScore = parseInt(homeScore)
   const numAwayScore = parseInt(awayScore)
   const numSpread = parseFloat(spread)
-  console.log('WANNABE', numHomeScore, numAwayScore, numSpread)
   if(numHomeScore + numSpread > numAwayScore) return true
   else return false
 }
@@ -466,13 +470,11 @@ const didAwayCover = (homeScore, awayScore, spread) => {
   const numHomeScore = parseInt(homeScore)
   const numAwayScore = parseInt(awayScore)
   const numSpread = parseFloat(spread)
-  console.log('WANNABE', numHomeScore, numAwayScore, numSpread)
   if(numAwayScore + numSpread > numHomeScore) return true
   else return false
 }
 
-export const didBetCover = (match, homeScore, awayScore, spread, home, final) => {
-  console.log(match)
+export const didBetCover = (homeScore, awayScore, spread, home, final) => {
   if(
     home && didHomeCover(homeScore, awayScore, spread) ||
     !home && didAwayCover(homeScore, awayScore, spread) &&
@@ -488,5 +490,10 @@ export const didOverCover = (homeScore, awayScore, total, final) => {
 
 export const didUnderCover = (homeScore, awayScore, total, final) => {
   if(parseInt(homeScore) + parseInt(awayScore) < parseFloat(total) && final) return true
+  else return false
+}
+
+export const didTotalPush = (homeScore, awayScore, total, final) => {
+  if(parseInt(homeScore) + parseInt(awayScore) === parseFloat(total) && final) return true
   else return false
 }

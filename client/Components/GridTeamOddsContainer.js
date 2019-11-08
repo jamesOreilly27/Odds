@@ -39,14 +39,13 @@ const Juice = styled.div`
   font-size: 13px;
 `
 
-const GridTeamOddsContainer = ({ lines, final, homeScore, awayScore, home, match}) => (
+const GridTeamOddsContainer = ({ lines, final, homeScore, awayScore, home }) => (
   <Wrapper>
     <LineContainer
       homeScore={homeScore}
       awayScore={awayScore}
       won={didBetWin(homeScore, awayScore, home, final)}
-      // push={isMoneylinePush(homeScore, awayScore, home, final)}
-      push={false}
+      push={isMoneylinePush(homeScore, awayScore, final)}
     >
       <Header>
         Moneyline
@@ -56,7 +55,7 @@ const GridTeamOddsContainer = ({ lines, final, homeScore, awayScore, home, match
       </Content>
     </LineContainer>
     <LineContainer
-      won={didBetCover(match, homeScore, awayScore, lines.PointSpread, home, final)}
+      won={didBetCover(homeScore, awayScore, lines.PointSpread, home, final)}
       push={isSpreadPush(homeScore, awayScore, lines.PointSpread, home, final)}
     >
       <Header>
