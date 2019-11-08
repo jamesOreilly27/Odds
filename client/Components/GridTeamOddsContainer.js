@@ -13,15 +13,16 @@ const LineContainer = styled(FlexColumnContainer)`
   margin: 3px 0;
   padding: 15px;
   border-radius: 40px
-  background-color: ${({ won, homeScore, awayScore }) => {
-    console.log('TESTING', won, homeScore, awayScore)
+  background-color: ${({ won, push }) => {
     let color;
     won ? color = 'green' : color = '#FFF'
+    push ? color = 'lightgrey' : '#000'
     return color
   }}
-  color: ${({ won }) => {
+  color: ${({ won, push }) => {
     let color
     won ? color = '#FFF' : color = '#000'
+    push ? color = '#000' : '#FFF'
     return color
   }}
 `
@@ -44,7 +45,8 @@ const GridTeamOddsContainer = ({ lines, final, homeScore, awayScore, home, match
       homeScore={homeScore}
       awayScore={awayScore}
       won={didBetWin(homeScore, awayScore, home, final)}
-      push={isMoneylinePush(homeScore, awayScore, home, final)}
+      // push={isMoneylinePush(homeScore, awayScore, home, final)}
+      push={false}
     >
       <Header>
         Moneyline

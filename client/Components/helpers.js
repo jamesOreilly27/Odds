@@ -438,9 +438,8 @@ const didHomeWin = (homeScore, awayScore) => {
 
 export const isSpreadPush = (homeScore, awayScore, spread, home, final) => {
   if(
-    !(home && didHomeCover(homeScore, awayScore, spread)) &&
-    !(!home && !didHomeCover(homeScore, awayScore, spread)) &&
-    final
+    parseInt(homeScore) + parseFloat(spread) === parseInt(awayScore) ||
+    parseInt(awayScore) + parseFloat(spread) === parseInt(homeScore)
   ) return true
   else return false
 }
