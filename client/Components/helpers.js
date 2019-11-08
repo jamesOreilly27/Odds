@@ -413,7 +413,7 @@ export const findResult = (id, results) => {
 /***** Final Games *****/
 export const isGameWithinTwelveHours = match => {
   const now = new Date()
-  return now.getTime() - new Date(match.MatchTime).getTime() < 50200000
+  return now.getTime() - new Date(match.MatchTime).getTime() < 250200000
 }
 
 export const filterOutOldGames = finalGamesArr => {
@@ -436,38 +436,58 @@ const didHomeWin = (homeScore, awayScore) => {
   else if(parseInt(awayScore) > parseInt(homeScore)) return false
 }
 
-export const didBetWin = (homeScore, awayScore, home) => {
+export const isSpreadPush = (homeScore, awayScore, spread, home, final) => {
+  if(
+    !(home && didHomeCover(homeScore, awayScore, spread)) &&
+    !(!home && !didHomeCover(homeScore, awayScore, spread)) &&
+    final
+  ) return true
+  else return false
+}
+
+export const didBetWin = (homeScore, awayScore, home, final) => {
   if(
     home && didHomeWin(homeScore, awayScore) ||
-    !home && !didHomeWin(homeScore, awayScore)
+    !home && !didHomeWin(homeScore, awayScore) &&
+    final
   ) return true
   else return false
 }
 
 const didHomeCover = (homeScore, awayScore, spread) => {
-  console.log('TESTING', homeScore, awayScore, spread)
   const numHomeScore = parseInt(homeScore)
   const numAwayScore = parseInt(awayScore)
   const numSpread = parseFloat(spread)
+  console.log('WANNABE', numHomeScore, numAwayScore, numSpread)
   if(numHomeScore + numSpread > numAwayScore) return true
   else return false
 }
 
-export const didBetCover = (homeScore, awayScore, spread, home) => {
-  console.log(awayScore, spread, home)
+const didAwayCover = (homeScore, awayScore, spread) => {
+  const numHomeScore = parseInt(homeScore)
+  const numAwayScore = parseInt(awayScore)
+  const numSpread = parseFloat(spread)
+  console.log('WANNABE', numHomeScore, numAwayScore, numSpread)
+  if(numAwayScore + numSpread > numHomeScore) return true
+  else return false
+}
+
+export const didBetCover = (match, homeScore, awayScore, spread, home, final) => {
+  console.log(match)
   if(
     home && didHomeCover(homeScore, awayScore, spread) ||
-    !home && !didHomeCover(homeScore, awayScore, -spread)
+    !home && didAwayCover(homeScore, awayScore, spread) &&
+    final
   ) return true
   else return false
 }
 
-const didOverCover = (homeScore, awayScore, total) => {
-  if(parseInt(homeScore) + parseInt(awayScore) > parseFloat(total)) return true
+export const didOverCover = (homeScore, awayScore, total, final) => {
+  if(parseInt(homeScore) + parseInt(awayScore) > parseFloat(total) && final) return true
   else return false
 }
 
-const didUnderCover = (homeScore, awayScore, total) => {
-  if(parseInt(homeScore) + parseInt(awayScore) < parseFloat(total)) return true
+export const didUnderCover = (homeScore, awayScore, total, final) => {
+  if(parseInt(homeScore) + parseInt(awayScore) < parseFloat(total) && final) return true
   else return false
 }

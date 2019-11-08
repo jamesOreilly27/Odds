@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
-import { addPlus, didBetWin, didBetCover } from './helpers'
+import { addPlus, didBetWin, didBetCover, isMoneylinePush, isSpreadPush } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
 
@@ -13,7 +13,8 @@ const LineContainer = styled(FlexColumnContainer)`
   margin: 3px 0;
   padding: 15px;
   border-radius: 40px
-  background-color: ${({ won }) => {
+  background-color: ${({ won, homeScore, awayScore }) => {
+    console.log('TESTING', won, homeScore, awayScore)
     let color;
     won ? color = 'green' : color = '#FFF'
     return color
@@ -37,9 +38,14 @@ const Juice = styled.div`
   font-size: 13px;
 `
 
-const GridTeamOddsContainer = ({ lines, final, homeScore, awayScore, home }) => (
+const GridTeamOddsContainer = ({ lines, final, homeScore, awayScore, home, match}) => (
   <Wrapper>
-    <LineContainer won={didBetWin(homeScore, awayScore, home)}>
+    <LineContainer
+      homeScore={homeScore}
+      awayScore={awayScore}
+      won={didBetWin(homeScore, awayScore, home, final)}
+      push={isMoneylinePush(homeScore, awayScore, home, final)}
+    >
       <Header>
         Moneyline
       </Header>
@@ -47,7 +53,10 @@ const GridTeamOddsContainer = ({ lines, final, homeScore, awayScore, home }) => 
         {`${addPlus(lines.MoneyLine)}`}
       </Content>
     </LineContainer>
-    <LineContainer won={didBetCover(homeScore, awayScore, lines.PointSpread, home)}>
+    <LineContainer
+      won={didBetCover(match, homeScore, awayScore, lines.PointSpread, home, final)}
+      push={isSpreadPush(homeScore, awayScore, lines.PointSpread, home, final)}
+    >
       <Header>
         Spread
       </Header>

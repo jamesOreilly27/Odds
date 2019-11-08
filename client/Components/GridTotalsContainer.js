@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
+import { didOverCover, didUnderCover } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
   margin-top: 10px;
-  width: 100%
+  width: 84%
   justify-content: space-around;
   padding: 10px 5px;
 `
@@ -36,9 +37,9 @@ const HeaderAndLine = styled.div`
   font-size: 18px;
 `
 
-const GridTotalsContainer = ({ totals }) => (
+const GridTotalsContainer = ({ totals, final, homeScore, awayScore }) => (
   <Wrapper>
-    <OverUnderContainer won>
+    <OverUnderContainer won={didUnderCover(homeScore, awayScore, totals.TotalNumber, final)}>
       <HeaderAndLine>Under</HeaderAndLine>
       <HeaderAndLine>{`(${totals.UnderLine})`}</HeaderAndLine>
     </OverUnderContainer>
@@ -46,7 +47,7 @@ const GridTotalsContainer = ({ totals }) => (
       <div>Total</div>
       <div>{totals.TotalNumber}</div>
     </TotalNumberContainer>
-    <OverUnderContainer>
+    <OverUnderContainer won={didOverCover(homeScore, awayScore, totals.TotalNumber, final)}>
       <HeaderAndLine>Over</HeaderAndLine>
       <HeaderAndLine>{`(${totals.OverLine})`}</HeaderAndLine>
     </OverUnderContainer>
