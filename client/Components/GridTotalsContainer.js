@@ -52,7 +52,10 @@ const GridTotalsContainer = ({ totals, final, homeScore, awayScore }) => (
       <div>Total</div>
       <div>{totals.TotalNumber}</div>
     </TotalNumberContainer>
-    <OverUnderContainer won={didOverCover(homeScore, awayScore, totals.TotalNumber, final)}>
+    <OverUnderContainer
+      won={didOverCover(homeScore, awayScore, totals.TotalNumber, final)}
+      push={didTotalPush(homeScore, awayScore, totals.TotalNumber, final)}  
+    >
       <HeaderAndLine>Over</HeaderAndLine>
       <HeaderAndLine>{`(${totals.OverLine})`}</HeaderAndLine>
     </OverUnderContainer>
