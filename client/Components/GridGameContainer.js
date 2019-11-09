@@ -78,7 +78,6 @@ const AtSymbol = styled.div`
 
 const GridGameContainer = ({ activeSport, match }) => (
   <Wrapper>
-    {console.log(match)}
     <Container>
       <GameDate>
         {match.HomeScore === null ? 
