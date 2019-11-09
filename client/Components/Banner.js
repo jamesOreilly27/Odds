@@ -4,7 +4,7 @@ import { fetchOddsBySport, updateActiveSport, createGameThunk, gotResultsThunk, 
 import { BannerSelect, SelectOption, DateSection, GolfContainer } from '../Components'
 import styled, { keyframes } from 'styled-components'
 import { FlexRowContainer, FlexColumnContainer, FlexButton } from './baseComponents'
-import { getDatesArray, filterOddsByDay, truncateTeamName, findResult, sortGamesByTime } from './helpers'
+import { getDatesArray, filterOddsByDay, truncateTeamName, findResult, sortGamesByTime, filterOutOldGames, combineGameArrays } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
   align-items: flex-start;
@@ -242,11 +242,11 @@ class Banner extends Component {
         }
 
         <MatchContainer id="match-container" dropDown={this.state.dropDown}>
-          {this.props.nonFinalGames &&
+          {this.props.nonFinalGames && this.props.finalGames &&
             this.props.activeSport !== 'golf' ?
-            getDatesArray(this.props.nonFinalGames).map(date => {
+            getDatesArray(combineGameArrays(filterOutOldGames(this.props.finalGames), this.props.nonFinalGames)).map(date => {
               if(truncateTeamName(this.props.activeSport, this.props.nonFinalGames[0]['HomeTeam'])) {
-                return <DateSection key={date.month / date.date} date={date} games={sortGamesByTime(filterOddsByDay(this.props.nonFinalGames, date))} />
+                return <DateSection key={date.month / date.date} date={date} games={sortGamesByTime(filterOddsByDay(combineGameArrays(filterOutOldGames(this.props.finalGames), this.props.nonFinalGames), date))} />
               }
             })
             :
