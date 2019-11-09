@@ -451,8 +451,8 @@ export const isMoneylinePush = (homeScore, awayScore, final) => {
 
 export const didBetWin = (homeScore, awayScore, home, final) => {
   if(
-    home && didHomeWin(homeScore, awayScore) ||
-    !home && !didHomeWin(homeScore, awayScore) &&
+    (home && didHomeWin(homeScore, awayScore) ||
+    !home && !didHomeWin(homeScore, awayScore)) &&
     final
   ) return true
   else return false
@@ -476,8 +476,8 @@ const didAwayCover = (homeScore, awayScore, spread) => {
 
 export const didBetCover = (homeScore, awayScore, spread, home, final) => {
   if(
-    home && didHomeCover(homeScore, awayScore, spread) ||
-    !home && didAwayCover(homeScore, awayScore, spread) &&
+    (home && didHomeCover(homeScore, awayScore, spread) ||
+    !home && didAwayCover(homeScore, awayScore, spread)) &&
     final
   ) return true
   else return false
