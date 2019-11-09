@@ -12,10 +12,21 @@ import nonFinalGames from './nonFinalGames'
 
 const reducer = combineReducers({ odds, activeSport, games, results, singleGame, finalGames, nonFinalGames })
 
-const middleware = composeWithDevTools(applyMiddleware(
-  thunkMiddleware,
-  createLogger({ collapsed: true })
-))
+// const middleware = composeWithDevTools(applyMiddleware(
+//   thunkMiddleware,
+//   createLogger({ collapsed: true })
+// ))
+let middleware
+
+if(process.env.NODE_ENV !== 'production') {
+  middleware = composeWithDevTools(applyMiddleware(
+    thunkMiddleware,
+    createLogger({ collapsed: true })
+  ))
+}
+else {
+  middleware = applyMiddleware(thunkMiddleware)
+}
 
 const store = createStore(reducer, middleware)
 
