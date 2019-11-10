@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const chalk = require('chalk')
 const jsonOdds = require('./jsonOdds')
+const TTL = process.env.CACHE_TTL || 60
 const nodecache = require('node-cache')
-const cache = new nodecache({stdTTL: 60})
+const cache = new nodecache({stdTTL: TTL})
 
 router.get('/:sport', (req, res, next) => {
   const sportString = req.params.sport

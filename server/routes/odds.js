@@ -3,8 +3,9 @@ const router = express.Router();
 const chalk = require('chalk')
 const { Game } = require('../db/models')
 const jsonOdds = require('./jsonOdds')
+const TTL = process.env.CACHE_TTL || 60
 const nodecache = require('node-cache')
-const cache = new nodecache({stdTTL: 60})
+const cache = new nodecache({stdTTL: TTL})
 
 const upsert = (values, condition) => {
   return Game.findOne({
