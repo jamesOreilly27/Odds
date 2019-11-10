@@ -91,7 +91,7 @@ const GridGameContainer = ({ activeSport, match }) => (
           <NameAndLogo>
             <LogoContainer>
               {truncateTeamName(activeSport, match.AwayTeam) && 
-                <Logo src={'/assets/' + props.activeSport + '-logos/' + truncateTeamName(props.activeSport, props.match.AwayTeam) + '.png'} />
+                <Logo src={'/assets/production/' + props.activeSport + '-logos/' + truncateTeamName(props.activeSport, props.match.AwayTeam) + '.png'} />
               }
             </LogoContainer>
             <TeamName>
@@ -120,7 +120,7 @@ const GridGameContainer = ({ activeSport, match }) => (
           <NameAndLogo>
             <LogoContainer>
               {truncateTeamName(activeSport, match.HomeTeam) && 
-                <Logo src={'/assets/' + props.activeSport + '-logos/' + truncateTeamName(props.activeSport, props.match.HomeTeam) + '.png'} />
+                <Logo src={'/assets/production/' + props.activeSport + '-logos/' + truncateTeamName(props.activeSport, props.match.HomeTeam) + '.png'} />
               }
             </LogoContainer>
             <TeamName>
