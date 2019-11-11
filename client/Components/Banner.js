@@ -219,7 +219,7 @@ class Banner extends Component {
               </OptionsContainer>
             }
         </Menu>
-        {this.props.nonFinalGames && 
+        {this.props.nonFinalGames && this.props.finalGames &&
           <div>
           <LeftClickScrollContainer
             onMouseDown={this.mouseDownLeft}
@@ -245,7 +245,7 @@ class Banner extends Component {
           {this.props.nonFinalGames && this.props.finalGames &&
             this.props.activeSport !== 'golf' ?
             getDatesArray(combineGameArrays(filterOutOldGames(this.props.finalGames), this.props.nonFinalGames)).map(date => {
-              if(truncateTeamName(this.props.activeSport, this.props.nonFinalGames[0]['HomeTeam'])) {
+              if(this.props.nonFinalGames[0] && truncateTeamName(this.props.activeSport, this.props.nonFinalGames[0]['HomeTeam'])) {
                 return <DateSection key={date.month / date.date} date={date} games={sortGamesByTime(filterOddsByDay(combineGameArrays(filterOutOldGames(this.props.finalGames), this.props.nonFinalGames), date))} />
               }
             })
