@@ -73,7 +73,17 @@ const Amount = styled(FlexRowContainer)`
 
 const AtSymbol = styled.div`
   font-size: 30px;
-  margin-bottom: 243px;
+  flex: 2;
+`
+
+const OddsHeader = styled.div`
+  font-size: 15px;
+  flex: 1;
+`
+
+const MiddleGround = styled(FlexColumnContainer)`
+  justify-content: flex-start;
+  height: 41vh;
 `
 
 const GridGameContainer = ({ activeSport, match }) => (
@@ -115,7 +125,12 @@ const GridGameContainer = ({ activeSport, match }) => (
             awayScore={match.AwayScore}
           />
         </Team>
-        <AtSymbol> @ </AtSymbol>
+        <MiddleGround>
+          <AtSymbol> @ </AtSymbol>
+          <OddsHeader>Score</OddsHeader>
+          <OddsHeader>Moneyline</OddsHeader>
+          <OddsHeader>Spread</OddsHeader>
+        </MiddleGround>
         <Team>
           <NameAndLogo>
             <LogoContainer>

@@ -27,10 +27,6 @@ const LineContainer = styled(FlexColumnContainer)`
   }}
 `
 
-const Header = styled.div`
-  font-size: 15px;
-`
-
 const Content = styled(FlexColumnContainer)`
   font-size: 21px;
 `
@@ -47,9 +43,6 @@ const GridTeamOddsContainer = ({ lines, final, homeScore, awayScore, home }) => 
       won={didBetWin(homeScore, awayScore, home, final)}
       push={isMoneylinePush(homeScore, awayScore, final)}
     >
-      <Header>
-        Moneyline
-      </Header>
       <Content>
         {`${addPlus(lines.MoneyLine)}`}
       </Content>
@@ -58,9 +51,6 @@ const GridTeamOddsContainer = ({ lines, final, homeScore, awayScore, home }) => 
       won={didBetCover(homeScore, awayScore, lines.PointSpread, home, final)}
       push={isSpreadPush(homeScore, awayScore, lines.PointSpread, home, final)}
     >
-      <Header>
-        Spread
-      </Header>
       <Content>
         <div>
           {addPlus(lines.PointSpread)}
