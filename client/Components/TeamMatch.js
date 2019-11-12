@@ -43,7 +43,7 @@ const TeamMatch = props => (
         {truncateTeamName(props.activeSport, props.match.AwayTeam) &&
           <div>
             <NameLogoContainer>
-              <img src={require(`../../public/assets/${props.activeSport}-logos/${truncateTeamName(props.activeSport, props.match.AwayTeam)}.png`)} />
+              <img src={'/assets/production/' + props.activeSport + '-logos/' + truncateTeamName(props.activeSport, props.match.AwayTeam) + '.png'} />
               <div>{truncateTeamName(props.activeSport, props.match.AwayTeam)}</div>
             </NameLogoContainer>
           </div>
@@ -51,7 +51,7 @@ const TeamMatch = props => (
         {truncateTeamName(props.activeSport, props.match.HomeTeam) &&
           <div>
             <NameLogoContainer>
-              <img src={require(`../../public/assets/${props.activeSport}-logos/${truncateTeamName(props.activeSport, props.match.HomeTeam)}.png`)} />
+              <img src={'/assets/production/' + props.activeSport + '-logos/' + truncateTeamName(props.activeSport, props.match.HomeTeam) + '.png'} />
               <div>{truncateTeamName(props.activeSport, props.match.HomeTeam)}</div>
             </NameLogoContainer>
           </div>
