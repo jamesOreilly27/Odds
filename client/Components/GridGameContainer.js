@@ -73,7 +73,7 @@ const Amount = styled(FlexRowContainer)`
 
 const AtSymbol = styled.div`
   font-size: 30px;
-  margin-bottom: 120px;
+  margin-bottom: 243px;
 `
 
 const GridGameContainer = ({ activeSport, match }) => (
