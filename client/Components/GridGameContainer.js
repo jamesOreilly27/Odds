@@ -58,11 +58,11 @@ const Logo = styled.img`
 const TeamName = styled(FlexColumnContainer)`
   height: 100%;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 13px;
 `
 
 const Score = styled(FlexRowContainer)`
-  font-size: 30px;
+  font-size: 21px;
   width: 15px;
   height: 40px;
 `
@@ -73,17 +73,19 @@ const Amount = styled(FlexRowContainer)`
 
 const AtSymbol = styled.div`
   font-size: 30px;
-  flex: 2;
+  flex: 1;
 `
 
 const OddsHeader = styled.div`
-  font-size: 15px;
+  font-size: 17px;
+  margin-bottom: 4px;
   flex: 1;
 `
 
 const MiddleGround = styled(FlexColumnContainer)`
   justify-content: flex-start;
   height: 41vh;
+  margin-left: 10px;
 `
 
 const GridGameContainer = ({ activeSport, match }) => (
@@ -110,9 +112,10 @@ const GridGameContainer = ({ activeSport, match }) => (
             </TeamName>
           </NameAndLogo>
           <Score>
-            {match.AwayScore !== null &&
+            {/* {match.AwayScore !== null &&
               <Amount>{match.AwayScore}</Amount>
-            }
+            } */}
+            65
           </Score>
           <GridTeamOddsContainer
             lines={{
@@ -144,9 +147,10 @@ const GridGameContainer = ({ activeSport, match }) => (
             </TeamName>
           </NameAndLogo>
           <Score>
-            {match.HomeScore !== null &&
+            {/* {match.HomeScore !== null &&
               <Amount>{match.HomeScore}</Amount>
-            }
+            } */}
+            50
           </Score>
           <GridTeamOddsContainer
             lines={{

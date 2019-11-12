@@ -10,7 +10,7 @@ const Wrapper = styled(FlexColumnContainer)`
 const LineContainer = styled(FlexColumnContainer)`
   width: 120%;
   height: 70px;
-  margin: 3px 0;
+  margin: 6px 0;
   padding: 15px;
   border-radius: 40px
   background-color: ${({ won, push }) => {

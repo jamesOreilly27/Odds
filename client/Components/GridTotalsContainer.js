@@ -35,8 +35,12 @@ const OverUnderContainer = styled(FlexColumnContainer)`
   }}
 `
 
-const HeaderAndLine = styled.div`
+const Header = styled.div`
   font-size: 18px;
+`
+
+const Line = styled.div`
+  font-size: 13px;
 `
 
 const GridTotalsContainer = ({ totals, final, homeScore, awayScore }) => (
@@ -45,8 +49,8 @@ const GridTotalsContainer = ({ totals, final, homeScore, awayScore }) => (
       won={didUnderCover(homeScore, awayScore, totals.TotalNumber, final)}
       push={didTotalPush(homeScore, awayScore, totals.TotalNumber, final)}
     >
-      <HeaderAndLine>Under</HeaderAndLine>
-      <HeaderAndLine>{`(${totals.UnderLine})`}</HeaderAndLine>
+      <Header>Under</Header>
+      <Line>{`(${totals.UnderLine})`}</Line>
     </OverUnderContainer>
     <TotalNumberContainer>
       <div>Total</div>
@@ -56,8 +60,8 @@ const GridTotalsContainer = ({ totals, final, homeScore, awayScore }) => (
       won={didOverCover(homeScore, awayScore, totals.TotalNumber, final)}
       push={didTotalPush(homeScore, awayScore, totals.TotalNumber, final)}  
     >
-      <HeaderAndLine>Over</HeaderAndLine>
-      <HeaderAndLine>{`(${totals.OverLine})`}</HeaderAndLine>
+      <Header>Over</Header>
+      <Line>{`(${totals.OverLine})`}</Line>
     </OverUnderContainer>
   </Wrapper>
 )
