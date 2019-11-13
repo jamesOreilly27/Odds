@@ -54,7 +54,7 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
       <WidgetTeamDetails>
         {truncateTeamName(activeSport, match.AwayTeam) && 
           <LogoSwitchWrapper>
-            <img src={'/assets/production/small/' + props.activeSport + '-logos/' + truncateTeamName(props.activeSport, props.match.AwayTeam) + '.png'} />
+            <img src={'/assets/production/small/' + activeSport + '-logos/' + truncateTeamName(activeSport, match.AwayTeam) + '.png'} />
             <div>{truncateTeamName(activeSport, match.AwayTeam)}</div>
           </LogoSwitchWrapper>
         }
@@ -63,7 +63,7 @@ const WidgetTeamMatch = ({ activeSport, match }) => (
       <WidgetTeamDetails>
         {truncateTeamName(activeSport, match.HomeTeam) && 
           <LogoSwitchWrapper>
-            <img src={'/assets/production/small/' + props.activeSport + '-logos/' + truncateTeamName(props.activeSport, props.match.HomeTeam) + '.png'} />
+            <img src={'/assets/production/small/' + activeSport + '-logos/' + truncateTeamName(activeSport, match.HomeTeam) + '.png'} />
             <div>{truncateTeamName(activeSport, match.HomeTeam)}</div>
           </LogoSwitchWrapper>
         }
