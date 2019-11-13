@@ -8,7 +8,7 @@ const cache = new nodecache({stdTTL: TTL})
 
 router.get('/:sport', (req, res, next) => {
   const sportString = req.params.sport
-  let apiURL = `https://jsonodds.com/api/odds/${sportString}?oddType=Game`
+  let apiURL = `https://jsonodds.com/api/results/${sportString}?oddType=game`
   let apiData = cache.get(apiURL)
   if(apiData){
     res.json(apiData)
