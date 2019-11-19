@@ -428,7 +428,7 @@ export const combineGameArrays = (final, nonFinal) => {
 
 export const finalOrInProgress = game => {
   if(game.Final === true) return <div>{`Final ${processDayMonth(game)}`}</div>
-  else return <div>In Progress: Odds Closed</div>
+  else return <div>In Progress</div>
 }
 
 const didHomeWin = (homeScore, awayScore) => {

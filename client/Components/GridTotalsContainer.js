@@ -4,23 +4,21 @@ import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
 import { didOverCover, didUnderCover, didTotalPush } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
-  margin-top: 10px;
-  width: 84%
+  width: 100%
   justify-content: space-around;
-  padding: 10px 5px;
+  padding: 3px 5px;
 `
 
 const TotalNumberContainer = styled(FlexColumnContainer)`
   width: 25%
-  height: 70px;
+  height: 50px;
   font-size: 22px;
 `
 
 const OverUnderContainer = styled(FlexColumnContainer)`
   width: 30%;
-  height: 70px;
+  height: 50px;
   border-radius: 30px;
-  padding: 10px;
   background-color: ${({ won, push }) => {
     let color;
     won ? color = 'green' : color = '#FFF'
@@ -35,12 +33,14 @@ const OverUnderContainer = styled(FlexColumnContainer)`
   }}
 `
 
+// padding: 10px;
+
 const Header = styled.div`
-  font-size: 18px;
+  font-size: 15px;
 `
 
 const Line = styled.div`
-  font-size: 13px;
+  font-size: 11px;
 `
 
 const GridTotalsContainer = ({ totals, final, homeScore, awayScore }) => (

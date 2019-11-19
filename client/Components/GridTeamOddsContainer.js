@@ -9,9 +9,8 @@ const Wrapper = styled(FlexColumnContainer)`
 
 const LineContainer = styled(FlexColumnContainer)`
   width: 120%;
-  height: 70px;
-  margin: 6px 0;
-  padding: 15px;
+  height: 50px;
+  margin: 3px 0;
   border-radius: 40px
   background-color: ${({ won, push }) => {
     let color;
@@ -27,12 +26,14 @@ const LineContainer = styled(FlexColumnContainer)`
   }}
 `
 
+// padding: 15px;
+
 const Content = styled(FlexColumnContainer)`
-  font-size: 21px;
+  font-size: 15px;
 `
 
 const Juice = styled.div`
-  font-size: 13px;
+  font-size: 11px;
 `
 
 const GridTeamOddsContainer = ({ lines, final, homeScore, awayScore, home }) => (
