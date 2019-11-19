@@ -9,8 +9,11 @@ const Wrapper = styled(FlexRowContainer)`
     flex: 0 0 33%
   }
   @media(max-width: 640px) {
-    flex: 0 0 80%;
-    margin: 0 10%;
+    flex: 0 0 50%;
+  }
+  @media(max-width: 450px) {
+    flex: 0 0 85%;
+    margin: 0 7.5%;
   }
   flex: 0 0 25%
   border: 3px solid #EDEDF2;
@@ -94,7 +97,7 @@ const OddsHeader = styled.div`
 
 const MiddleGround = styled(FlexColumnContainer)`
   justify-content: flex-start;
-  height: 41vh;
+  height: 30vh;
   margin-left: 10px;
 `
 
