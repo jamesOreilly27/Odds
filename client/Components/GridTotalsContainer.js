@@ -4,23 +4,27 @@ import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
 import { didOverCover, didUnderCover, didTotalPush } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
-  margin-top: 10px;
-  width: 84%
+  width: 100%
   justify-content: space-around;
-  padding: 10px 5px;
+  padding: 3px 5px;
 `
 
 const TotalNumberContainer = styled(FlexColumnContainer)`
   width: 25%
-  height: 70px;
+  height: 50px;
   font-size: 22px;
 `
 
 const OverUnderContainer = styled(FlexColumnContainer)`
-  width: 30%;
-  height: 70px;
+  width: 35%;
+  height: 50px;
   border-radius: 30px;
-  padding: 10px;
+`
+
+const OverUnderContent = styled(FlexColumnContainer)`
+  height: 100%;
+  border-radius: 30px;
+  padding: 5px;
   background-color: ${({ won, push }) => {
     let color;
     won ? color = 'green' : color = '#FFF'
@@ -35,29 +39,39 @@ const OverUnderContainer = styled(FlexColumnContainer)`
   }}
 `
 
-const HeaderAndLine = styled.div`
-  font-size: 18px;
+// padding: 10px;
+
+const Header = styled.div`
+  font-size: 15px;
+`
+
+const Line = styled.div`
+  font-size: 11px;
 `
 
 const GridTotalsContainer = ({ totals, final, homeScore, awayScore }) => (
   <Wrapper>
-    <OverUnderContainer
-      won={didUnderCover(homeScore, awayScore, totals.TotalNumber, final)}
-      push={didTotalPush(homeScore, awayScore, totals.TotalNumber, final)}
-    >
-      <HeaderAndLine>Under</HeaderAndLine>
-      <HeaderAndLine>{`(${totals.UnderLine})`}</HeaderAndLine>
+    <OverUnderContainer>
+      <OverUnderContent
+        won={didUnderCover(homeScore, awayScore, totals.TotalNumber, final)}
+        push={didTotalPush(homeScore, awayScore, totals.TotalNumber, final)}
+      >
+        <Header>Under</Header>
+        <Line>{`(${totals.UnderLine})`}</Line>
+      </OverUnderContent>
     </OverUnderContainer>
     <TotalNumberContainer>
       <div>Total</div>
       <div>{totals.TotalNumber}</div>
     </TotalNumberContainer>
-    <OverUnderContainer
+    <OverUnderContainer>
+    <OverUnderContent
       won={didOverCover(homeScore, awayScore, totals.TotalNumber, final)}
-      push={didTotalPush(homeScore, awayScore, totals.TotalNumber, final)}  
+      push={didTotalPush(homeScore, awayScore, totals.TotalNumber, final)}
     >
-      <HeaderAndLine>Over</HeaderAndLine>
-      <HeaderAndLine>{`(${totals.OverLine})`}</HeaderAndLine>
+      <Header>Over</Header>
+      <Line>{`(${totals.OverLine})`}</Line>
+    </OverUnderContent>
     </OverUnderContainer>
   </Wrapper>
 )

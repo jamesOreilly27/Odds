@@ -9,9 +9,8 @@ const Wrapper = styled(FlexColumnContainer)`
 
 const LineContainer = styled(FlexColumnContainer)`
   width: 120%;
-  height: 70px;
+  height: 50px;
   margin: 3px 0;
-  padding: 15px;
   border-radius: 40px
   background-color: ${({ won, push }) => {
     let color;
@@ -27,16 +26,14 @@ const LineContainer = styled(FlexColumnContainer)`
   }}
 `
 
-const Header = styled.div`
+// padding: 15px;
+
+const Content = styled(FlexColumnContainer)`
   font-size: 15px;
 `
 
-const Content = styled(FlexColumnContainer)`
-  font-size: 21px;
-`
-
 const Juice = styled.div`
-  font-size: 13px;
+  font-size: 11px;
 `
 
 const GridTeamOddsContainer = ({ lines, final, homeScore, awayScore, home }) => (
@@ -47,9 +44,6 @@ const GridTeamOddsContainer = ({ lines, final, homeScore, awayScore, home }) => 
       won={didBetWin(homeScore, awayScore, home, final)}
       push={isMoneylinePush(homeScore, awayScore, final)}
     >
-      <Header>
-        Moneyline
-      </Header>
       <Content>
         {`${addPlus(lines.MoneyLine)}`}
       </Content>
@@ -58,9 +52,6 @@ const GridTeamOddsContainer = ({ lines, final, homeScore, awayScore, home }) => 
       won={didBetCover(homeScore, awayScore, lines.PointSpread, home, final)}
       push={isSpreadPush(homeScore, awayScore, lines.PointSpread, home, final)}
     >
-      <Header>
-        Spread
-      </Header>
       <Content>
         <div>
           {addPlus(lines.PointSpread)}
