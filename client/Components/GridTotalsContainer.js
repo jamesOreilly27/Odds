@@ -16,9 +16,15 @@ const TotalNumberContainer = styled(FlexColumnContainer)`
 `
 
 const OverUnderContainer = styled(FlexColumnContainer)`
-  width: 30%;
+  width: 35%;
   height: 50px;
   border-radius: 30px;
+`
+
+const OverUnderContent = styled(FlexColumnContainer)`
+  height: 100%;
+  border-radius: 30px;
+  padding: 5px;
   background-color: ${({ won, push }) => {
     let color;
     won ? color = 'green' : color = '#FFF'
@@ -45,23 +51,27 @@ const Line = styled.div`
 
 const GridTotalsContainer = ({ totals, final, homeScore, awayScore }) => (
   <Wrapper>
-    <OverUnderContainer
-      won={didUnderCover(homeScore, awayScore, totals.TotalNumber, final)}
-      push={didTotalPush(homeScore, awayScore, totals.TotalNumber, final)}
-    >
-      <Header>Under</Header>
-      <Line>{`(${totals.UnderLine})`}</Line>
+    <OverUnderContainer>
+      <OverUnderContent
+        won={didUnderCover(homeScore, awayScore, totals.TotalNumber, final)}
+        push={didTotalPush(homeScore, awayScore, totals.TotalNumber, final)}
+      >
+        <Header>Under</Header>
+        <Line>{`(${totals.UnderLine})`}</Line>
+      </OverUnderContent>
     </OverUnderContainer>
     <TotalNumberContainer>
       <div>Total</div>
       <div>{totals.TotalNumber}</div>
     </TotalNumberContainer>
-    <OverUnderContainer
+    <OverUnderContainer>
+    <OverUnderContent
       won={didOverCover(homeScore, awayScore, totals.TotalNumber, final)}
-      push={didTotalPush(homeScore, awayScore, totals.TotalNumber, final)}  
+      push={didTotalPush(homeScore, awayScore, totals.TotalNumber, final)}
     >
       <Header>Over</Header>
       <Line>{`(${totals.OverLine})`}</Line>
+    </OverUnderContent>
     </OverUnderContainer>
   </Wrapper>
 )
