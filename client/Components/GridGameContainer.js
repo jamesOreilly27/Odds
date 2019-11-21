@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
-import { GridTeamOddsContainer, GridTotalsContainer } from '../Components'
+import { GridTeamOddsContainer, GridTotalsContainer, GridOddtypeSection } from '../Components'
 import { truncateTeamName, processDayMonthTime, splitTeamName, finalOrInProgress } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
@@ -98,10 +98,15 @@ const MiddleGround = styled(FlexColumnContainer)`
   margin-left: 10px;
 `
 
-const NamesAndLogosContainer = styled(FlexRowContainer)`
+const GridSection = styled(FlexRowContainer)`
   justify-content: space-around;
   align-items: flex-end;
   width: 100%;
+`
+
+const OddsSection = styled(FlexColumnContainer)`
+  justify-content: space-around;
+  height: 200px;
 `
 
 const GridGameContainer = ({ activeSport, match }) => {
@@ -117,7 +122,7 @@ const GridGameContainer = ({ activeSport, match }) => {
             finalOrInProgress(match)
           }
         </GameDate>
-        <NamesAndLogosContainer>
+        <GridSection>
           <NameAndLogo>
             <LogoContainer>
               {truncateTeamName(activeSport, match.AwayTeam) && 
@@ -143,7 +148,31 @@ const GridGameContainer = ({ activeSport, match }) => {
               <div>{splitTeamName(match.HomeTeam)[1]}</div>
             </TeamName>
           </NameAndLogo>
-        </NamesAndLogosContainer>
+        </GridSection>
+        <OddsSection>
+          <GridOddtypeSection
+            homeLine={match.MoneyLineHome}
+            awayLine={match.MoneyLineAway}
+            header={'Moneyline'}
+            homeScore={match.HomeScore}
+            awayScore={match.AwayScore}
+          />
+          <GridOddtypeSection 
+            homeLine={match.PointSpreadHome}
+            awayLine={match.PointSpreadAway}
+            header={'Spread'}
+            homeScore={match.HomeScore}
+            awayScore={match.AwayScore}
+          />
+          <GridOddtypeSection
+            homeLine={match.OverLine}
+            awayLine={match.UnderLine}
+            header={'Total'}
+            homeScore={match.HomeScore}
+            awayScore={match.AwayScore}
+            total={match.TotalNumber}
+          />
+        </OddsSection>
       </Container>
     </Wrapper>
   )
