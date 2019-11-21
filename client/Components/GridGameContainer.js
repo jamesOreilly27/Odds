@@ -96,22 +96,7 @@ const OddsHeader = styled.div`
 `
 
 const MiddleGround = styled(FlexColumnContainer)`
-@media(max-height: 1600px) {
-  height: 14vh;
-}
-@media(max-height: 1200px) {
-  height: 19vh;
-}
-@media(max-height: 825px) {
-  height: 26vh;
-}
-@media(max-height: 670px) {
-  height: 30vh;
-}
-  @media(max-height: 570px) {
-    height: 36vh
-  }
-  height: 40vh;
+  height: 200px;
   justify-content: flex-start;
   margin-left: 10px;
 `
