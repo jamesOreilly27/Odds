@@ -17,6 +17,7 @@ const Wrapper = styled(FlexRowContainer)`
   }
   flex: 0 0 25%
   border: 3px solid #EDEDF2;
+  height: 350px;
 `
 
 const Container = styled(FlexColumnContainer)`
