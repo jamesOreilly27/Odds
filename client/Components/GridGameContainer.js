@@ -85,7 +85,7 @@ const Amount = styled(FlexRowContainer)`
 `
 
 const AtSymbol = styled.div`
-  font-size: 30px;
+  font-size: 15px;
   flex: 1;
 `
 
