@@ -4,11 +4,11 @@ import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
 import { addPlus, didBetWin, didBetCover, isMoneylinePush, isSpreadPush } from './helpers'
 
 const Wrapper = styled(FlexColumnContainer)`
-
+  width: 54.25%;
 `
 
 const LineContainer = styled(FlexColumnContainer)`
-  width: 120%;
+  width: 100%;
   height: 50px;
   margin: 3px 0;
   border-radius: 40px

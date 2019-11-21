@@ -23,6 +23,7 @@ const OverUnderContainer = styled(FlexColumnContainer)`
 
 const OverUnderContent = styled(FlexColumnContainer)`
   height: 100%;
+  width: 60%;
   border-radius: 30px;
   padding: 5px;
   background-color: ${({ won, push }) => {
