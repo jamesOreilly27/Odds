@@ -5,32 +5,47 @@ import { addPlus, didBetWin, didBetCover, isMoneylinePush, isSpreadPush } from '
 
 const Wrapper = styled(FlexRowContainer)`
   justify-content: space-around;
-  align-items: flex-end;
+  align-items: center;
   width: 100%;
+  height: 35px;
 `
 
 const Container = styled(FlexRowContainer)`
   justify-content: space-around;
-  align-items: flex-end;
-  width: 100%;
+  align-items: center;
+  width: 86%;
 `
 
 const Item = styled(FlexColumnContainer)`
   font-size: 15px;
-  width: 5vw;
+  flex: 1;
+`
+
+const Header = styled(FlexColumnContainer)`
+flex: 2;
 `
 
 const Juice = styled.div`
   font-size: 11px;
 `
 
-const GridOddtypeSection = ({ homeLine, awayLine, header, homeScore, awayScore, total }) => (
+const GridOddtypeSection = ({ homeLine, awayLine, header, homeSpreadJuice, awaySpreadJuice, homeScore, awayScore, total }) => (
   <Wrapper>
     {!total ?
     <Container>
-      <Item>{awayLine}</Item>
-      <Item>{header}</Item>
-      <Item>{homeLine}</Item>
+      <Item>
+        <div>{addPlus(awayLine)}</div>
+        {awaySpreadJuice && 
+          <Juice>{`(${addPlus(awaySpreadJuice)})`}</Juice>
+        }
+      </Item>
+      <Header>{header}</Header>
+      <Item>
+        <div>{addPlus(homeLine)}</div>
+        {homeSpreadJuice && 
+          <Juice>{`(${addPlus(homeSpreadJuice)})`}</Juice>
+        }
+      </Item>
     </Container>
     :
     <Container>
@@ -38,10 +53,10 @@ const GridOddtypeSection = ({ homeLine, awayLine, header, homeScore, awayScore, 
         <div>Under</div>
         <Juice>{`(${addPlus(awayLine)})`}</Juice>
       </Item>
-      <Item>
-        <div>{header}</div>
-        <div>{total}</div>
-      </Item>
+      <Header>
+        <Item>{header}</Item>
+        <Item>{total}</Item>
+      </Header>
       <Item>
         <div>Over</div>
         <Juice>{`(${addPlus(homeLine)})`}</Juice>

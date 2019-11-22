@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
-import { GridTeamOddsContainer, GridTotalsContainer, GridOddtypeSection, ScoresContainer } from '../Components'
+import { GridOddtypeSection, ScoresContainer } from '../Components'
 import { truncateTeamName, processDayMonthTime, splitTeamName, finalOrInProgress } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
@@ -17,7 +17,7 @@ const Wrapper = styled(FlexRowContainer)`
   }
   flex: 0 0 25%
   border: 3px solid #EDEDF2;
-  height: 350px;
+  height: 300px;
 `
 
 const Container = styled(FlexColumnContainer)`
@@ -43,18 +43,6 @@ const GameDate = styled(FlexRowContainer)`
   }}
   `
 
-const TeamsContainer = styled(FlexRowContainer)`
-  width: 100%;
-  justify-content: space-between;
-  border-bottom: 2px solid #EDEDF2;
-  padding: 0 5px;
-`
-
-const Team = styled(FlexColumnContainer)`
-  justify-content: flex-start;
-  width: 50%;
-`
-
 const NameAndLogo = styled(FlexColumnContainer)`
 `
 
@@ -73,29 +61,8 @@ const TeamName = styled(FlexColumnContainer)`
   font-size: 10px;
 `
 
-const Score = styled(FlexRowContainer)`
-  font-size: 21px;
-  width: 15px;
-`
-
-const Amount = styled(FlexRowContainer)`
-  height: 27px;
-`
-
 const AtSymbol = styled.div`
   font-size: 15px;
-`
-
-const OddsHeader = styled.div`
-  font-size: 14px;
-  margin-bottom: 4px;
-  flex: 1;
-`
-
-const MiddleGround = styled(FlexColumnContainer)`
-  height: 200px;
-  justify-content: flex-start;
-  margin-left: 10px;
 `
 
 const GridSection = styled(FlexRowContainer)`
@@ -106,8 +73,9 @@ const GridSection = styled(FlexRowContainer)`
 
 const OddsSection = styled(FlexColumnContainer)`
   justify-content: space-around;
-  height: 200px;
+  height: 125px;
   width: 100%;
+  margin-top: 5px;
 `
 
 const GridGameContainer = ({ activeSport, match }) => {
@@ -150,6 +118,7 @@ const GridGameContainer = ({ activeSport, match }) => {
             </TeamName>
           </NameAndLogo>
         </GridSection>
+        <ScoresContainer homeScore={match.HomeScore} awayScore={match.AwayScore} />
         <OddsSection>
           <GridOddtypeSection
             homeLine={match.MoneyLineHome}
@@ -162,6 +131,8 @@ const GridGameContainer = ({ activeSport, match }) => {
             homeLine={match.PointSpreadHome}
             awayLine={match.PointSpreadAway}
             header={'Spread'}
+            homeSpreadJuice={match.PointSpreadHomeLine}
+            awaySpreadJuice={match.PointSpreadAwayLine}
             homeScore={match.HomeScore}
             awayScore={match.AwayScore}
           />
@@ -174,7 +145,6 @@ const GridGameContainer = ({ activeSport, match }) => {
             total={match.TotalNumber}
           />
         </OddsSection>
-        <ScoresContainer />
       </Container>
     </Wrapper>
   )
