@@ -14,6 +14,7 @@ const Container = styled(FlexRowContainer)`
   justify-content: space-around;
   align-items: center;
   width: 86%;
+  height: 100%;
 `
 
 const Item = styled(FlexColumnContainer)`
@@ -36,6 +37,7 @@ const Item = styled(FlexColumnContainer)`
 `
 
 const Header = styled(FlexColumnContainer)`
+height: 100%;
 flex: 2;
 `
 

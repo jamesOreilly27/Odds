@@ -12,10 +12,8 @@
       }
       
         function receiveMessage(event) {
-        if(event.origin !== 'https://a05eb17f.ngrok.io') return
-        if(event.data === 'mlb' || event.data === 'nfl' || event.data === 'nba' || event.data === 'nhl') {
-          send(event.data)
-        }
+        if(event.origin !== 'https://agile-fjord-92469.herokuapp.com/') return
+        send(event.data)
       }
 
       function send(msg) {
