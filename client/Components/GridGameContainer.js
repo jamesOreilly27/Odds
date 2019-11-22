@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
 import { GridOddtypeSection, ScoresContainer } from '../Components'
-import { truncateTeamName, processDayMonthTime, splitTeamName, finalOrInProgress } from './helpers'
+import { truncateTeamName, processDayMonthTime, splitTeamName, finalOrInProgress, didBetWin, didBetCover, isMoneylinePush, isSpreadPush } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
   @media(max-width: 960px) {

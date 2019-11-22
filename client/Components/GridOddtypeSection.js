@@ -19,6 +19,18 @@ const Container = styled(FlexRowContainer)`
 const Item = styled(FlexColumnContainer)`
   font-size: 15px;
   flex: 1;
+  background-color: ${({ won, push }) => {
+    let color;
+    won ? color = 'green' : color = '#FFF'
+    push ? color = 'lightgrey' : '#000'
+    return color
+  }}
+  color: ${({ won, push }) => {
+    let color
+    won ? color = '#FFF' : color = '#000'
+    push ? color = '#000' : '#FFF'
+    return color
+  }}
 `
 
 const Header = styled(FlexColumnContainer)`
