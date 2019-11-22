@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
-import { addPlus, didBetWin, didBetCover, isMoneylinePush, isSpreadPush } from './helpers'
+import { addPlus, didBetWin, didBetCover, isMoneylinePush, isSpreadPush, didTotalPush } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
   justify-content: space-around;
@@ -41,41 +41,54 @@ const Juice = styled.div`
   font-size: 11px;
 `
 
-const GridOddtypeSection = ({ homeLine, awayLine, header, homeSpreadJuice, awaySpreadJuice, homeScore, awayScore, total }) => (
-  <Wrapper>
-    {!total ?
-    <Container>
-      <Item>
-        <div>{addPlus(awayLine)}</div>
-        {awaySpreadJuice && 
-          <Juice>{`(${addPlus(awaySpreadJuice)})`}</Juice>
-        }
-      </Item>
-      <Header>{header}</Header>
-      <Item>
-        <div>{addPlus(homeLine)}</div>
-        {homeSpreadJuice && 
-          <Juice>{`(${addPlus(homeSpreadJuice)})`}</Juice>
-        }
-      </Item>
-    </Container>
-    :
-    <Container>
-      <Item>
-        <div>Under</div>
-        <Juice>{`(${addPlus(awayLine)})`}</Juice>
-      </Item>
-      <Header>
-        <Item>{header}</Item>
-        <Item>{total}</Item>
-      </Header>
-      <Item>
-        <div>Over</div>
-        <Juice>{`(${addPlus(homeLine)})`}</Juice>
-      </Item>
-    </Container>
-    }
-  </Wrapper>
-)
+const decideWonProperty = (header, homeScore, awayScore, spread, home, final) => {
+  if(header === 'Moneyline') return didBetWin(homeScore, awayScore, home, final)
+  if(header === "Spread") return didBetCover(homeScore, awayScore, spread, home, final)
+}
+
+const decidePushProperty = (header, homeScore, awayScore, spread, total, final) => {
+  if(header === "Moneyline") return isMoneylinePush(homeScore, awayScore, final)
+  if(header === "Spread") return isSpreadPush(homeScore, awayScore, spread)
+  if(header === "Total") return didTotalPush(homeScore, awayScore, total, final)
+}
+
+const GridOddtypeSection = ({ homeLine, awayLine, header, homeSpreadJuice, awaySpreadJuice, homeScore, awayScore, total, final }) => {
+  return (
+    <Wrapper>
+      {type !== total ?
+      <Container>
+        <Item>
+          <div>{addPlus(awayLine)}</div>
+          {awaySpreadJuice && 
+            <Juice>{`(${addPlus(awaySpreadJuice)})`}</Juice>
+          }
+        </Item>
+        <Header>{header}</Header>
+        <Item>
+          <div>{addPlus(homeLine)}</div>
+          {homeSpreadJuice && 
+            <Juice>{`(${addPlus(homeSpreadJuice)})`}</Juice>
+          }
+        </Item>
+      </Container>
+      :
+      <Container>
+        <Item>
+          <div>Under</div>
+          <Juice>{`(${addPlus(awayLine)})`}</Juice>
+        </Item>
+        <Header>
+          <Item>{header}</Item>
+          <Item>{total}</Item>
+        </Header>
+        <Item>
+          <div>Over</div>
+          <Juice>{`(${addPlus(homeLine)})`}</Juice>
+        </Item>
+      </Container>
+      }
+    </Wrapper>
+  )
+}
 
 export default GridOddtypeSection
