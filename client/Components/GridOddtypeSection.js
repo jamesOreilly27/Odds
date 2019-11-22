@@ -20,6 +20,7 @@ const Item = styled(FlexColumnContainer)`
   font-size: 15px;
   height: 35px;
   flex: 1;
+  border-radius: 40px;
   background-color: ${({ won, push }) => {
     let color;
     won ? color = 'green' : color = '#FFF'
