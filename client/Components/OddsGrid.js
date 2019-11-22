@@ -17,7 +17,7 @@ class OddsGrid extends Component {
 
   componentDidUpdate(prevProps) {
     if(this.props.games.length !== prevProps.games.length) {
-      top.postMessage(document.getElementById('wrapper').clientHeight)
+      top.postMessage(document.getElementById('wrapper').clientHeight, '*')
     }
   }
 
