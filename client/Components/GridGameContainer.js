@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
-import { GridTeamOddsContainer, GridTotalsContainer } from '../Components'
-import { truncateTeamName, processDayMonthTime, splitTeamName, finalOrInProgress } from './helpers'
+import { GridOddtypeSection, ScoresContainer } from '../Components'
+import { truncateTeamName, processDayMonthTime, splitTeamName, finalOrInProgress, didBetWin, didBetCover, isMoneylinePush, isSpreadPush } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
   @media(max-width: 960px) {
@@ -17,6 +17,7 @@ const Wrapper = styled(FlexRowContainer)`
   }
   flex: 0 0 25%
   border: 3px solid #EDEDF2;
+  height: 300px;
 `
 
 const Container = styled(FlexColumnContainer)`
@@ -42,21 +43,7 @@ const GameDate = styled(FlexRowContainer)`
   }}
   `
 
-const TeamsContainer = styled(FlexRowContainer)`
-  width: 100%;
-  justify-content: space-between;
-  border-bottom: 2px solid #EDEDF2;
-  padding: 0 5px;
-`
-
-const Team = styled(FlexColumnContainer)`
-  justify-content: flex-start;
-  width: 50%;
-`
-
 const NameAndLogo = styled(FlexColumnContainer)`
-  width: 100%;
-  margin-bottom: 12px;
 `
 
 const LogoContainer = styled(FlexRowContainer)`
@@ -74,45 +61,21 @@ const TeamName = styled(FlexColumnContainer)`
   font-size: 10px;
 `
 
-const Score = styled(FlexRowContainer)`
-  font-size: 21px;
-  width: 15px;
-`
-
-const Amount = styled(FlexRowContainer)`
-  height: 27px;
-`
-
 const AtSymbol = styled.div`
-  font-size: 30px;
-  flex: 1;
+  font-size: 15px;
 `
 
-const OddsHeader = styled.div`
-  font-size: 14px;
-  margin-bottom: 4px;
-  flex: 1;
+const GridSection = styled(FlexRowContainer)`
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 100%;
 `
 
-const MiddleGround = styled(FlexColumnContainer)`
-@media(max-height: 1600px) {
-  height: 14vh;
-}
-@media(max-height: 1200px) {
-  height: 19vh;
-}
-@media(max-height: 825px) {
-  height: 26vh;
-}
-@media(max-height: 670px) {
-  height: 30vh;
-}
-  @media(max-height: 570px) {
-    height: 36vh
-  }
-  height: 40vh;
-  justify-content: flex-start;
-  margin-left: 10px;
+const OddsSection = styled(FlexColumnContainer)`
+  justify-content: space-around;
+  height: 125px;
+  width: 100%;
+  margin-top: 5px;
 `
 
 const GridGameContainer = ({ activeSport, match }) => {
@@ -128,85 +91,63 @@ const GridGameContainer = ({ activeSport, match }) => {
             finalOrInProgress(match)
           }
         </GameDate>
-        <TeamsContainer>
-          <Team>
-            <NameAndLogo>
-              <LogoContainer>
-                {truncateTeamName(activeSport, match.AwayTeam) && 
-                  <Logo src={'/assets/production/large/' + activeSport + '-logos/' + truncateTeamName(activeSport, match.AwayTeam) + '.png'} />
-                }
-              </LogoContainer>
-              <TeamName>
-                <div>{splitTeamName(match.AwayTeam)[0]}</div>
-                <div>{splitTeamName(match.AwayTeam)[1]}</div>
-              </TeamName>
-            </NameAndLogo>
-            <Score>
-              {match.AwayScore !== null ?
-                <Amount>{match.AwayScore}</Amount>
-                :
-                <Amount></Amount>
+        <GridSection>
+          <NameAndLogo>
+            <LogoContainer>
+              {truncateTeamName(activeSport, match.AwayTeam) && 
+                <Logo src={'/assets/production/large/' + activeSport + '-logos/' + truncateTeamName(activeSport, match.AwayTeam) + '.png'} />
               }
-            </Score>
-            <GridTeamOddsContainer
-              lines={{
-                MoneyLine: match.MoneyLineAway,
-                PointSpread: match.PointSpreadAway,
-                PointSpreadLine: match.PointSpreadAwayLine
-              }}
-              final={match.Final}
-              homeScore={match.HomeScore}
-              awayScore={match.AwayScore}
-            />
-          </Team>
-          <MiddleGround>
-            <AtSymbol> @ </AtSymbol>
-            <OddsHeader>Score</OddsHeader>
-            <OddsHeader>Moneyline</OddsHeader>
-            <OddsHeader>Spread</OddsHeader>
-          </MiddleGround>
-          <Team>
-            <NameAndLogo>
-              <LogoContainer>
-                {truncateTeamName(activeSport, match.HomeTeam) && 
-                  <Logo src={'/assets/production/large/' + activeSport + '-logos/' + truncateTeamName(activeSport, match.HomeTeam) + '.png'} />
-                }
-              </LogoContainer>
-              <TeamName>
-                <div>{splitTeamName(match.HomeTeam)[0]}</div>
-                <div>{splitTeamName(match.HomeTeam)[1]}</div>
-              </TeamName>
-            </NameAndLogo>
-            <Score>
-              {match.HomeScore !== null ?
-                <Amount>{match.HomeScore}</Amount>
-                :
-                <Amount></Amount>
+            </LogoContainer>
+            <TeamName>
+              <div>{splitTeamName(match.AwayTeam)[0]}</div>
+              <div>{splitTeamName(match.AwayTeam)[1]}</div>
+            </TeamName>
+          </NameAndLogo>
+          <AtSymbol>
+            @
+          </AtSymbol>
+          <NameAndLogo>
+            <LogoContainer>
+              {truncateTeamName(activeSport, match.HomeTeam) && 
+                <Logo src={'/assets/production/large/' + activeSport + '-logos/' + truncateTeamName(activeSport, match.HomeTeam) + '.png'} />
               }
-            </Score>
-            <GridTeamOddsContainer
-              lines={{
-                MoneyLine: match.MoneyLineHome,
-                PointSpread: match.PointSpreadHome,
-                PointSpreadLine: match.PointSpreadHomeLine
-              }}
-              final={match.Final}
-              homeScore={match.HomeScore}
-              awayScore={match.AwayScore}
-              home
-            />
-          </Team>
-        </TeamsContainer>
-        <GridTotalsContainer
-          totals={{
-            TotalNumber: match.TotalNumber,
-            OverLine: match.OverLine,
-            UnderLine: match.UnderLine
-          }}
-          final={match.Final}
-          homeScore={match.HomeScore}
-          awayScore={match.AwayScore}
-        />
+            </LogoContainer>
+            <TeamName>
+              <div>{splitTeamName(match.HomeTeam)[0]}</div>
+              <div>{splitTeamName(match.HomeTeam)[1]}</div>
+            </TeamName>
+          </NameAndLogo>
+        </GridSection>
+        <ScoresContainer homeScore={match.HomeScore} awayScore={match.AwayScore} />
+        <OddsSection>
+          <GridOddtypeSection
+            homeLine={match.MoneyLineHome}
+            awayLine={match.MoneyLineAway}
+            header={'Moneyline'}
+            homeScore={match.HomeScore}
+            awayScore={match.AwayScore}
+            final={match.Final}
+          />
+          <GridOddtypeSection 
+            homeLine={match.PointSpreadHome}
+            awayLine={match.PointSpreadAway}
+            header={'Spread'}
+            homeSpreadJuice={match.PointSpreadHomeLine}
+            awaySpreadJuice={match.PointSpreadAwayLine}
+            homeScore={match.HomeScore}
+            awayScore={match.AwayScore}
+            final={match.Final}
+          />
+          <GridOddtypeSection
+            homeLine={match.OverLine}
+            awayLine={match.UnderLine}
+            header={'Total'}
+            homeScore={match.HomeScore}
+            awayScore={match.AwayScore}
+            total={match.TotalNumber}
+            final={match.Final}
+          />
+        </OddsSection>
       </Container>
     </Wrapper>
   )
