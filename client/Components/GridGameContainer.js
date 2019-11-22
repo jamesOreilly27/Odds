@@ -126,6 +126,7 @@ const GridGameContainer = ({ activeSport, match }) => {
             header={'Moneyline'}
             homeScore={match.HomeScore}
             awayScore={match.AwayScore}
+            final={match.Final}
           />
           <GridOddtypeSection 
             homeLine={match.PointSpreadHome}
@@ -135,6 +136,7 @@ const GridGameContainer = ({ activeSport, match }) => {
             awaySpreadJuice={match.PointSpreadAwayLine}
             homeScore={match.HomeScore}
             awayScore={match.AwayScore}
+            final={match.Final}
           />
           <GridOddtypeSection
             homeLine={match.OverLine}
@@ -143,6 +145,7 @@ const GridGameContainer = ({ activeSport, match }) => {
             homeScore={match.HomeScore}
             awayScore={match.AwayScore}
             total={match.TotalNumber}
+            final={match.Final}
           />
         </OddsSection>
       </Container>
