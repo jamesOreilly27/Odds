@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FlexColumnContainer, FlexRowContainer } from './baseComponents'
-import { addPlus, didBetWin, didBetCover, isMoneylinePush, isSpreadPush, didTotalPush } from './helpers'
+import { addPlus, didBetWin, didBetCover, isMoneylinePush, didOverCover, didUnderCover, isSpreadPush, didTotalPush } from './helpers'
 
 const Wrapper = styled(FlexRowContainer)`
   justify-content: space-around;
@@ -18,6 +18,7 @@ const Container = styled(FlexRowContainer)`
 
 const Item = styled(FlexColumnContainer)`
   font-size: 15px;
+  height: 35px;
   flex: 1;
   background-color: ${({ won, push }) => {
     let color;
@@ -79,7 +80,10 @@ const GridOddtypeSection = ({ homeLine, awayLine, header, homeSpreadJuice, awayS
       </Container>
       :
       <Container>
-        <Item>
+        <Item
+          won={didUnderCover(homeScore, awayScore, total, final)}
+          push={decidePushProperty(header, homeScore, awayScore, total, final)}
+        >
           <div>Under</div>
           <Juice>{`(${addPlus(awayLine)})`}</Juice>
         </Item>
@@ -87,7 +91,10 @@ const GridOddtypeSection = ({ homeLine, awayLine, header, homeSpreadJuice, awayS
           <Item>{header}</Item>
           <Item>{total}</Item>
         </Header>
-        <Item>
+        <Item
+          won={didOverCover(homeScore, awayScore, total, final)}
+          push={decidePushProperty(header, homeScore, awayScore, total, final)}
+        >
           <div>Over</div>
           <Juice>{`(${addPlus(homeLine)})`}</Juice>
         </Item>
