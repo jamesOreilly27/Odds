@@ -497,3 +497,7 @@ export const didTotalPush = (homeScore, awayScore, total, final) => {
   if(parseInt(homeScore) + parseInt(awayScore) === parseFloat(total) && final) return true
   else return false
 }
+
+export const stupidFunction = (testing) => {
+  return testing
+}
