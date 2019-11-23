@@ -13,12 +13,46 @@ const Wrapper = styled(FlexRowContainer)`
 class OddsGrid extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      height: window.innerHeight,
+      width: window.innerWidth
+    }
+
+    this.updateDimensions = this.updateDimensions.bind(this)
   }
 
-  componentDidUpdate(prevProps) {
+  sendMessage(element) {
+    console.log('FIRING', element.clientHeight)
+    top.postMessage(element.clientHeight, '*')
+  }
+
+  componentDidMount() {
+    window.addEventListener("resize", this.updateDimensions)
+  }
+
+  updateDimensions() {
+    this.setState({
+      height: window.innerHeight, 
+      width: window.innerWidth
+    })
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimensions);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const container = document.getElementById('wrapper')
     if(this.props.games.length !== prevProps.games.length) {
-      top.postMessage(document.getElementById('wrapper').clientHeight, '*')
+      this.sendMessage(container)
     }
+    if(
+        this.state.height !== prevState.height ||
+        this.state.width !== prevState.width
+      ) {
+        this.sendMessage(container)
+      }
+
   }
 
   render() {
