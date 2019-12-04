@@ -32,8 +32,8 @@ const createApp = () => {
   server = https.createServer(options, app)
 
   app.use(volleyball)
-  app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded())
+  app.use(express.json())
+  app.use(express.urlencoded())
   app.use(express.static(path.join(__dirname, '..', 'public'))); 
 
   app.use(`${process.env.API_URL}`, require('./routes'))
